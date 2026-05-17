@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hacktivate 2.0 ⚡
 
-## Getting Started
+A premium, interactive, cartoon-themed 24-hour hackathon landing page for **JIMSEMTC, Greater Noida**. Built with high-fidelity glassmorphic widgets, smooth 3D HUD layers, and responsive digital interfaces where energy meets code.
 
-First, run the development server:
+---
 
+## ✨ Features
+* **🎮 3D Cyber HUD Scene:** A custom relative layered scene featuring a 3D Samurai Mascot overlapping an interactive simulating Terminal log, surrounded by staggered floating HUD status badges.
+* **🕰️ Live Countdown:** A compact digital clock displaying registration remaining time with smart metric chips.
+* **🪄 Micro-Animations:** Staggered spring entrances, floating particle backgrounds, and dynamic confetti bursts powered by Framer Motion and Canvas Confetti.
+* **🎨 Responsive Design:** Tailored layout sizing which automatically handles desktop viewport heights and adapts flawlessly to mobile viewports.
+
+---
+
+## 🛠️ Tech Stack
+* **Framework:** Next.js 14 (App Router)
+* **Language:** TypeScript
+* **Styling:** TailwindCSS (Vanilla custom utilities)
+* **Animations:** Framer Motion
+* **Icons:** Lucide React
+* **Effects:** Canvas Confetti
+
+---
+
+## 🚀 Getting Started & Setup
+
+Follow these simple steps to run this project locally:
+
+### 1. Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) installed (v18.x or higher recommended).
+
+### 2. Clone the Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Princekr267/hacktivate-2.0.git
+cd hacktivate-2.0
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Install Dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Set Up Environment Variables
+Duplicate the environment template file:
+```bash
+cp .env.example .env.local
+```
+*(On Windows PowerShell, use `copy .env.example .env.local`)*
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 5. Run the Development Server
+```bash
+npm run dev
+```
 
-## Learn More
+Open [http://localhost:3000](http://localhost:3000) (or the active terminal port) in your browser to view the application live!
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Building for Production
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To create an optimized production build of the website:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npm run start
+```
