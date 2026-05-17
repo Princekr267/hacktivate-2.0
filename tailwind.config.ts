@@ -1,0 +1,45 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        gold: {
+          DEFAULT: '#EFD844',
+          mid: '#D89202',
+          dark: '#B36A04',
+        },
+        purple: {
+          bg: '#291648',
+          mid: '#43186B',
+          accent: '#79359C',
+          highlight: '#a855c8',
+        },
+        cream: '#FFFCF3',
+        black: {
+          DEFAULT: '#080511',
+        }
+      },
+      fontFamily: {
+        fredoka: ['var(--font-fredoka)'],
+        nunito: ['var(--font-nunito)'],
+      },
+      boxShadow: {
+        'offset': '5px 5px 0px #B36A04',
+        'offset-black': '5px 5px 0px #080511',
+        'offset-hover': '8px 8px 0px #B36A04',
+        'offset-black-hover': '8px 8px 0px #080511',
+      },
+      backgroundImage: {
+        'circuit': 'url("/circuit-bg.svg")',
+      }
+    },
+  },
+  plugins: [],
+};
+export default config;

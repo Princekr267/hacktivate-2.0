@@ -1,0 +1,116 @@
+"use client";
+
+import { motion } from "framer-motion";
+import TracksBackground from "@/components/backgrounds/TracksBackground";
+import TiltCard from "@/components/ui/TiltCard";
+
+const TRACKS = [
+  {
+    icon: "🤖",
+    title: "AI & ML",
+    desc: "Build intelligent systems, predictive models, and generative AI tools that solve real-world problems.",
+    tags: ["LLMs", "Computer Vision", "Data"],
+  },
+  {
+    icon: "🌐",
+    title: "Web3",
+    desc: "Decentralize the future with dApps, smart contracts, and innovative blockchain solutions.",
+    tags: ["DeFi", "Solidity", "NFTs"],
+  },
+  {
+    icon: "🌱",
+    title: "Climate Tech",
+    desc: "Create sustainable solutions for environmental challenges and carbon footprint reduction.",
+    tags: ["Sustainability", "Green Energy"],
+  },
+  {
+    icon: "❤️",
+    title: "HealthTech",
+    desc: "Innovate healthcare delivery, patient tracking, and wellness tech for a better tomorrow.",
+    tags: ["MedTech", "Fitness", "Accessibility"],
+  },
+  {
+    icon: "🛡️",
+    title: "CyberSec",
+    desc: "Develop robust tools to protect data, privacy, and infrastructure from emerging threats.",
+    tags: ["Privacy", "Cryptography", "Network"],
+  },
+  {
+    icon: "🎓",
+    title: "EdTech",
+    desc: "Revolutionize learning with gamification, accessibility, and modern education tools.",
+    tags: ["E-Learning", "Gamification"],
+  },
+];
+
+export default function TracksSection() {
+  return (
+    <section id="tracks" className="py-32 px-6 bg-purple-bg relative z-0 overflow-hidden wave-divider">
+      <TracksBackground />
+      <div className="max-w-7xl mx-auto relative z-10">
+        
+        {/* Header */}
+        <div className="flex flex-col items-center mb-16 text-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-black text-gold font-nunito font-black uppercase text-sm px-4 py-1.5 rounded-full border-2 border-gold shadow-offset-black mb-6 inline-block"
+          >
+            The Challenge
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-fredoka text-cream neon-gold"
+            style={{ fontSize: "clamp(38px, 5vw, 60px)", textShadow: "4px 4px 0 #080511" }}
+          >
+            Tracks & Themes
+          </motion.h2>
+        </div>
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {TRACKS.map((track, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1, type: "spring", bounce: 0.4 }}
+              className="h-full"
+            >
+              <TiltCard className="card-hover scan-shimmer gold-pulse bg-purple-mid border-[3px] border-gold rounded-[20px] p-6 pt-8 relative group shadow-offset h-full flex flex-col">
+                {/* Top Accent Bar */}
+                <div className="absolute top-0 left-6 right-6 h-[5px] bg-gold rounded-b-md" />
+                
+                {/* Icon Box */}
+                <div className="w-[68px] h-[68px] bg-black border-2 border-gold rounded-2xl shadow-offset-black flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  {track.icon}
+                </div>
+
+                {/* Content */}
+                <h3 className="font-fredoka text-gold text-[21px] mb-3">{track.title}</h3>
+                <p className="font-nunito font-semibold text-cream opacity-90 mb-6 text-sm leading-relaxed flex-1">
+                  {track.desc}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {track.tags.map((tag, i) => (
+                    <span key={i} className="bg-black/40 border border-gold/50 text-gold font-nunito font-bold text-[11px] px-3 py-1 rounded-full uppercase tracking-wider">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </TiltCard>
+            </motion.div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
