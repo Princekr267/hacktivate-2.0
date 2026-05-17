@@ -128,12 +128,20 @@ export default function SponsorsSection() {
           <p className="font-nunito text-cream opacity-90 mb-8 max-w-md mx-auto">
             Get your brand in front of 500+ passionate developers, designers, and creators. Help us build the future.
           </p>
-          <a 
+          <motion.a 
             href="mailto:sponsors@hacktivate.com"
-            className="inline-flex items-center gap-2 bg-gold text-black font-fredoka uppercase px-8 py-3 rounded-xl border-[3px] border-black shadow-offset-black hover:shadow-offset-black-hover transition-all active:translate-y-1 active:translate-x-1 active:shadow-none"
+            whileTap={{
+              scale: 0.95,
+              backgroundColor: "#a855c8",
+              color: "#ffffff",
+              borderColor: "#a855c8",
+              boxShadow: "none"
+            }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            className="inline-flex items-center gap-2 bg-gold text-black font-fredoka uppercase px-8 py-3 rounded-xl border-[3px] border-black shadow-offset-black hover:shadow-offset-black-hover transition-all"
           >
             <Mail size={18} /> Request Deck
-          </a>
+          </motion.a>
         </motion.div>
 
       </div>

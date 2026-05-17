@@ -82,9 +82,19 @@ export default function Navbar() {
         </nav>
 
         {/* CTA */}
-        <button className="bg-gold hover:bg-gold-mid text-black font-fredoka uppercase px-6 py-2 rounded-xl border-[3px] border-black shadow-offset-black hover:shadow-offset-black-hover transition-all active:translate-y-1 active:translate-x-1 active:shadow-none flex items-center gap-2">
+        <motion.button
+          whileTap={{
+            scale: 0.95,
+            backgroundColor: "#a855c8",
+            color: "#ffffff",
+            borderColor: "#a855c8",
+            boxShadow: "none"
+          }}
+          transition={{ type: "spring", stiffness: 400, damping: 15 }}
+          className="bg-gold hover:bg-gold-mid text-black font-fredoka uppercase px-6 py-2 rounded-xl border-[3px] border-black shadow-offset-black hover:shadow-offset-black-hover transition-all flex items-center gap-2"
+        >
           Register <Zap size={18} fill="currentColor" />
-        </button>
+        </motion.button>
       </div>
     </header>
   );

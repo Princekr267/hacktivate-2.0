@@ -155,18 +155,34 @@ export default function HeroSection() {
             variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.35 } } }}
             className="flex flex-wrap gap-4 pt-1"
           >
-            <button
+            <motion.button
               onClick={triggerConfetti}
-              className="btn-shimmer bg-gold text-black font-fredoka uppercase text-lg px-8 py-3.5 rounded-xl border-[3px] border-black shadow-offset-black hover:shadow-offset-black-hover hover:-translate-y-1 hover:-translate-x-1 transition-all active:translate-y-1 active:translate-x-1 active:shadow-none flex items-center gap-2"
+              whileTap={{
+                scale: 0.95,
+                backgroundColor: "#a855c8",
+                color: "#ffffff",
+                borderColor: "#a855c8",
+                boxShadow: "none"
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 15 }}
+              className="btn-shimmer bg-gold text-black font-fredoka uppercase text-lg px-8 py-3.5 rounded-xl border-[3px] border-black shadow-offset-black hover:shadow-offset-black-hover hover:-translate-y-1 hover:-translate-x-1 transition-all flex items-center gap-2"
             >
               Register Now <Zap fill="currentColor" size={20} />
-            </button>
-            <a
+            </motion.button>
+            <motion.a
               href="#tracks"
+              whileTap={{
+                scale: 0.95,
+                backgroundColor: "#a855c8",
+                color: "#ffffff",
+                borderColor: "#a855c8",
+                boxShadow: "none"
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 15 }}
               className="bg-transparent text-gold font-fredoka uppercase text-lg px-8 py-3.5 rounded-xl border-[3px] border-gold hover:bg-gold hover:text-black hover:-translate-y-1 hover:-translate-x-1 transition-all flex items-center gap-2"
             >
               Explore Tracks <ArrowRight size={20} />
-            </a>
+            </motion.a>
           </motion.div>
         </motion.div>
 
