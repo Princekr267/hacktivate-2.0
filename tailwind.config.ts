@@ -15,10 +15,10 @@ const config: Config = {
           dark: '#B36A04',
         },
         purple: {
-          bg: '#291648',
-          mid: '#43186B',
-          accent: '#79359C',
-          highlight: '#a855c8',
+          bg: '#130522',
+          mid: '#240c3d',
+          accent: '#4e136b',
+          highlight: '#983cb0',
         },
         cream: '#FFFCF3',
         black: {

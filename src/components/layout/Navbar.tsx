@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Zap } from "lucide-react";
+import Image from "next/image";
 
 const NAV_LINKS = [
   { name: "Home", href: "#home" },
@@ -48,24 +49,16 @@ export default function Navbar() {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 h-[68px] bg-purple-bg border-b-[3px] border-gold transition-all duration-300 ${scrolled ? 'shadow-offset' : ''}`}>
-      <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center gap-3">
-          <h1 className="font-fredoka text-2xl text-cream tracking-wide">HACKTIVATE</h1>
-          <span className="font-fredoka text-sm bg-purple-mid text-cream px-3 py-1 rounded-full border-2 border-black shadow-offset-black">
-            2.0
-          </span>
-        </div>
-
+    <header className={`fixed top-0 left-0 right-0 z-50 h-[76px] border-b border-gold/35 bg-purple-bg/78 backdrop-blur-xl transition-all duration-300 ${scrolled ? 'shadow-[0_10px_30px_rgba(8,5,17,0.4)]' : ''}`}>
+      <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-between gap-4">
         {/* Links (Desktop) */}
-        <nav className="hidden md:flex items-center gap-2">
+        <nav className="hidden md:flex items-center gap-2 order-2 mx-auto">
           {NAV_LINKS.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={(e) => scrollToSection(e, link.href)}
-              className="relative px-5 py-2 font-nunito font-bold text-[15px] uppercase tracking-wider transition-colors"
+              className="relative px-5 py-2 font-nunito font-bold text-[15px] uppercase tracking-wider transition-transform duration-200 hover:-translate-y-0.5"
             >
               <span className={`relative z-10 ${activeSection === link.href.substring(1) ? 'text-black' : 'text-cream hover:text-gold'}`}>
                 {link.name}
@@ -73,13 +66,25 @@ export default function Navbar() {
               {activeSection === link.href.substring(1) && (
                 <motion.div
                   layoutId="nav-pill"
-                  className="absolute inset-0 bg-gold rounded-full border-2 border-black"
+                  className="absolute inset-0 bg-gold rounded-full border-2 border-black shadow-[0_4px_0_rgba(8,5,17,1)]"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
             </a>
           ))}
         </nav>
+
+        {/* Logo */}
+        <div className="flex items-center justify-center h-full order-1 shrink-0">
+          <Image
+            src="/logo.png"
+            alt="Hacktivate Logo"
+            width={240}
+            height={80}
+            priority
+            className="w-[180px] md:w-[220px] h-auto object-contain scale-[1.15] origin-left drop-shadow-[0_0_14px_rgba(239,216,68,0.18)]"
+          />
+        </div>
 
         {/* CTA */}
         <motion.button
@@ -91,7 +96,7 @@ export default function Navbar() {
             boxShadow: "none"
           }}
           transition={{ type: "spring", stiffness: 400, damping: 15 }}
-          className="bg-gold hover:bg-gold-mid text-black font-fredoka uppercase px-6 py-2 rounded-xl border-[3px] border-black shadow-offset-black hover:shadow-offset-black-hover transition-all flex items-center gap-2"
+          className="order-3 shrink-0 bg-gold hover:bg-gold-mid text-black font-fredoka uppercase px-6 py-2 rounded-xl border-[3px] border-black shadow-offset-black hover:shadow-offset-black-hover transition-all flex items-center gap-2"
         >
           Register <Zap size={18} fill="currentColor" />
         </motion.button>

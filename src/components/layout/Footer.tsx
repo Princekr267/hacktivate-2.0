@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const TICKER_ITEMS = [
   "24 HOURS", "✦", "NON-STOP CODING", "✦", "500+ HACKERS", "✦", "FREE FOOD", "✦", "₹2L+ PRIZE POOL", "✦", 
@@ -55,11 +56,15 @@ export default function Footer() {
           
           {/* Brand */}
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <h1 className="font-fredoka text-2xl text-cream tracking-wide">HACKTIVATE</h1>
-              <span className="font-fredoka text-xs bg-purple-mid text-cream px-2 py-0.5 rounded-full border-2 border-black">
-                2.0
-              </span>
+            <div className="flex items-center mb-4">
+              <Image
+                src="/logo.png"
+                alt="Hacktivate Logo"
+                width={180}
+                height={56}
+                priority
+                className="w-[150px] md:w-[170px] h-auto object-contain"
+              />
             </div>
             <p className="font-nunito text-cream/60 text-sm max-w-[250px] leading-relaxed">
               The ultimate 24-hour hackathon at JIMSEMTC. Build the future, break the limits, and have fun doing it.
