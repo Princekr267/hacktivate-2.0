@@ -28,20 +28,14 @@ export default function TeamSection() {
       style={{ paddingTop: "90px", paddingBottom: "90px" }}
     >
       {/* ── Top wavy divider (gold) ── */}
-      <div className="absolute top-0 left-0 w-full pointer-events-none" style={{ height: 56 }}>
-        <svg viewBox="0 0 1440 56" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,56 C240,56 240,0 480,0 C720,0 720,56 960,56 C1200,56 1200,0 1440,0 L1440,56 Z" fill="#EFD844" />
-          <path d="M0,56 C240,56 240,0 480,0 C720,0 720,56 960,56 C1200,56 1200,0 1440,0 L1440,56 Z" fill="none" stroke="#130522" strokeWidth="5" />
-        </svg>
-      </div>
+      <svg className="w-full h-8 sm:h-12 md:h-16 absolute top-0 left-0 text-gold fill-current" viewBox="0 0 1440 48" preserveAspectRatio="none">
+        <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
+      </svg>
 
       {/* ── Bottom wavy divider (gold) ── */}
-      <div className="absolute bottom-0 left-0 w-full pointer-events-none" style={{ height: 56 }}>
-        <svg viewBox="0 0 1440 56" preserveAspectRatio="none" className="w-full h-full rotate-180">
-          <path d="M0,56 C240,56 240,0 480,0 C720,0 720,56 960,56 C1200,56 1200,0 1440,0 L1440,56 Z" fill="#EFD844" />
-          <path d="M0,56 C240,56 240,0 480,0 C720,0 720,56 960,56 C1200,56 1200,0 1440,0 L1440,56 Z" fill="none" stroke="#130522" strokeWidth="5" />
-        </svg>
-      </div>
+      <svg className="w-full h-8 sm:h-12 md:h-16 absolute bottom-0 left-0 text-gold fill-current rotate-180" viewBox="0 0 1440 48" preserveAspectRatio="none">
+        <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
+      </svg>
 
       {/* Ambient glows */}
       <div className="section-glow absolute top-1/3 left-[-8%] w-[500px] h-[500px]"
