@@ -4,23 +4,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, X, CheckCircle2 } from "lucide-react";
 
-const SPONSORS = {
-  gold: [
-    { name: "TechCorp Global" },
-    { name: "CloudWorks" },
-  ],
-  silver: [
-    { name: "DevTools Inc" },
-    { name: "NextGen Web" },
-    { name: "DataFlow" },
-  ],
-  bronze: [
-    { name: "StartupHub" },
-    { name: "CodeSchool" },
-    { name: "PixelPerfect" },
-    { name: "LocalHost" },
-  ]
-};
+const SPONSORS = [
+  { name: "Lazer Crazer", logo: "/data/Sponser/lazer crazer.png" }
+];
 
 import SponsorsBackground from "@/components/backgrounds/SponsorsBackground";
 import { useRipple } from "@/hooks/useRipple";
@@ -58,18 +44,17 @@ export default function SponsorsSection() {
           </motion.h2>
         </div>
 
-        {/* Tiers — unified equal-size grid */}
+        {/* Unified Sponsors Grid */}
         <div className="flex flex-col gap-8">
-
-          {/* Gold Tier */}
           <div
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
               gap: '16px',
             }}
           >
-            {SPONSORS.gold.map((sponsor, idx) => (
+            {SPONSORS.map((sponsor, idx) => (
               <motion.div
                 key={idx}
                 whileHover={{ y: -5, x: -5, boxShadow: '7px 7px 0 #B36A04' }}
@@ -82,78 +67,20 @@ export default function SponsorsSection() {
                   boxShadow: '4px 4px 0 #B36A04',
                   padding: '24px 32px',
                   minHeight: '100px',
+                  width: '240px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
               >
-                <span className="font-fredoka text-[18px] text-gold" style={{ opacity: 0.6 }}>{sponsor.name}</span>
+                {sponsor.logo ? (
+                  <img src={sponsor.logo} alt={sponsor.name} className="max-w-full max-h-full object-contain" />
+                ) : (
+                  <span className="font-fredoka text-[18px] text-gold" style={{ opacity: 0.6 }}>{sponsor.name}</span>
+                )}
               </motion.div>
             ))}
           </div>
-
-          {/* Silver Tier */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-              gap: '16px',
-            }}
-          >
-            {SPONSORS.silver.map((sponsor, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ y: -5, x: -5, boxShadow: '7px 7px 0 #B36A04' }}
-                onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
-                className="ripple-element"
-                style={{
-                  background: '#43186B',
-                  border: '3px solid #EFD844',
-                  borderRadius: '16px',
-                  boxShadow: '4px 4px 0 #B36A04',
-                  padding: '24px 32px',
-                  minHeight: '100px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <span className="font-fredoka text-[18px] text-gold" style={{ opacity: 0.6 }}>{sponsor.name}</span>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Bronze Tier */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-              gap: '16px',
-            }}
-          >
-            {SPONSORS.bronze.map((sponsor, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ y: -5, x: -5, boxShadow: '7px 7px 0 #B36A04' }}
-                onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
-                className="ripple-element"
-                style={{
-                  background: '#43186B',
-                  border: '3px solid #EFD844',
-                  borderRadius: '16px',
-                  boxShadow: '4px 4px 0 #B36A04',
-                  padding: '24px 32px',
-                  minHeight: '100px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <span className="font-fredoka text-[18px] text-gold" style={{ opacity: 0.6 }}>{sponsor.name}</span>
-              </motion.div>
-            ))}
-          </div>
-
         </div>
 
         {/* CTA Box */}

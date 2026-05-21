@@ -6,6 +6,7 @@ import { Zap } from "lucide-react";
 import confetti from "canvas-confetti";
 import Image from "next/image";
 import HeroBackground from "@/components/backgrounds/HeroBackground";
+import CountdownTimer from "@/components/ui/CountdownTimer";
 import { useRipple } from "@/hooks/useRipple";
 
 export default function HeroSection() {
@@ -49,8 +50,9 @@ export default function HeroSection() {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="inline-flex items-center gap-2 bg-black/85 text-cream border-[1.5px] border-gold rounded-full px-5 py-2 font-nunito font-bold text-xs sm:text-sm shadow-[0_4px_25px_rgba(239,216,68,0.25)] mb-10 sm:mb-4 relative z-20"
           >
-            <span className="text-gold animate-pulse">✦</span> JIMSEMTC · GREATER NOIDA
+            <span className="text-gold animate-pulse">✦</span> 11-12 SEP 2026 · JIMSEMTC · GREATER NOIDA
           </motion.div>
+
 
           {/* Hero image */}
           <motion.div
@@ -75,18 +77,19 @@ export default function HeroSection() {
 
           <motion.div
             variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.28 } } }}
-            className="hero-cta-row flex flex-wrap items-center justify-center gap-4 mt-20 sm:mt-[calc(12vh-15px)] relative z-30"
+            className="hero-cta-row flex flex-wrap lg:flex-nowrap items-center justify-center gap-8 sm:gap-16 mt-20 sm:mt-[calc(12vh-15px)] relative z-30"
           >
             <motion.button
               onClick={handleRegister}
               whileTap={{ scale: 0.95 }}
               animate={{ boxShadow: ["6px 6px 0px #000", "6px 6px 0px #000, 0 0 20px rgba(239,216,68,0.6)", "6px 6px 0px #000"] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="btn-shimmer ripple-element bg-gold hover:bg-purple-mid text-black hover:text-gold hover:border-gold font-fredoka uppercase text-xl px-10 py-4 rounded-xl border-[3px] border-black hover:-translate-y-1 hover:-translate-x-1 transition-all flex items-center gap-3 relative overflow-hidden"
+              className="btn-shimmer ripple-element bg-gold hover:bg-purple-mid text-black hover:text-gold hover:border-gold font-fredoka uppercase text-lg sm:text-xl rounded-xl border-[3px] border-black hover:-translate-y-1 hover:-translate-x-1 transition-all flex items-center justify-center gap-3 relative overflow-hidden h-[70px] sm:h-[80px] w-[260px] sm:w-[300px]"
               style={{ boxShadow: "6px 6px 0px #000" }}
             >
               Register Now <Zap fill="currentColor" size={22} className="animate-bounce" />
             </motion.button>
+            <CountdownTimer />
           </motion.div>
         </motion.div>
       </div>

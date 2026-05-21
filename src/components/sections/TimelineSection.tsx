@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 
 const TIMELINE = [
-  { date: "Aug 15, 2025", title: "Registrations Open", desc: "Form your team of 2-4 members and register." },
-  { date: "Sep 5, 2025", title: "Team Finalization", desc: "Last day to invite members or merge teams." },
-  { date: "Sep 10, 2025", title: "Problem Statements", desc: "Themes are announced. Start brainstorming." },
-  { date: "Sep 18, 10:00 AM", title: "Hackathon Begins 🚀", desc: "Opening ceremony and coding starts!" },
-  { date: "Sep 19, 10:00 AM", title: "Submissions Close", desc: "Pencils down! Submit your projects on Devfolio." },
-  { date: "Sep 19, 04:00 PM", title: "Winners Announced 🏆", desc: "Closing ceremony, pitches, and prize distribution." },
+  { date: "Aug 15, 2026", title: "Registrations Open", desc: "Form your team of 4 members and register." },
+  { date: "Sep 5, 2026", title: "Team Finalization", desc: "Last day to invite members or merge teams." },
+  { date: "Sep 8, 2026", title: "Problem Statements", desc: "Themes are announced. Start brainstorming." },
+  { date: "Sep 11, 10:00 AM", title: "Hackathon Begins 🚀", desc: "Opening ceremony and coding starts!" },
+  { date: "Sep 12, 10:00 PM", title: "Submissions Close", desc: "Pencils down! Submit your projects on Devfolio." },
+  { date: "Sep 12, 11:00 PM", title: "Winners Announced 🏆", desc: "Closing ceremony, pitches, and prize distribution." },
 ];
 
 import TimelineBackground from "@/components/backgrounds/TimelineBackground";
@@ -17,8 +17,8 @@ export default function TimelineSection() {
   return (
     <section id="timeline" className="py-32 px-6 bg-black relative z-0 overflow-hidden">
       {/* Ambient glows */}
-      <div className="section-glow absolute top-1/4 left-[-8%] w-[450px] h-[450px] bg-purple-accent/15" />
-      <div className="section-glow absolute bottom-1/4 right-[-8%] w-[400px] h-[400px] bg-gold/8" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/4 left-[-8%] w-[450px] h-[450px] bg-[radial-gradient(circle,rgba(168,85,200,0.12)_0%,transparent_70%)] rounded-full pointer-events-none" />
+      <div className="absolute bottom-1/4 right-[-8%] w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(239,216,68,0.08)_0%,transparent_70%)] rounded-full pointer-events-none" style={{ animationDelay: '2s' }} />
       <TimelineBackground />
 
       <div className="max-w-5xl mx-auto relative z-10">

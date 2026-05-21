@@ -17,7 +17,7 @@ export default function TimelineBackground() {
     <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none z-0">
       {/* Background Glow */}
       <motion.div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-accent rounded-full blur-[150px] opacity-20 pointer-events-none" 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle_at_center,rgba(168,85,200,0.2),transparent_70%)] rounded-full pointer-events-none" 
         style={{ y: prefersReducedMotion ? '-50%' : y }}
       />
     </div>

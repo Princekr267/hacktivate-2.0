@@ -16,7 +16,10 @@ const nunito = Nunito({
 
 export const metadata: Metadata = {
   title: "Hacktivate 2.0 | JIMSEMTC Greater Noida",
-  description: "A premium 24-hour hackathon at JIMSEMTC. Join 500+ hackers for non-stop coding, amazing prizes, and the ultimate tech showdown.",
+  description: "A premium 36-hour hackathon at JIMSEMTC. Join 500+ hackers for non-stop coding, amazing prizes, and the ultimate tech showdown.",
+  icons: {
+    icon: "/logo-H-letter.png",
+  },
 };
 
 import CustomCursor from "@/components/ui/CustomCursor";

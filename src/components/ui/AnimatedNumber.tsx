@@ -18,8 +18,8 @@ export default function AnimatedNumber({ value, prefix = "", suffix = "", classN
   
   const motionValue = useMotionValue(0);
   const springValue = useSpring(motionValue, {
-    damping: 60,
-    stiffness: 100,
+    damping: 30,
+    stiffness: 250,
   });
 
   const [displayValue, setDisplayValue] = useState(0);

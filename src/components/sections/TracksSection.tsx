@@ -8,40 +8,46 @@ import { useRipple } from "@/hooks/useRipple";
 
 const TRACKS = [
   {
-    icon: "🤖",
-    title: "AI & ML",
-    desc: "Build intelligent systems, predictive models, and generative AI tools that solve real-world problems.",
-    tags: ["LLMs", "Computer Vision", "Data"],
+    icon: "🏆",
+    title: "Sports-Tech",
+    desc: "Innovate at the intersection of sports and technology. Build solutions for performance tracking, fan engagement, and athlete wellness.",
+    tags: ["Wearables", "Analytics", "AR/VR"],
   },
   {
-    icon: "🌐",
-    title: "Web3",
-    desc: "Decentralize the future with dApps, smart contracts, and innovative blockchain solutions.",
-    tags: ["DeFi", "Solidity", "NFTs"],
+    icon: "☁️",
+    title: "Cloud Computing",
+    desc: "Harness the power of the cloud to build scalable, resilient, and intelligent applications for the modern world.",
+    tags: ["AWS", "Azure", "Serverless"],
   },
   {
-    icon: "🌱",
-    title: "Climate Tech",
-    desc: "Create sustainable solutions for environmental challenges and carbon footprint reduction.",
-    tags: ["Sustainability", "Green Energy"],
+    icon: "🚨",
+    title: "Disaster Management",
+    desc: "Build systems that save lives. Create tools for early warning, real-time coordination, and rapid disaster response.",
+    tags: ["IoT", "GIS", "Real-time"],
+  },
+  {
+    icon: "🛣️",
+    title: "Road Safety",
+    desc: "Make roads smarter and safer. Develop solutions for accident prevention, traffic intelligence, and pedestrian protection.",
+    tags: ["Computer Vision", "IoT", "Maps"],
+  },
+  {
+    icon: "🌾",
+    title: "Agriculture",
+    desc: "Empower farmers with technology. Build solutions for crop monitoring, precision farming, and agricultural supply chains.",
+    tags: ["Drones", "ML", "IoT"],
   },
   {
     icon: "❤️",
-    title: "HealthTech",
-    desc: "Innovate healthcare delivery, patient tracking, and wellness tech for a better tomorrow.",
-    tags: ["MedTech", "Fitness", "Accessibility"],
+    title: "HealthCare Management",
+    desc: "Transform how healthcare is delivered and managed. Innovate for patient care, diagnostics, and medical record systems.",
+    tags: ["MedTech", "AI", "Accessibility"],
   },
   {
-    icon: "🛡️",
-    title: "CyberSec",
-    desc: "Develop robust tools to protect data, privacy, and infrastructure from emerging threats.",
-    tags: ["Privacy", "Cryptography", "Network"],
-  },
-  {
-    icon: "🎓",
-    title: "EdTech",
-    desc: "Revolutionize learning with gamification, accessibility, and modern education tools.",
-    tags: ["E-Learning", "Gamification"],
+    icon: "🌱",
+    title: "Environment Management",
+    desc: "Protect our planet through technology. Create tools for pollution monitoring, waste reduction, and ecological preservation.",
+    tags: ["Sustainability", "Sensors", "Data"],
   },
 ];
 
@@ -56,10 +62,10 @@ function TrackCard({ track, idx }: { track: typeof TRACKS[number]; idx: number }
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: idx * 0.1, type: "spring", bounce: 0.4 }}
-      className="h-full"
+      className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] max-w-[320px] flex"
     >
       <TiltCard
-        className="card-hover scan-shimmer gold-pulse ripple-element bg-purple-mid border-[3px] border-gold rounded-[20px] p-6 pt-8 relative group shadow-offset h-full flex flex-col"
+        className="card-hover scan-shimmer gold-pulse ripple-element w-full bg-purple-mid border-[3px] border-gold rounded-[20px] p-6 pt-8 relative group shadow-offset flex flex-col justify-center"
         onMouseMove={(e: React.MouseEvent<HTMLDivElement>) => {
           const rect = e.currentTarget.getBoundingClientRect();
           setGlow({ x: e.clientX - rect.left, y: e.clientY - rect.top });
@@ -91,14 +97,7 @@ function TrackCard({ track, idx }: { track: typeof TRACKS[number]; idx: number }
           {track.desc}
         </p>
 
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2 relative z-10">
-          {track.tags.map((tag, i) => (
-            <span key={i} className="bg-black/40 border border-gold/50 text-gold font-nunito font-bold text-[11px] px-3 py-1 rounded-full uppercase tracking-wider">
-              {tag}
-            </span>
-          ))}
-        </div>
+        {/* Tags removed as requested */}
       </TiltCard>
     </motion.div>
   );
@@ -108,8 +107,8 @@ export default function TracksSection() {
   return (
     <section id="tracks" className="py-32 px-6 bg-purple-bg relative z-0 overflow-hidden">
       {/* Ambient glows */}
-      <div className="section-glow absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-purple-accent/20" />
-      <div className="section-glow absolute bottom-[-10%] right-[-5%] w-[400px] h-[400px] bg-gold/10" style={{ animationDelay: '3s' }} />
+      <div className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(168,85,200,0.15)_0%,transparent_70%)] rounded-full pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-5%] w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(239,216,68,0.1)_0%,transparent_70%)] rounded-full pointer-events-none" style={{ animationDelay: '3s' }} />
       <TracksBackground />
       <div className="max-w-7xl mx-auto relative z-10">
 
@@ -136,7 +135,7 @@ export default function TracksSection() {
         </div>
 
         {/* Grid */}
-        <div className="tracks-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="tracks-grid flex flex-wrap justify-center items-stretch gap-8">
           {TRACKS.map((track, idx) => (
             <TrackCard key={idx} track={track} idx={idx} />
           ))}

@@ -7,32 +7,56 @@ import FaqBackground from "@/components/backgrounds/FaqBackground";
 
 const FAQS = [
   {
-    q: "Who can participate?",
-    a: "Any university student, recent graduate, or passionate developer can participate! You don't need to be from JIMSEMTC to join the hackathon."
+    q: "Who can participate in Hacktivate 2.0?",
+    a: "Hacktivate 2.0 is a pan-India hackathon open to all undergraduate and postgraduate students currently enrolled at any recognized college or university across India. You do not need to be from JIMSEMTC ,participants from all institutions are welcome."
   },
   {
-    q: "How much does it cost?",
-    a: "Absolutely nothing! Hacktivate 2.0 is 100% free for all selected participants. We'll provide the food, swag, and infrastructure."
+    q: "Is registration free?",
+    a: "Yes, registration for Hacktivate 2.0 is completely free. There are no participation fees whatsoever."
   },
   {
-    q: "Do I need a team?",
-    a: "Yes, you can participate in a team of 2-4 members. If you don't have a team yet, don't worry! We'll have team-building sessions on our Discord before the event."
+    q: "How do I register for the hackathon?",
+    a: "Click the \"Register Now\" button on this website and complete the registration form."
   },
   {
-    q: "What if I'm a beginner?",
-    a: "We love beginners! Hackathons are the best place to learn. We'll have mentors, workshops, and beginner-friendly tracks to help you build your first project."
+    q: "Do I need a team to participate?",
+    a: "Teams must have 4 members. Solo participation is not allowed."
   },
   {
-    q: "Will hardware be provided?",
-    a: "We provide basic infrastructure like power, internet, and desks. For specific hardware hacks (IoT, VR), please bring your own components."
+    q: "Can team members be from different colleges?",
+    a: "Yes! Cross-college teams are allowed and encouraged. All members just need to be currently enrolled students."
   },
   {
-    q: "What are the judging criteria?",
-    a: "Projects will be judged on Innovation, Technical Complexity, UI/UX Design, Business/Practical Feasibility, and the quality of your final pitch."
+    q: "What is the format of Hacktivate 2.0?",
+    a: "Hacktivate 2.0 is a two-round hackathon. The first round is online , shortlisted teams will then be invited for the in-person 36-hour hackathon at JIMSEMTC Campus, Greater Noida on September 11–12, 2026."
   },
   {
-    q: "Can I work on a past project?",
-    a: "No, all code must be written during the 24-hour hackathon period. You can use open-source libraries and APIs, but the core logic must be built at the event."
+    q: "What do I need to bring on the day?",
+    a: "Bring your laptop, charger, student ID for verification, and any hardware or equipment your project requires. Power outlets may be available at the venue but we strongly recommend bringing your own extension cords to be safe. Wi-Fi arrangements are the participant's responsibility , please plan accordingly and carry a hotspot if needed."
+  },
+  {
+    q: "Will food and accommodation be provided?",
+    a: "Yes, meals and snacks will be provided throughout the 36-hour event. Overnight stay arrangements will be available on campus. Accommodation outside the venue is the participant's own responsibility."
+  },
+  {
+    q: "Do I need to be an expert to participate?",
+    a: "Absolutely not. Beginners are welcome! Hacktivate 2.0 has mentors available throughout the event to guide participants at all skill levels. What matters most is enthusiasm, learning, and giving it your best shot."
+  },
+  {
+    q: "Can I start working on my project before the hackathon?",
+    a: "No. All code and design work must begin after the opening ceremony on September 11. You may do research, read documentation, and plan your approach beforehand, but no pre-written code or pre-built prototypes are allowed."
+  },
+  {
+    q: "Can I work on a past or existing project?",
+    a: "No. Submissions must be entirely original work built during the hackathon. Repurposing an old project will lead to immediate disqualification. Using open-source libraries, public APIs, and free frameworks is perfectly fine."
+  },
+  {
+    q: "Will all participants receive certificates?",
+    a: "Yes. All participants who submit a project by the deadline will receive a digital participation certificate. Finalists and winners will receive additional certificates reflecting their achievement."
+  },
+  {
+    q: "How can I stay updated about Hacktivate announcements?",
+    a: "Follow us on our social media handles linked at the bottom of this website for real-time updates, announcements, and more."
   }
 ];
 
@@ -46,8 +70,8 @@ export default function FaqSection() {
   return (
     <section id="faq" className="py-32 px-6 bg-purple-bg relative z-0 overflow-hidden">
       {/* Ambient glows */}
-      <div className="section-glow absolute top-[-5%] right-[-5%] w-[500px] h-[500px] bg-gold/10" />
-      <div className="section-glow absolute bottom-[-5%] left-[-5%] w-[400px] h-[400px] bg-purple-accent/20" style={{ animationDelay: '3s' }} />
+      <div className="absolute top-[-5%] right-[-5%] w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(239,216,68,0.1)_0%,transparent_70%)] rounded-full pointer-events-none" />
+      <div className="absolute bottom-[-5%] left-[-5%] w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(168,85,200,0.2)_0%,transparent_70%)] rounded-full pointer-events-none" style={{ animationDelay: '3s' }} />
       <FaqBackground />
       <div className="max-w-3xl mx-auto relative z-10">
         
