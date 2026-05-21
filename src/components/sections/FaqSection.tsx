@@ -45,6 +45,9 @@ export default function FaqSection() {
 
   return (
     <section id="faq" className="py-32 px-6 bg-purple-bg relative z-0 overflow-hidden">
+      {/* Ambient glows */}
+      <div className="section-glow absolute top-[-5%] right-[-5%] w-[500px] h-[500px] bg-gold/10" />
+      <div className="section-glow absolute bottom-[-5%] left-[-5%] w-[400px] h-[400px] bg-purple-accent/20" style={{ animationDelay: '3s' }} />
       <FaqBackground />
       <div className="max-w-3xl mx-auto relative z-10">
         
@@ -73,13 +76,13 @@ export default function FaqSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.08 }}
-                className="bg-purple-mid border-[3px] border-gold rounded-[18px] shadow-offset flex flex-col"
+                className="faq-item bg-purple-mid border-[3px] border-gold rounded-[18px] shadow-offset flex flex-col"
               >
                 <button 
                   onClick={() => toggleOpen(idx)}
                   className="flex items-center justify-between w-full p-6 text-left focus:outline-none"
                 >
-                  <span className="font-fredoka text-gold text-xl pr-4">{faq.q}</span>
+                  <span className="faq-question font-fredoka text-gold text-xl pr-4">{faq.q}</span>
                   <motion.div 
                     animate={{ rotate: isOpen ? 45 : 0 }}
                     transition={{ type: "spring", bounce: 0.5 }}

@@ -21,6 +21,7 @@ export const metadata: Metadata = {
 
 import CustomCursor from "@/components/ui/CustomCursor";
 import CanvasParticles from "@/components/backgrounds/CanvasParticles";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 export default function RootLayout({
   children,
@@ -28,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -36,10 +37,11 @@ export default function RootLayout({
       <body className={`${fredoka.variable} ${nunito.variable} antialiased`} suppressHydrationWarning>
         <CanvasParticles />
         <CustomCursor />
-        {/* Cybernetic backgrounds */}
-        <div className="bg-grid fixed inset-0 opacity-[0.08] pointer-events-none z-0 mix-blend-screen" />
-        <div className="bg-circuit fixed inset-0 opacity-[0.06] pointer-events-none z-0 text-purple-accent mix-blend-screen" />
-        {children}
+        {/* Subtle grid overlay for depth */}
+        <div className="bg-grid fixed inset-0 opacity-[0.06] pointer-events-none z-0 mix-blend-screen" />
+        <ErrorBoundary>
+          {children}
+        </ErrorBoundary>
       </body>
     </html>
   );

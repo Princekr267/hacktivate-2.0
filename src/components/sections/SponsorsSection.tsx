@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Mail } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, X, CheckCircle2 } from "lucide-react";
 
 const SPONSORS = {
   gold: [
@@ -22,8 +23,22 @@ const SPONSORS = {
 };
 
 import SponsorsBackground from "@/components/backgrounds/SponsorsBackground";
+import { useRipple } from "@/hooks/useRipple";
 
 export default function SponsorsSection() {
+  const ripple = useRipple();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsModalOpen(false);
+      setTimeout(() => setIsSubmitted(false), 500); // reset after close
+    }, 2000);
+  };
+
   return (
     <section id="sponsors" className="py-32 px-6 bg-black relative z-0 overflow-hidden">
       <SponsorsBackground />
@@ -43,73 +58,100 @@ export default function SponsorsSection() {
           </motion.h2>
         </div>
 
-        {/* Tiers */}
-        <div className="flex flex-col gap-20">
-          
+        {/* Tiers — unified equal-size grid */}
+        <div className="flex flex-col gap-8">
+
           {/* Gold Tier */}
-          <div className="flex flex-col items-center">
-            <div className="flex items-center w-full mb-10 gap-4">
-              <div className="h-[2px] flex-1 bg-gold opacity-50" />
-              <div className="bg-[#FFD700] text-black font-fredoka uppercase text-sm px-6 py-2 rounded-full shadow-[0_0_15px_rgba(255,215,0,0.5)]">
-                Gold Tier ⭐
-              </div>
-              <div className="h-[2px] flex-1 bg-gold opacity-50" />
-            </div>
-            <div className="flex flex-wrap justify-center gap-8 w-full">
-              {SPONSORS.gold.map((sponsor, idx) => (
-                <motion.div 
-                  key={idx}
-                  whileHover={{ y: -5, x: -5 }}
-                  className="w-full sm:w-[350px] h-[160px] bg-purple-mid border-[3px] border-gold rounded-2xl shadow-offset flex items-center justify-center transition-all hover:shadow-offset-hover"
-                >
-                  <span className="font-fredoka text-2xl text-cream opacity-50">{sponsor.name}</span>
-                </motion.div>
-              ))}
-            </div>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+              gap: '16px',
+            }}
+          >
+            {SPONSORS.gold.map((sponsor, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ y: -5, x: -5, boxShadow: '7px 7px 0 #B36A04' }}
+                onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
+                className="ripple-element"
+                style={{
+                  background: '#43186B',
+                  border: '3px solid #EFD844',
+                  borderRadius: '16px',
+                  boxShadow: '4px 4px 0 #B36A04',
+                  padding: '24px 32px',
+                  minHeight: '100px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <span className="font-fredoka text-[18px] text-gold" style={{ opacity: 0.6 }}>{sponsor.name}</span>
+              </motion.div>
+            ))}
           </div>
 
           {/* Silver Tier */}
-          <div className="flex flex-col items-center">
-            <div className="flex items-center w-full mb-10 gap-4">
-              <div className="h-[2px] flex-1 bg-gold opacity-30" />
-              <div className="bg-[#C0C0C0] text-black font-fredoka uppercase text-sm px-6 py-2 rounded-full shadow-[0_0_15px_rgba(192,192,192,0.5)]">
-                Silver Tier 🥈
-              </div>
-              <div className="h-[2px] flex-1 bg-gold opacity-30" />
-            </div>
-            <div className="flex flex-wrap justify-center gap-6 w-full">
-              {SPONSORS.silver.map((sponsor, idx) => (
-                <motion.div 
-                  key={idx}
-                  whileHover={{ y: -5, x: -5 }}
-                  className="w-[250px] h-[120px] bg-purple-mid border-[3px] border-gold rounded-xl shadow-offset flex items-center justify-center transition-all hover:shadow-offset-hover"
-                >
-                  <span className="font-fredoka text-xl text-cream opacity-50">{sponsor.name}</span>
-                </motion.div>
-              ))}
-            </div>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+              gap: '16px',
+            }}
+          >
+            {SPONSORS.silver.map((sponsor, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ y: -5, x: -5, boxShadow: '7px 7px 0 #B36A04' }}
+                onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
+                className="ripple-element"
+                style={{
+                  background: '#43186B',
+                  border: '3px solid #EFD844',
+                  borderRadius: '16px',
+                  boxShadow: '4px 4px 0 #B36A04',
+                  padding: '24px 32px',
+                  minHeight: '100px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <span className="font-fredoka text-[18px] text-gold" style={{ opacity: 0.6 }}>{sponsor.name}</span>
+              </motion.div>
+            ))}
           </div>
 
           {/* Bronze Tier */}
-          <div className="flex flex-col items-center">
-            <div className="flex items-center w-full mb-10 gap-4">
-              <div className="h-[2px] flex-1 bg-gold opacity-20" />
-              <div className="bg-[#CD7F32] text-black font-fredoka uppercase text-sm px-6 py-2 rounded-full shadow-[0_0_15px_rgba(205,127,50,0.5)]">
-                Bronze Tier 🥉
-              </div>
-              <div className="h-[2px] flex-1 bg-gold opacity-20" />
-            </div>
-            <div className="flex flex-wrap justify-center gap-4 w-full">
-              {SPONSORS.bronze.map((sponsor, idx) => (
-                <motion.div 
-                  key={idx}
-                  whileHover={{ y: -5, x: -5 }}
-                  className="w-[180px] h-[90px] bg-purple-mid border-2 border-gold rounded-lg shadow-offset flex items-center justify-center transition-all hover:shadow-offset-hover"
-                >
-                  <span className="font-fredoka text-lg text-cream opacity-50">{sponsor.name}</span>
-                </motion.div>
-              ))}
-            </div>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+              gap: '16px',
+            }}
+          >
+            {SPONSORS.bronze.map((sponsor, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ y: -5, x: -5, boxShadow: '7px 7px 0 #B36A04' }}
+                onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
+                className="ripple-element"
+                style={{
+                  background: '#43186B',
+                  border: '3px solid #EFD844',
+                  borderRadius: '16px',
+                  boxShadow: '4px 4px 0 #B36A04',
+                  padding: '24px 32px',
+                  minHeight: '100px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <span className="font-fredoka text-[18px] text-gold" style={{ opacity: 0.6 }}>{sponsor.name}</span>
+              </motion.div>
+            ))}
           </div>
 
         </div>
@@ -128,8 +170,8 @@ export default function SponsorsSection() {
           <p className="font-nunito text-cream opacity-90 mb-8 max-w-md mx-auto">
             Get your brand in front of 500+ passionate developers, designers, and creators. Help us build the future.
           </p>
-          <motion.a 
-            href="mailto:sponsors@hacktivate.com"
+          <motion.button 
+            onClick={() => setIsModalOpen(true)}
             whileTap={{
               scale: 0.95,
               backgroundColor: "#a855c8",
@@ -141,10 +183,99 @@ export default function SponsorsSection() {
             className="inline-flex items-center gap-2 bg-gold text-black font-fredoka uppercase px-8 py-3 rounded-xl border-[3px] border-black shadow-offset-black hover:shadow-offset-black-hover transition-all"
           >
             <Mail size={18} /> Request Deck
-          </motion.a>
+          </motion.button>
         </motion.div>
 
       </div>
+
+      {/* Sponsor Deck Request Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <div className="fixed inset-0 z-[99999] flex items-center justify-center px-4">
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsModalOpen(false)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-md"
+            />
+            
+            {/* Modal Box */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", bounce: 0.4 }}
+              className="relative w-full max-w-md bg-purple-bg border-[3px] border-gold rounded-[24px] shadow-offset-hover overflow-hidden z-10"
+            >
+              {/* Header */}
+              <div className="bg-purple-mid border-b-2 border-gold/30 px-6 py-4 flex justify-between items-center">
+                <h3 className="font-fredoka text-xl text-gold">Sponsorship Inquiry</h3>
+                <button 
+                  onClick={() => setIsModalOpen(false)}
+                  className="text-cream/50 hover:text-gold transition-colors"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+
+              {/* Body */}
+              <div className="p-6">
+                {isSubmitted ? (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex flex-col items-center justify-center py-8 text-center"
+                  >
+                    <CheckCircle2 size={64} className="text-gold mb-4" />
+                    <h4 className="font-fredoka text-2xl text-cream mb-2">Request Sent!</h4>
+                    <p className="font-nunito text-cream/70">
+                      We&apos;ll be in touch with our sponsor deck shortly.
+                    </p>
+                  </motion.div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                    <div>
+                      <label className="block font-nunito font-bold text-cream/80 text-sm mb-1.5">Name</label>
+                      <input 
+                        required 
+                        type="text" 
+                        placeholder="John Doe"
+                        className="w-full bg-black/50 border-2 border-cream/10 rounded-xl px-4 py-2.5 text-cream font-nunito focus:outline-none focus:border-gold transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="block font-nunito font-bold text-cream/80 text-sm mb-1.5">Company</label>
+                      <input 
+                        required 
+                        type="text" 
+                        placeholder="Acme Corp"
+                        className="w-full bg-black/50 border-2 border-cream/10 rounded-xl px-4 py-2.5 text-cream font-nunito focus:outline-none focus:border-gold transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="block font-nunito font-bold text-cream/80 text-sm mb-1.5">Email</label>
+                      <input 
+                        required 
+                        type="email" 
+                        placeholder="john@acme.com"
+                        className="w-full bg-black/50 border-2 border-cream/10 rounded-xl px-4 py-2.5 text-cream font-nunito focus:outline-none focus:border-gold transition-colors"
+                      />
+                    </div>
+                    <button 
+                      type="submit"
+                      className="mt-2 w-full bg-gold hover:bg-gold-mid text-black font-fredoka uppercase px-6 py-3 rounded-xl border-[3px] border-black shadow-offset-black transition-all hover:-translate-y-1 hover:shadow-[5px_5px_0_#080511]"
+                    >
+                      Send Request
+                    </button>
+                  </form>
+                )}
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

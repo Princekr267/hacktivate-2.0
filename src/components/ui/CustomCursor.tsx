@@ -1,23 +1,23 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { usePathname } from "next/navigation";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
   const [sparkles, setSparkles] = useState<{ id: number; x: number; y: number; char: string }[]>([]);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
-  const pathname = usePathname();
-  
-  const cursorRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(-20);
+  const mouseY = useMotionValue(-20);
+
+  const springX = useSpring(mouseX, { damping: 25, stiffness: 250, mass: 0.1 });
+  const springY = useSpring(mouseY, { damping: 25, stiffness: 250, mass: 0.1 });
+
   const lastSparkleTime = useRef(0);
   const sparkleId = useRef(0);
 
   useEffect(() => {
-    const checkTouch = () => {
-      setIsTouchDevice(window.matchMedia("(hover: none) and (pointer: coarse)").matches);
-    };
+    const checkTouch = () => setIsTouchDevice(window.matchMedia("(hover: none) and (pointer: coarse)").matches);
     checkTouch();
     window.addEventListener("resize", checkTouch);
     return () => window.removeEventListener("resize", checkTouch);
@@ -27,12 +27,9 @@ export default function CustomCursor() {
     if (isTouchDevice) return;
 
     const updateCursor = (e: MouseEvent) => {
-      // 1. Update native cursor position instantly via GPU-accelerated transform
-      if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate3d(${e.clientX - 7}px, ${e.clientY - 7}px, 0)`;
-      }
+      mouseX.set(e.clientX - 7);
+      mouseY.set(e.clientY - 7);
 
-      // 2. Handle hover states for links and buttons (throttled check)
       const target = e.target as HTMLElement;
       const hovering = !!(
         target.tagName.toLowerCase() === "a" ||
@@ -42,40 +39,26 @@ export default function CustomCursor() {
       );
       setIsHovering(hovering);
 
-      // 3. Sparkle trail logic
       const now = performance.now();
-      if (now - lastSparkleTime.current > 180) { // Slightly longer throttle for performance
+      if (now - lastSparkleTime.current > 180) {
         lastSparkleTime.current = now;
         const chars = ["✦", "⚡", "★"];
         const randomChar = chars[Math.floor(Math.random() * chars.length)];
         
-        const newSparkle = {
-          id: sparkleId.current++,
-          x: e.clientX,
-          y: e.clientY,
-          char: randomChar
-        };
-        
+        const newSparkle = { id: sparkleId.current++, x: e.clientX, y: e.clientY, char: randomChar };
         setSparkles(prev => [...prev, newSparkle]);
-        
-        setTimeout(() => {
-          setSparkles(prev => prev.filter(s => s.id !== newSparkle.id));
-        }, 700);
+        setTimeout(() => setSparkles(prev => prev.filter(s => s.id !== newSparkle.id)), 700);
       }
     };
 
     window.addEventListener("mousemove", updateCursor, { passive: true });
-
-    return () => {
-      window.removeEventListener("mousemove", updateCursor);
-    };
-  }, [pathname, isTouchDevice]);
+    return () => window.removeEventListener("mousemove", updateCursor);
+  }, [isTouchDevice, mouseX, mouseY]);
 
   if (isTouchDevice) return null;
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-[100] overflow-hidden mix-blend-difference">
-      {/* Sparkles */}
+    <div id="custom-cursor-root" className="pointer-events-none fixed inset-0 z-[9999]">
       <AnimatePresence>
         {sparkles.map((sparkle) => (
           <motion.div
@@ -92,17 +75,19 @@ export default function CustomCursor() {
         ))}
       </AnimatePresence>
 
-      {/* Main Cursor - animated natively */}
-      <div
-        ref={cursorRef}
-        className="fixed top-0 left-0 w-3.5 h-3.5 bg-gold rounded-full pointer-events-none transition-transform duration-75 ease-out"
+      <motion.div
+        className="fixed top-0 left-0 w-3.5 h-3.5 bg-gold rounded-full pointer-events-none"
         style={{
+          x: springX,
+          y: springY,
           boxShadow: "0 0 10px #EFD844, 0 0 20px #EFD844",
           willChange: "transform",
-          transform: "translate3d(-20px, -20px, 0)", // hide initially
+        }}
+        animate={{
           scale: isHovering ? 2.5 : 1,
           backgroundColor: isHovering ? "rgba(239, 216, 68, 0.4)" : "#EFD844",
         }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
       />
     </div>
   );

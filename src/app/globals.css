@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ================================================
+   BASE
+   ================================================ */
 @layer base {
   body {
     @apply bg-purple-bg text-cream font-nunito overflow-x-hidden;
@@ -31,6 +34,9 @@
   }
 }
 
+/* ================================================
+   UTILITY CLASSES
+   ================================================ */
 @layer utilities {
   .bg-grid {
     background-size: 40px 40px;
@@ -38,60 +44,13 @@
       linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
   }
-  .border-brutal {
-    border: 3px solid #080511;
-  }
   .text-balance {
     text-wrap: balance;
   }
 }
 
 /* ================================================
-   GLITCH TEXT EFFECT
-   ================================================ */
-@keyframes glitch-1 {
-  0%, 90%, 100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
-  20%  { clip-path: inset(8% 0 60% 0);  transform: translate(-4px, 2px); }
-  40%  { clip-path: inset(45% 0 35% 0); transform: translate(4px, -2px); }
-  60%  { clip-path: inset(72% 0 10% 0); transform: translate(-3px, 0); }
-  80%  { clip-path: inset(20% 0 75% 0); transform: translate(3px, 2px); }
-}
-
-@keyframes glitch-2 {
-  0%, 90%, 100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
-  25%  { clip-path: inset(30% 0 50% 0); transform: translate(5px, -3px); }
-  50%  { clip-path: inset(10% 0 80% 0); transform: translate(-5px, 3px); }
-  75%  { clip-path: inset(60% 0 20% 0); transform: translate(4px, -2px); }
-}
-
-.glitch {
-  position: relative;
-}
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  pointer-events: none;
-  font-family: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
-  line-height: inherit;
-}
-.glitch::before {
-  color: #a855c8;
-  animation: glitch-1 5s infinite linear;
-}
-.glitch::after {
-  color: #EFD844;
-  animation: glitch-2 5s 0.1s infinite linear;
-}
-
-/* ================================================
-   SCAN-LINE SHIMMER
+   SCAN-LINE SHIMMER — card shine effect
    ================================================ */
 @keyframes scan {
   0%   { background-position: 0% -200%; }
@@ -122,7 +81,7 @@
    ================================================ */
 @keyframes border-pulse {
   0%, 100% { box-shadow: 5px 5px 0 #B36A04; }
-  50%       { box-shadow: 5px 5px 0 #B36A04, 0 0 22px 5px rgba(239, 216, 68, 0.4); }
+  50%       { box-shadow: 5px 5px 0 #B36A04, 0 0 28px 6px rgba(239, 216, 68, 0.5); }
 }
 .gold-pulse {
   animation: border-pulse 3s ease-in-out infinite;
@@ -140,62 +99,14 @@
 }
 
 /* ================================================
-   STAMP ENTRANCE
-   ================================================ */
-@keyframes stamp-in {
-  0%   { transform: scale(2) rotate(-8deg); opacity: 0; }
-  60%  { transform: scale(0.9) rotate(2deg); opacity: 1; }
-  80%  { transform: scale(1.05) rotate(-1deg); }
-  100% { transform: scale(1) rotate(0deg); opacity: 1; }
-}
-.stamp-in {
-  animation: stamp-in 0.7s cubic-bezier(0.22, 1.5, 0.36, 1) forwards;
-}
-
-/* ================================================
-   WIGGLE ON HOVER
-   ================================================ */
-@keyframes wiggle {
-  0%, 100% { transform: rotate(-2deg); }
-  50%       { transform: rotate(2deg); }
-}
-.wiggle-hover:hover {
-  animation: wiggle 0.3s ease-in-out 2;
-}
-
-/* ================================================
-   STARBURST SPIN
-   ================================================ */
-@keyframes starburst {
-  from { transform: rotate(0deg) scale(1); }
-  50%  { transform: rotate(180deg) scale(1.15); }
-  to   { transform: rotate(360deg) scale(1); }
-}
-.starburst {
-  animation: starburst 8s linear infinite;
-}
-
-/* ================================================
-   PERFORMANCE: GPU ACCELERATE ANIMATED ELEMENTS
-   ================================================ */
-.float-chip,
-.gold-pulse,
-.starburst,
-.scan-shimmer::after {
-  will-change: transform;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-}
-
-/* ================================================
-   CARD HOVER GLOW (on shadow-offset cards)
+   CARD HOVER GLOW
    ================================================ */
 .card-hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .card-hover:hover {
   transform: translate(-4px, -4px);
-  box-shadow: 8px 8px 0 #B36A04, 0 0 30px rgba(239,216,68,0.2);
+  box-shadow: 8px 8px 0 #B36A04, 0 0 40px rgba(239,216,68,0.25);
 }
 
 /* ================================================
@@ -221,55 +132,193 @@
 }
 
 /* ================================================
-   SCROLL FADE-UP (pure CSS fallback)
-   ================================================ */
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(32px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.fade-up {
-  animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-/* ================================================
    NEON TEXT GLOW
    ================================================ */
 .neon-gold {
-  text-shadow: 0 0 8px #EFD844, 0 0 22px rgba(239,216,68,0.5);
+  text-shadow: 0 0 10px #EFD844, 0 0 30px rgba(239,216,68,0.6), 0 0 60px rgba(239,216,68,0.2);
 }
 .neon-purple {
-  text-shadow: 0 0 8px #a855c8, 0 0 22px rgba(168,85,200,0.5);
+  text-shadow: 0 0 10px #a855c8, 0 0 30px rgba(168,85,200,0.6);
 }
 
 /* ================================================
-   SECTION DIVIDER WAVE
+   RIPPLE CLICK EFFECT
    ================================================ */
-.wave-divider {
+@keyframes ripple-out {
+  0%   { transform: scale(0); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+.ripple-element {
   position: relative;
+  overflow: hidden;
 }
-.wave-divider::before {
-  content: "";
+.ripple-element .ripple-circle {
   position: absolute;
-  top: -2px; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #291648, #EFD844, #79359C, #EFD844, #291648);
-  background-size: 200% 100%;
-  animation: gradient-slide 4s linear infinite;
-}
-@keyframes gradient-slide {
-  0%   { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+  border-radius: 50%;
+  background: rgba(239, 216, 68, 0.35);
+  pointer-events: none;
+  animation: ripple-out 600ms ease-out forwards;
+  transform: scale(0);
 }
 
 /* ================================================
-   BOUNCE-IN (for mascots)
+   FAQ HOVER LEFT-BORDER EFFECT
    ================================================ */
-@keyframes bounce-in {
-  0%   { transform: scale(0) translateY(40px); opacity: 0; }
-  60%  { transform: scale(1.08) translateY(-8px); opacity: 1; }
-  80%  { transform: scale(0.96) translateY(4px); }
-  100% { transform: scale(1) translateY(0); }
+.faq-item {
+  transition: border-left 0.2s ease, padding-left 0.2s ease;
+  border-left: 2px solid transparent;
 }
-.bounce-in {
-  animation: bounce-in 0.7s cubic-bezier(0.22, 1.5, 0.36, 1) both;
+.faq-item:hover {
+  border-left: 2px solid #EFD844;
+}
+.faq-item:hover .faq-question {
+  padding-left: 8px;
+}
+.faq-question {
+  transition: padding-left 0.2s ease;
+}
+
+/* ================================================
+   AMBIENT SECTION GLOWS
+   Adds a rich, breathing glow to sections
+   ================================================ */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 0.7; transform: scale(1.08); }
+}
+.section-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  animation: glow-pulse 6s ease-in-out infinite;
+}
+
+/* ================================================
+   INTERACTIVE CARD GLOW (hover aura)
+   ================================================ */
+@keyframes card-aura {
+  0%, 100% { box-shadow: 6px 6px 0 #B36A04, 0 0 0px rgba(239,216,68,0); }
+  50%       { box-shadow: 6px 6px 0 #B36A04, 0 0 40px rgba(239,216,68,0.3); }
+}
+.aura-card {
+  animation: card-aura 4s ease-in-out infinite;
+}
+
+/* ================================================
+   TOUCH DEVICE: DISABLE CUSTOM CURSOR
+   ================================================ */
+@media (hover: none) {
+  #custom-cursor-root { display: none !important; }
+  body, a, button { cursor: auto !important; }
+}
+
+/* ================================================
+   PERFORMANCE: GPU ACCELERATE ANIMATED ELEMENTS
+   ================================================ */
+.float-chip,
+.gold-pulse,
+.scan-shimmer::after,
+.section-glow,
+canvas,
+.floating-mascot {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* ================================================
+   RESPONSIVE: PREVENT HORIZONTAL OVERFLOW
+   ================================================ */
+html, body {
+  overflow-x: hidden;
+}
+
+/* ================================================
+   RESPONSIVE: SECTION PADDING SCALE-DOWN
+   ================================================ */
+@media (max-width: 768px) {
+  section.py-32 { padding-top: 56px !important; padding-bottom: 56px !important; }
+}
+
+/* ================================================
+   RESPONSIVE: STATS BAR — 2-col grid on mobile
+   ================================================ */
+@media (max-width: 640px) {
+  .stats-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+    justify-items: center;
+  }
+  .stats-divider { display: none !important; }
+}
+
+/* ================================================
+   RESPONSIVE: SPONSOR CARDS — smaller min on mobile
+   ================================================ */
+@media (max-width: 480px) {
+  .sponsor-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
+  }
+}
+
+/* ================================================
+   RESPONSIVE: FOOTER — stack on mobile
+   ================================================ */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+  .footer-social { justify-content: center !important; }
+  .footer-bottom { flex-direction: column !important; text-align: center; }
+}
+
+/* ================================================
+   RESPONSIVE: HERO BUTTONS — stack on mobile
+   ================================================ */
+@media (max-width: 640px) {
+  .hero-cta-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100%;
+  }
+  .hero-cta-row button,
+  .hero-cta-row a {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* ================================================
+   RESPONSIVE: TRACKS GRID
+   ================================================ */
+@media (max-width: 1024px) {
+  .tracks-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 640px) {
+  .tracks-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ================================================
+   TEAM SECTION GRID RESPONSIVE
+   4 cols desktop | 3 cols tablet | 2 cols mobile
+   ================================================ */
+.team-grid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+@media (max-width: 1023px) {
+  .team-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+}
+@media (max-width: 767px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  section#team { padding-top: 56px !important; padding-bottom: 56px !important; }
+}
+.team-card-band {
+  transition: background 0.2s ease;
+}
+.team-grid > div:hover .team-card-band {
+  background: #FFE566;
 }

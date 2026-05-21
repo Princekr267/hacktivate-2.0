@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const TICKER_ITEMS = [
   "24 HOURS", "✦", "NON-STOP CODING", "✦", "500+ HACKERS", "✦", "FREE FOOD", "✦", "₹2L+ PRIZE POOL", "✦", 
@@ -10,16 +11,15 @@ const TICKER_ITEMS = [
 
 export default function Footer() {
   return (
-    <footer className="relative w-full bg-black pt-16">
+    <footer className="relative w-full bg-black">
       
-      {/* Top Wavy SVG */}
+      {/* Top Wavy SVG — no stroke, seamless gold */}
       <svg className="w-full h-8 sm:h-12 absolute -top-8 sm:-top-12 left-0 text-gold fill-current" viewBox="0 0 1440 48" preserveAspectRatio="none">
         <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
-        <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" fill="none" stroke="#080511" strokeWidth="6" />
       </svg>
 
       {/* Ticker Bar (Forward) */}
-      <div className="bg-gold border-t-[3px] border-black overflow-hidden relative flex py-3">
+      <div className="bg-gold overflow-hidden relative flex py-3">
         <motion.div 
           className="flex whitespace-nowrap gap-8"
           animate={{ x: ["0%", "-50%"] }}
@@ -34,7 +34,7 @@ export default function Footer() {
       </div>
 
       {/* Ticker Bar (Reverse) */}
-      <div className="bg-purple-mid border-y-[3px] border-black overflow-hidden relative flex py-3">
+      <div className="bg-purple-mid overflow-hidden relative flex py-3">
         <motion.div 
           className="flex whitespace-nowrap gap-8"
           animate={{ x: ["-50%", "0%"] }}
@@ -48,18 +48,27 @@ export default function Footer() {
         </motion.div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 pt-20 pb-8">
+      {/* Bottom Wavy SVG for Purple Strip — seamless purple flow into black */}
+      <svg className="w-full h-8 sm:h-12 text-purple-mid fill-current rotate-180 mb-8" viewBox="0 0 1440 48" preserveAspectRatio="none" style={{ marginTop: "-1px" }}>
+        <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
+      </svg>
+
+      <div className="max-w-7xl mx-auto px-6 pt-12 pb-16 md:pb-24 relative z-10">
         
         {/* Top Row */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        <div className="footer-grid grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           
           {/* Brand */}
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <h1 className="font-fredoka text-2xl text-cream tracking-wide">HACKTIVATE</h1>
-              <span className="font-fredoka text-xs bg-purple-mid text-cream px-2 py-0.5 rounded-full border-2 border-black">
-                2.0
-              </span>
+            <div className="flex items-center mb-4">
+              <Image
+                src="/logo.png"
+                alt="Hacktivate Logo"
+                width={180}
+                height={56}
+                priority
+                className="w-[150px] md:w-[170px] h-auto object-contain"
+              />
             </div>
             <p className="font-nunito text-cream/60 text-sm max-w-[250px] leading-relaxed">
               The ultimate 24-hour hackathon at JIMSEMTC. Build the future, break the limits, and have fun doing it.
@@ -69,7 +78,7 @@ export default function Footer() {
           {/* Navigate */}
           <div className="flex flex-col gap-3">
             <h4 className="font-fredoka text-gold mb-2 text-lg">Navigate</h4>
-            {["Home", "Tracks", "Timeline", "Sponsors", "FAQ"].map(link => (
+            {["Home", "Tracks", "Timeline", "Team", "Sponsors", "FAQ"].map(link => (
               <a key={link} href={`#${link.toLowerCase()}`} className="font-nunito font-semibold text-cream/60 hover:text-gold transition-colors text-sm w-fit">
                 {link}
               </a>
@@ -94,7 +103,7 @@ export default function Footer() {
           {/* Socials */}
           <div className="flex flex-col gap-4">
             <h4 className="font-fredoka text-gold mb-2 text-lg">Follow Us</h4>
-            <div className="flex gap-3">
+            <div className="footer-social flex gap-3">
               <motion.a href="#" whileHover={{ rotate: 15, y: -2 }} className="w-[38px] h-[38px] bg-purple-mid border-2 border-gold rounded-lg flex items-center justify-center text-gold shadow-offset-black hover:bg-gold hover:text-black transition-colors duration-300">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
               </motion.a>
@@ -113,7 +122,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Row */}
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-cream/10 gap-4">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col justify-center items-center gap-2 z-20 w-full">
           <p className="font-nunito font-semibold text-cream/60 text-xs">
             © 2025 Hacktivate. All rights reserved.
           </p>
@@ -123,6 +132,11 @@ export default function Footer() {
         </div>
 
       </div>
+
+      {/* Corner Elements */}
+      <img src="/corner%20element%20robo.png" alt="Corner Element Robo" className="absolute bottom-0 left-0 w-[140px] md:w-[250px] pointer-events-none z-0" />
+      <img src="/corner%20element%20bar.png" alt="Corner Element Bar" className="absolute bottom-0 right-0 w-[180px] md:w-[340px] pointer-events-none z-0" />
+
     </footer>
   );
 }

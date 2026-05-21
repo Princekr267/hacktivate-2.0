@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { memo, useEffect, useState } from "react";
+import { memo } from "react";
 
 // --- Mascot: Hacker Cat ---
 const HackerCat = memo(() => (
@@ -41,6 +41,7 @@ const HackerCat = memo(() => (
     <text x="32" y="119" fontFamily="monospace" fontSize="7" fill="#EFD844">&gt;_hack</text>
   </svg>
 ));
+HackerCat.displayName = "HackerCat";
 
 // --- Mascot: Pixel Alien ---
 const PixelAlien = memo(() => (
@@ -76,6 +77,7 @@ const PixelAlien = memo(() => (
     <rect x="54" y="106" width="14" height="12" rx="4" fill="#79359C" stroke="#080511" strokeWidth="2"/>
   </svg>
 ));
+PixelAlien.displayName = "PixelAlien";
 
 // --- Mascot: Ghost Coder ---
 const GhostCoder = memo(() => (
@@ -99,6 +101,7 @@ const GhostCoder = memo(() => (
     <ellipse cx="45" cy="6" rx="22" ry="6" fill="none" stroke="#EFD844" strokeWidth="2" opacity="0.4"/>
   </svg>
 ));
+GhostCoder.displayName = "GhostCoder";
 
 // --- Mascot: Coffee Bot ---
 const CoffeeBot = memo(() => (
@@ -133,6 +136,7 @@ const CoffeeBot = memo(() => (
     <rect x="56" y="110" width="18" height="18" rx="6" fill="#B36A04" stroke="#080511" strokeWidth="2"/>
   </svg>
 ));
+CoffeeBot.displayName = "CoffeeBot";
 
 // --- Mascot: Pixel Skull (spooky hacker) ---
 const PixelSkull = memo(() => (
@@ -157,6 +161,7 @@ const PixelSkull = memo(() => (
     <polygon points="52,8 60,0 68,8" fill="#EFD844" stroke="#080511" strokeWidth="2"/>
   </svg>
 ));
+PixelSkull.displayName = "PixelSkull";
 
 // --- Mascot: Rocket ---
 const Rocket = memo(() => (
@@ -177,6 +182,7 @@ const Rocket = memo(() => (
     <polygon points="50,62 64,90 50,86" fill="#D89202" stroke="#080511" strokeWidth="2.5"/>
   </svg>
 ));
+Rocket.displayName = "Rocket";
 
 // --- Mascot: Star badge ---
 const StarBadge = memo(() => (
@@ -186,12 +192,13 @@ const StarBadge = memo(() => (
     <text x="30" y="44" fontFamily="monospace" fontSize="12" fontWeight="bold" fill="#080511">★</text>
   </svg>
 ));
+StarBadge.displayName = "StarBadge";
 
 // Fixed positions across the full page (as viewport % of total page height)
-const MASCOTS: { Component: React.ComponentType; x: number; yPct: number; delay: number; amp: number; rot: number; rotDir: number; scale: number }[] = [
+const MASCOTS: { Component: React.ComponentType; x: number; yPct: number; delay: number; amp: number; rot: number; rotDir: number; scale: number; skipHero?: boolean }[] = [
   // Hero section edges
-  { Component: HackerCat,  x: 3,   yPct: 4,   delay: 0,   amp: 18, rot: -8,  rotDir:  1, scale: 1.1 },
-  { Component: PixelAlien, x: 87,  yPct: 6,   delay: 1,   amp: 20, rot: 6,   rotDir: -1, scale: 1.0 },
+  { Component: HackerCat,  x: 3,   yPct: 4,   delay: 0,   amp: 18, rot: -8,  rotDir:  1, scale: 1.1, skipHero: true },
+  { Component: PixelAlien, x: 87,  yPct: 6,   delay: 1,   amp: 20, rot: 6,   rotDir: -1, scale: 1.0, skipHero: true },
   // Stats bar
   { Component: StarBadge,  x: 88,  yPct: 18,  delay: 0.4, amp: 12, rot: 20,  rotDir:  1, scale: 1.0 },
   { Component: Rocket,     x: 2,   yPct: 20,  delay: 0.8, amp: 24, rot: -12, rotDir: -1, scale: 1.1 },
@@ -212,7 +219,7 @@ const MASCOTS: { Component: React.ComponentType; x: number; yPct: number; delay:
 export default function FloatingMascots() {
   return (
     <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0" aria-hidden="true">
-      {MASCOTS.map((m, i) => (
+      {MASCOTS.filter(m => !m.skipHero).map((m, i) => (
         <motion.div
           key={i}
           className="absolute font-sans"
