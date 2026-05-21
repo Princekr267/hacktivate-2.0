@@ -23,11 +23,16 @@ export default function CanvasParticles() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    // Skip on high-DPI mobile (retina drawing is expensive)
+    const isMobile = window.innerWidth < 768;
+    if (isMobile && window.devicePixelRatio > 2) return;
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     let particles: Particle[] = [];
     let animationFrameId: number;
+    let lastFrame = 0;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -37,8 +42,10 @@ export default function CanvasParticles() {
 
     const initParticles = () => {
       particles = [];
+      const mobile = window.innerWidth < 768;
       const area = canvas.width * canvas.height;
-      const count = Math.min(Math.floor(area / 10000), 180);
+      // Mobile: max 12, desktop: area-based up to 180
+      const count = mobile ? 12 : Math.min(Math.floor(area / 10000), 180);
       const colors = ["#EFD844", "#EFD844", "#D89202", "#79359C", "#a855c8", "#FFFCF3"];
       for (let i = 0; i < count; i++) {
         particles.push({
@@ -53,18 +60,24 @@ export default function CanvasParticles() {
       }
     };
 
-    const animate = () => {
-      // Clear with full transparency — never draw a background rect
+    const animate = (timestamp: number) => {
+      // Cap at ~30fps (33ms per frame)
+      if (timestamp - lastFrame < 33) {
+        animationFrameId = requestAnimationFrame(animate);
+        return;
+      }
+      lastFrame = timestamp;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       for (const p of particles) {
         p.x += p.speedX;
         p.y += p.speedY;
 
-        if (p.x > canvas.width) p.x = 0;
-        else if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width)  p.x = 0;
+        else if (p.x < 0)        p.x = canvas.width;
         if (p.y > canvas.height) p.y = 0;
-        else if (p.y < 0) p.y = canvas.height;
+        else if (p.y < 0)        p.y = canvas.height;
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
@@ -77,9 +90,9 @@ export default function CanvasParticles() {
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", resize, { passive: true });
     resize();
-    animate();
+    animationFrameId = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener("resize", resize);

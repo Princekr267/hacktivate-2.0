@@ -16,6 +16,9 @@ import TimelineBackground from "@/components/backgrounds/TimelineBackground";
 export default function TimelineSection() {
   return (
     <section id="timeline" className="py-32 px-6 bg-black relative z-0 overflow-hidden">
+      {/* Ambient glows */}
+      <div className="section-glow absolute top-1/4 left-[-8%] w-[450px] h-[450px] bg-purple-accent/15" />
+      <div className="section-glow absolute bottom-1/4 right-[-8%] w-[400px] h-[400px] bg-gold/8" style={{ animationDelay: '2s' }} />
       <TimelineBackground />
 
       <div className="max-w-5xl mx-auto relative z-10">
@@ -36,9 +39,9 @@ export default function TimelineSection() {
         {/* Timeline Container */}
         <div className="relative">
           
-          {/* Vertical Spine */}
-          <div 
-            className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[5px] -translate-x-1/2 rounded-full"
+          {/* Vertical Spine — hidden on mobile */}
+          <div
+            className="hidden md:block absolute left-8 md:left-1/2 top-0 bottom-0 w-[5px] -translate-x-1/2 rounded-full"
             style={{
               background: "linear-gradient(to bottom, #EFD844, #D89202)",
               boxShadow: "0 0 15px rgba(239, 216, 68, 0.4)"
@@ -54,11 +57,11 @@ export default function TimelineSection() {
               return (
                 <div key={idx} className={`relative flex items-center md:justify-between w-full ${isEven ? 'md:flex-row-reverse' : ''}`}>
                   
-                  {/* Desktop Empty Space */}
+                  {/* Desktop Empty Space — hidden on mobile */}
                   <div className="hidden md:block w-[45%]" />
 
-                  {/* Center Dot */}
-                  <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-8 h-8 z-20 flex items-center justify-center">
+                  {/* Center Dot — hidden on mobile; on mobile a small left dot shows instead */}
+                  <div className="hidden md:flex absolute left-8 md:left-1/2 -translate-x-1/2 w-8 h-8 z-20 items-center justify-center">
                     <motion.div 
                       className={`w-full h-full rounded-full border-4 border-black ${isLast ? 'bg-gold-mid' : 'bg-gold'}`}
                       style={{ boxShadow: isLast ? "0 0 30px #D89202" : "0 0 15px #EFD844" }}
@@ -66,14 +69,16 @@ export default function TimelineSection() {
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                     />
                   </div>
+                  {/* Mobile dot */}
+                  <div className="md:hidden absolute left-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gold" style={{ boxShadow: "0 0 8px #EFD844" }} />
 
-                  {/* Card Content */}
+                  {/* Card Content — full width on mobile, 45% on desktop */}
                   <motion.div 
                     initial={{ opacity: 0, x: isEven ? 50 : -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ type: "spring", bounce: 0.4 }}
-                    className="w-full md:w-[45%] pl-20 md:pl-0"
+                    className="w-full md:w-[45%] pl-6 md:pl-0"
                   >
                     <div className="bg-purple-mid border-[3px] border-gold rounded-2xl p-6 shadow-offset relative">
                       {/* Arrow tail for desktop */}

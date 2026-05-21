@@ -195,10 +195,10 @@ const StarBadge = memo(() => (
 StarBadge.displayName = "StarBadge";
 
 // Fixed positions across the full page (as viewport % of total page height)
-const MASCOTS: { Component: React.ComponentType; x: number; yPct: number; delay: number; amp: number; rot: number; rotDir: number; scale: number }[] = [
+const MASCOTS: { Component: React.ComponentType; x: number; yPct: number; delay: number; amp: number; rot: number; rotDir: number; scale: number; skipHero?: boolean }[] = [
   // Hero section edges
-  { Component: HackerCat,  x: 3,   yPct: 4,   delay: 0,   amp: 18, rot: -8,  rotDir:  1, scale: 1.1 },
-  { Component: PixelAlien, x: 87,  yPct: 6,   delay: 1,   amp: 20, rot: 6,   rotDir: -1, scale: 1.0 },
+  { Component: HackerCat,  x: 3,   yPct: 4,   delay: 0,   amp: 18, rot: -8,  rotDir:  1, scale: 1.1, skipHero: true },
+  { Component: PixelAlien, x: 87,  yPct: 6,   delay: 1,   amp: 20, rot: 6,   rotDir: -1, scale: 1.0, skipHero: true },
   // Stats bar
   { Component: StarBadge,  x: 88,  yPct: 18,  delay: 0.4, amp: 12, rot: 20,  rotDir:  1, scale: 1.0 },
   { Component: Rocket,     x: 2,   yPct: 20,  delay: 0.8, amp: 24, rot: -12, rotDir: -1, scale: 1.1 },
@@ -219,7 +219,7 @@ const MASCOTS: { Component: React.ComponentType; x: number; yPct: number; delay:
 export default function FloatingMascots() {
   return (
     <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0" aria-hidden="true">
-      {MASCOTS.map((m, i) => (
+      {MASCOTS.filter(m => !m.skipHero).map((m, i) => (
         <motion.div
           key={i}
           className="absolute font-sans"
