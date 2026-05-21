@@ -175,12 +175,12 @@ export default function SponsorsSection() {
             whileTap={{
               scale: 0.95,
               backgroundColor: "#a855c8",
-              color: "#ffffff",
-              borderColor: "#a855c8",
+              color: "#EFD844",
+              borderColor: "#EFD844",
               boxShadow: "none"
             }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
-            className="inline-flex items-center gap-2 bg-gold text-black font-fredoka uppercase px-8 py-3 rounded-xl border-[3px] border-black shadow-offset-black hover:shadow-offset-black-hover transition-all"
+            className="inline-flex items-center gap-2 bg-gold hover:bg-purple-mid text-black hover:text-gold hover:border-gold font-fredoka uppercase px-8 py-3 rounded-xl border-[3px] border-black shadow-offset-black hover:shadow-offset-black-hover transition-all"
           >
             <Mail size={18} /> Request Deck
           </motion.button>
@@ -265,7 +265,7 @@ export default function SponsorsSection() {
                     </div>
                     <button 
                       type="submit"
-                      className="mt-2 w-full bg-gold hover:bg-gold-mid text-black font-fredoka uppercase px-6 py-3 rounded-xl border-[3px] border-black shadow-offset-black transition-all hover:-translate-y-1 hover:shadow-[5px_5px_0_#080511]"
+                      className="mt-2 w-full bg-gold hover:bg-purple-mid text-black hover:text-gold hover:border-gold font-fredoka uppercase px-6 py-3 rounded-xl border-[3px] border-black shadow-offset-black transition-all hover:-translate-y-1 hover:shadow-[5px_5px_0_#080511]"
                     >
                       Send Request
                     </button>

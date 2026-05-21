@@ -97,9 +97,9 @@ export default function Navbar() {
 
           {/* CTA — desktop */}
           <motion.button
-            whileTap={{ scale: 0.95, backgroundColor: "#a855c8", color: "#ffffff", borderColor: "#a855c8", boxShadow: "none" }}
+            whileTap={{ scale: 0.95, backgroundColor: "#a855c8", color: "#EFD844", borderColor: "#EFD844", boxShadow: "none" }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
-            className="hidden md:flex order-3 shrink-0 bg-gold hover:bg-gold-mid text-black font-fredoka uppercase px-6 py-2 rounded-xl border-[3px] border-black shadow-offset-black hover:shadow-offset-black-hover transition-all items-center gap-2"
+            className="hidden md:flex order-3 shrink-0 bg-gold hover:bg-purple-mid text-black hover:text-gold hover:border-gold font-fredoka uppercase px-6 py-2 rounded-xl border-[3px] border-black shadow-offset-black transition-all items-center gap-2"
           >
             Register <Zap size={18} fill="currentColor" />
           </motion.button>
@@ -139,7 +139,7 @@ export default function Navbar() {
                 </a>
               ))}
               <div className="p-4">
-                <button className="w-full bg-gold text-black font-fredoka uppercase px-6 py-3 rounded-xl border-[3px] border-black shadow-offset-black flex items-center justify-center gap-2">
+                <button className="w-full bg-gold hover:bg-purple-mid text-black hover:text-gold hover:border-gold font-fredoka uppercase px-6 py-3 rounded-xl border-[3px] border-black shadow-offset-black flex items-center justify-center gap-2 transition-colors">
                   Register <Zap size={18} fill="currentColor" />
                 </button>
               </div>

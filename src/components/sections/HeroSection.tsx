@@ -82,7 +82,7 @@ export default function HeroSection() {
               whileTap={{ scale: 0.95 }}
               animate={{ boxShadow: ["6px 6px 0px #000", "6px 6px 0px #000, 0 0 20px rgba(239,216,68,0.6)", "6px 6px 0px #000"] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="btn-shimmer ripple-element bg-gold text-black font-fredoka uppercase text-xl px-10 py-4 rounded-xl border-[3px] border-black hover:-translate-y-1 hover:-translate-x-1 transition-all flex items-center gap-3 relative overflow-hidden"
+              className="btn-shimmer ripple-element bg-gold hover:bg-purple-mid text-black hover:text-gold hover:border-gold font-fredoka uppercase text-xl px-10 py-4 rounded-xl border-[3px] border-black hover:-translate-y-1 hover:-translate-x-1 transition-all flex items-center gap-3 relative overflow-hidden"
               style={{ boxShadow: "6px 6px 0px #000" }}
             >
               Register Now <Zap fill="currentColor" size={22} className="animate-bounce" />
