@@ -14,7 +14,7 @@ export default function Footer() {
     <footer className="relative w-full bg-black">
       
       {/* Top Wavy SVG — no stroke, seamless gold */}
-      <svg className="w-full h-8 sm:h-12 absolute -top-8 sm:-top-12 left-0 text-gold fill-current" viewBox="0 0 1440 48" preserveAspectRatio="none">
+      <svg className="w-full h-[calc(2rem+2px)] sm:h-[calc(3rem+2px)] absolute -top-8 sm:-top-12 left-0 text-gold fill-current" viewBox="0 0 1440 48" preserveAspectRatio="none">
         <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
       </svg>
 
@@ -53,7 +53,7 @@ export default function Footer() {
         <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
       </svg>
 
-      <div className="max-w-7xl mx-auto px-6 pt-12 pb-16 md:pb-24 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 pt-12 pb-[140px] md:pb-16 relative z-10">
         
         {/* Top Row */}
         <div className="footer-grid grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -122,11 +122,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom Row */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col justify-center items-center gap-2 z-20 w-full">
-          <p className="font-nunito font-semibold text-cream/60 text-xs">
+        <div className="flex flex-col justify-center items-center gap-2 z-20 w-full mt-12 md:mt-16 relative">
+          <p className="font-nunito font-semibold text-cream/60 text-xs text-center">
             © 2025 Hacktivate. All rights reserved.
           </p>
-          <p className="font-nunito font-bold text-cream/60 text-xs flex items-center gap-1">
+          <p className="font-nunito font-bold text-cream/60 text-xs flex items-center gap-1 justify-center">
             Made with <span className="text-gold">⚡</span> by the Hacktivate Team
           </p>
         </div>

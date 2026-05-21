@@ -18,7 +18,7 @@ export default function StatsBar() {
 
       {/* Top Wavy SVG — seamless, no stroke */}
       <svg
-        className="w-full h-8 sm:h-12 absolute -top-8 sm:-top-12 left-0 text-gold fill-current"
+        className="w-full h-[calc(2rem+2px)] sm:h-[calc(3rem+2px)] absolute -top-8 sm:-top-12 left-0 text-gold fill-current"
         viewBox="0 0 1440 48"
         preserveAspectRatio="none"
       >
@@ -66,7 +66,7 @@ export default function StatsBar() {
 
       {/* Bottom Wavy SVG — seamless, no stroke */}
       <svg
-        className="w-full h-8 sm:h-12 absolute -bottom-8 sm:-bottom-12 left-0 text-gold fill-current rotate-180"
+        className="w-full h-[calc(2rem+2px)] sm:h-[calc(3rem+2px)] absolute -bottom-8 sm:-bottom-12 left-0 text-gold fill-current rotate-180"
         viewBox="0 0 1440 48"
         preserveAspectRatio="none"
       >
