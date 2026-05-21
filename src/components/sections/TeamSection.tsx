@@ -323,7 +323,7 @@ export default function TeamSection() {
                         src={member.avatar} 
                         alt={member.name} 
                         className="w-full h-full object-cover object-center rounded-full"
-                        style={{ imageRendering: "high-quality", transform: "translateZ(0)", backfaceVisibility: "hidden" }}
+                        style={{ transform: "translateZ(0)", backfaceVisibility: "hidden" }}
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';
                           const fallback = e.currentTarget.nextElementSibling as HTMLElement;
