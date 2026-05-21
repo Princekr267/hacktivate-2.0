@@ -24,7 +24,6 @@ export default function HeroBackground() {
           height: '820px',
           transform: 'translateX(-50%) translateY(-10%)',
           borderRadius: '50%',
-          filter: 'blur(140px)',
           background: 'radial-gradient(circle, rgba(158,64,164,0.35) 0%, rgba(158,64,164,0.18) 35%, rgba(0,0,0,0) 60%)'
         }}
       />

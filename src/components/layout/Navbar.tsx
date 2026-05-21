@@ -44,8 +44,8 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 h-[68px] border-b border-gold/35 bg-purple-bg/78 backdrop-blur-xl transition-all duration-300 ${
-          scrolled ? "shadow-[0_10px_30px_rgba(8,5,17,0.4)]" : ""
+        className={`fixed top-0 left-0 right-0 z-50 h-[68px] bg-purple-bg/78 backdrop-blur-xl transition-all duration-300 ${
+          scrolled ? "border-b border-gold/35 shadow-[0_10px_30px_rgba(8,5,17,0.4)]" : "border-b border-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-between gap-4">

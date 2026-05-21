@@ -7,8 +7,8 @@ import AnimatedNumber from "@/components/ui/AnimatedNumber";
 const STATS = [
   { num: 500, suffix: "+",  label: "Hackers"   },
   { num: 2,   prefix: "₹", suffix: "L+", label: "Prize Pool" },
-  { num: 24,  suffix: "h",  label: "Non-Stop"  },
-  { num: 6,                  label: "Tracks"    },
+  { num: 36,  suffix: "h",  label: "Non-Stop"  },
+  { num: 7,                  label: "Tracks"    },
   { num: 30,  suffix: "+",  label: "Mentors"   },
 ];
 

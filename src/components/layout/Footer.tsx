@@ -1,12 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 
 const TICKER_ITEMS = [
-  "24 HOURS", "✦", "NON-STOP CODING", "✦", "500+ HACKERS", "✦", "FREE FOOD", "✦", "₹2L+ PRIZE POOL", "✦", 
-  "24 HOURS", "✦", "NON-STOP CODING", "✦", "500+ HACKERS", "✦", "FREE FOOD", "✦", "₹2L+ PRIZE POOL", "✦",
-  "24 HOURS", "✦", "NON-STOP CODING", "✦", "500+ HACKERS", "✦", "FREE FOOD", "✦", "₹2L+ PRIZE POOL", "✦",
+  "36 HOURS", "✦", "NON-STOP CODING", "✦", "500+ HACKERS", "✦", "FREE FOOD", "✦", "₹2L+ PRIZE POOL", "✦", 
+  "36 HOURS", "✦", "NON-STOP CODING", "✦", "500+ HACKERS", "✦", "FREE FOOD", "✦", "₹2L+ PRIZE POOL", "✦",
+  "36 HOURS", "✦", "NON-STOP CODING", "✦", "500+ HACKERS", "✦", "FREE FOOD", "✦", "₹2L+ PRIZE POOL", "✦",
+];
+
+const TRACKS_TICKER_ITEMS = [
+  "SPORTS-TECH", "✦", "CLOUD COMPUTING", "✦", "DISASTER MANAGEMENT", "✦", "ROAD SAFETY", "✦", "AGRICULTURE", "✦", "HEALTHCARE MANAGEMENT", "✦", "ENVIRONMENT MANAGEMENT", "✦",
+  "SPORTS-TECH", "✦", "CLOUD COMPUTING", "✦", "DISASTER MANAGEMENT", "✦", "ROAD SAFETY", "✦", "AGRICULTURE", "✦", "HEALTHCARE MANAGEMENT", "✦", "ENVIRONMENT MANAGEMENT", "✦",
 ];
 
 export default function Footer() {
@@ -25,7 +31,7 @@ export default function Footer() {
           animate={{ x: ["0%", "-50%"] }}
           transition={{ ease: "linear", duration: 20, repeat: Infinity }}
         >
-          {TICKER_ITEMS.map((item, idx) => (
+          {TRACKS_TICKER_ITEMS.map((item, idx) => (
             <span key={idx} className={`font-fredoka text-xl ${item === "✦" ? "text-purple-bg" : "text-black"}`}>
               {item}
             </span>
@@ -71,7 +77,7 @@ export default function Footer() {
               />
             </div>
             <p className="font-nunito text-cream/60 text-sm max-w-[250px] leading-relaxed">
-              The ultimate 24-hour hackathon at JIMSEMTC. Build the future, break the limits, and have fun doing it.
+              The ultimate 36-hour hackathon at JIMSEMTC. Build the future, break the limits, and have fun doing it.
             </p>
           </div>
 
@@ -85,18 +91,18 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Contact */}
           <div className="flex flex-col gap-3">
             <h4 className="font-fredoka text-gold mb-2 text-lg">Contact</h4>
-            <a href="mailto:hello@hacktivate.com" className="font-nunito font-semibold text-cream/60 hover:text-gold transition-colors text-sm w-fit">
-              hello@hacktivate.com
+            <a href="mailto:hashtag.gn@jagannath.org" target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 font-nunito font-semibold text-cream/60 hover:text-gold transition-colors text-sm w-fit">
+              <Mail className="w-4 h-4 mt-[2px] shrink-0" />
+              <span>hashtag.gn@jagannath.org</span>
             </a>
-            <a href="mailto:sponsors@hacktivate.com" className="font-nunito font-semibold text-cream/60 hover:text-gold transition-colors text-sm w-fit">
-              sponsors@hacktivate.com
-            </a>
-            <a href="https://maps.google.com" className="font-nunito font-semibold text-cream/60 hover:text-gold transition-colors text-sm w-fit mt-2">
-              JIMSEMTC Campus<br/>
-              Greater Noida, UP
+            <a href="https://www.google.com/maps/search/?api=1&query=48%2F4+Knowledge+Park+III%2C+Greater+Noida%2C+Uttar+Pradesh+201308" target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 font-nunito font-semibold text-cream/60 hover:text-gold transition-colors text-sm w-fit mt-2">
+              <MapPin className="w-4 h-4 mt-1 shrink-0" />
+              <span>
+                48/4 Knowledge Park III, Greater Noida,<br/>
+                Uttar Pradesh. Pin :- 201308
+              </span>
             </a>
           </div>
 
@@ -104,17 +110,16 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <h4 className="font-fredoka text-gold mb-2 text-lg">Follow Us</h4>
             <div className="footer-social flex gap-3">
-              <motion.a href="#" whileHover={{ rotate: 15, y: -2 }} className="w-[38px] h-[38px] bg-purple-mid border-2 border-gold rounded-lg flex items-center justify-center text-gold shadow-offset-black hover:bg-gold hover:text-black transition-colors duration-300">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+              <motion.a href="https://x.com/Hashtag_Jemtec" target="_blank" rel="noopener noreferrer" whileHover={{ rotate: 15, y: -2 }} className="w-[38px] h-[38px] bg-purple-mid border-2 border-gold rounded-lg flex items-center justify-center text-gold shadow-offset-black hover:bg-gold hover:text-black transition-colors duration-300">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
               </motion.a>
-              <motion.a href="#" whileHover={{ rotate: 15, y: -2 }} className="w-[38px] h-[38px] bg-purple-mid border-2 border-gold rounded-lg flex items-center justify-center text-gold shadow-offset-black hover:bg-gold hover:text-black transition-colors duration-300">
+              <motion.a href="https://www.linkedin.com/company/hashtag-jemtec-official/" target="_blank" rel="noopener noreferrer" whileHover={{ rotate: 15, y: -2 }} className="w-[38px] h-[38px] bg-purple-mid border-2 border-gold rounded-lg flex items-center justify-center text-gold shadow-offset-black hover:bg-gold hover:text-black transition-colors duration-300">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
               </motion.a>
-              <motion.a href="#" whileHover={{ rotate: 15, y: -2 }} className="w-[38px] h-[38px] bg-purple-mid border-2 border-gold rounded-lg flex items-center justify-center text-gold shadow-offset-black hover:bg-gold hover:text-black transition-colors duration-300">
+              <motion.a href="https://www.instagram.com/hashtag.jemtec" target="_blank" rel="noopener noreferrer" whileHover={{ rotate: 15, y: -2 }} className="w-[38px] h-[38px] bg-purple-mid border-2 border-gold rounded-lg flex items-center justify-center text-gold shadow-offset-black hover:bg-gold hover:text-black transition-colors duration-300">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-              </motion.a>
-              <motion.a href="#" whileHover={{ rotate: 15, y: -2 }} className="w-[38px] h-[38px] bg-purple-mid border-2 border-gold rounded-lg flex items-center justify-center text-gold shadow-offset-black hover:bg-gold hover:text-black transition-colors duration-300">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
               </motion.a>
             </div>
           </div>
