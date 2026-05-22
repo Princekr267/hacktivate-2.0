@@ -27,8 +27,8 @@ export default function Home() {
         <StatsBar />
         <TracksSection />
         <TimelineSection />
-        <TeamSection />
         <SponsorsSection />
+        <TeamSection />
         <FaqSection />
         <Footer />
       </PageFadeIn>

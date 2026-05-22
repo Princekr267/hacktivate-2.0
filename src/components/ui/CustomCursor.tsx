@@ -58,7 +58,7 @@ export default function CustomCursor() {
   if (isTouchDevice) return null;
 
   return (
-    <div id="custom-cursor-root" className="pointer-events-none fixed inset-0 z-[9999]">
+    <div id="custom-cursor-root" className="pointer-events-none fixed inset-0 z-[9999999]">
       <AnimatePresence>
         {sparkles.map((sparkle) => (
           <motion.div

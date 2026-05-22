@@ -52,14 +52,16 @@ export default function Navbar() {
 
           {/* Logo */}
           <div className="flex items-center justify-center h-full order-1 shrink-0">
-            <Image
-              src="/logo.png"
-              alt="Hacktivate Logo"
-              width={200}
-              height={70}
-              priority
-              className="w-[148px] md:w-[175px] h-auto object-contain origin-left drop-shadow-[0_0_14px_rgba(239,216,68,0.18)]"
-            />
+            <a href="#home" onClick={(e) => scrollToSection(e, "#home")} aria-label="Go to home">
+              <Image
+                src="/logo.png"
+                alt="Hacktivate Logo"
+                width={200}
+                height={70}
+                priority
+                className="w-[148px] md:w-[175px] h-auto object-contain origin-left drop-shadow-[0_0_14px_rgba(239,216,68,0.18)]"
+              />
+            </a>
           </div>
 
           {/* Nav links — desktop only */}

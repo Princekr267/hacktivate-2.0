@@ -11,8 +11,8 @@ const TICKER_ITEMS = [
 ];
 
 const TRACKS_TICKER_ITEMS = [
-  "SPORTS-TECH", "✦", "CLOUD COMPUTING", "✦", "DISASTER MANAGEMENT", "✦", "ROAD SAFETY", "✦", "AGRICULTURE", "✦", "HEALTHCARE MANAGEMENT", "✦", "ENVIRONMENT MANAGEMENT", "✦",
-  "SPORTS-TECH", "✦", "CLOUD COMPUTING", "✦", "DISASTER MANAGEMENT", "✦", "ROAD SAFETY", "✦", "AGRICULTURE", "✦", "HEALTHCARE MANAGEMENT", "✦", "ENVIRONMENT MANAGEMENT", "✦",
+  "SPORTS - TECH", "✦", "CLOUD COMPUTING", "✦", "DISASTER MANAGEMENT", "✦", "ROAD SAFETY", "✦", "AGRICULTURE", "✦", "HEALTHCARE MANAGEMENT", "✦", "ENVIRONMENT MANAGEMENT", "✦",
+  "SPORTS - TECH", "✦", "CLOUD COMPUTING", "✦", "DISASTER MANAGEMENT", "✦", "ROAD SAFETY", "✦", "AGRICULTURE", "✦", "HEALTHCARE MANAGEMENT", "✦", "ENVIRONMENT MANAGEMENT", "✦",
 ];
 
 export default function Footer() {
@@ -65,7 +65,7 @@ export default function Footer() {
         <div className="footer-grid grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           
           {/* Brand */}
-          <div className="md:col-span-1">
+          <div className="md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
             <div className="flex items-center mb-4">
               <Image
                 src="/logo.png"

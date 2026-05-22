@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRipple } from "@/hooks/useRipple";
+import SponsorsBackground from "@/components/backgrounds/SponsorsBackground";
 
 const TEAM = [
   {
@@ -21,6 +22,7 @@ const TEAM = [
   {
     name: "Priyal Jain",
     avatar: "/data/team_photos/priyal.jpg",
+    scale: 1.2,
     twitter: "https://www.instagram.com/priyal2936?igsh=MW92ZDIzNW5wcnZjNA==",
     linkedin: "https://www.linkedin.com/in/priyal-jain-92863b282",
     github: "https://github.com/pihu404",
@@ -62,7 +64,7 @@ const TEAM = [
   },
   {
     name: "Atulya Mukesh",
-    avatar: "",
+    avatar: "/data/team_photos/atulya.jpg",
     twitter: "https://www.instagram.com/atulya.mukesh/profilecard/?igsh=MThyenFxOTEydWZ5Zw==",
     linkedin: "https://www.linkedin.com/in/atulya-mukesh-12716a2ba?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     github: "https://github.com/atulya-mukesh",
@@ -186,26 +188,9 @@ export default function TeamSection() {
   return (
     <section
       id="team"
-      className="relative overflow-hidden bg-purple-bg"
-      style={{ paddingTop: "90px", paddingBottom: "90px" }}
+      className="py-32 relative overflow-hidden bg-black"
     >
-      {/* ── Top wavy divider (gold) ── */}
-      <svg className="w-full h-8 sm:h-12 md:h-16 absolute top-0 left-0 text-gold fill-current" viewBox="0 0 1440 48" preserveAspectRatio="none">
-        <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
-      </svg>
-
-      {/* ── Bottom wavy divider (gold) ── */}
-      <svg className="w-full h-8 sm:h-12 md:h-16 absolute bottom-0 left-0 text-gold fill-current rotate-180" viewBox="0 0 1440 48" preserveAspectRatio="none">
-        <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
-      </svg>
-
-      {/* Ambient glows */}
-      <div 
-        className="absolute -left-[20%] top-[20%] w-[800px] h-[800px] rounded-full pointer-events-none z-0 ambient-blob"
-        style={{ background: "radial-gradient(circle, rgba(121,53,156,0.15) 0%, transparent 70%)" }} />
-      <div 
-        className="absolute -right-[10%] bottom-[10%] w-[600px] h-[600px] rounded-full pointer-events-none z-0 ambient-blob"
-        style={{ background: "radial-gradient(circle, rgba(239,216,68,0.08) 0%, transparent 70%)", animationDelay: '3s' }} />
+      <SponsorsBackground />
 
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
 
@@ -288,7 +273,7 @@ export default function TeamSection() {
                 borderRadius: 20,
                 boxShadow: "6px 6px 0 #B36A04",
                 overflow: "hidden",
-                cursor: "default",
+                cursor: "none",
               }}
             >
               {/* Gold crown band */}
@@ -323,7 +308,7 @@ export default function TeamSection() {
                         src={member.avatar} 
                         alt={member.name} 
                         className="w-full h-full object-cover object-center rounded-full"
-                        style={{ transform: "translateZ(0)", backfaceVisibility: "hidden" }}
+                        style={{ transform: `translateZ(0) scale(${('scale' in member) ? member.scale : 1})`, backfaceVisibility: "hidden" }}
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';
                           const fallback = e.currentTarget.nextElementSibling as HTMLElement;
@@ -393,7 +378,7 @@ export default function TeamSection() {
                         color: "#EFD844",
                         boxShadow: "2px 2px 0 #000",
                         textDecoration: "none",
-                        cursor: "pointer",
+                        cursor: "none",
                       }}
                     >
                       {s.icon}

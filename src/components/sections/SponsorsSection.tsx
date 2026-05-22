@@ -8,7 +8,6 @@ const SPONSORS = [
   { name: "Lazer Crazer", logo: "/data/Sponser/lazer crazer.png" }
 ];
 
-import SponsorsBackground from "@/components/backgrounds/SponsorsBackground";
 import { useRipple } from "@/hooks/useRipple";
 
 export default function SponsorsSection() {
@@ -27,11 +26,26 @@ export default function SponsorsSection() {
 
   return (
     <>
-      <section id="sponsors" className="py-32 px-6 bg-black relative overflow-hidden">
+      <section id="sponsors" className="relative overflow-hidden bg-purple-bg" style={{ paddingTop: "90px", paddingBottom: "90px" }}>
+        {/* ── Top wavy divider (gold) ── */}
+        <svg className="w-full h-8 sm:h-12 md:h-16 absolute top-0 left-0 text-gold fill-current" viewBox="0 0 1440 48" preserveAspectRatio="none">
+          <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
+        </svg>
 
-        <SponsorsBackground />
-        
-        <div className="max-w-5xl mx-auto">
+        {/* ── Bottom wavy divider (gold) ── */}
+        <svg className="w-full h-8 sm:h-12 md:h-16 absolute bottom-0 left-0 text-gold fill-current rotate-180" viewBox="0 0 1440 48" preserveAspectRatio="none">
+          <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
+        </svg>
+
+        {/* Ambient glows */}
+        <div 
+          className="absolute -left-[20%] top-[20%] w-[800px] h-[800px] rounded-full pointer-events-none z-0 ambient-blob"
+          style={{ background: "radial-gradient(circle, rgba(121,53,156,0.15) 0%, transparent 70%)" }} />
+        <div 
+          className="absolute -right-[10%] bottom-[10%] w-[600px] h-[600px] rounded-full pointer-events-none z-0 ambient-blob"
+          style={{ background: "radial-gradient(circle, rgba(239,216,68,0.08) 0%, transparent 70%)", animationDelay: '3s' }} />
+
+        <div className="max-w-5xl mx-auto px-6 relative z-10">
           
           {/* Header */}
           <div className="flex flex-col items-center mb-24 text-center">
@@ -122,14 +136,14 @@ export default function SponsorsSection() {
       <AnimatePresence>
         {isModalOpen && (
           <div className="fixed inset-0 flex items-center justify-center px-4" style={{ zIndex: 999999 }}>
-            {/* Backdrop */}
+            {/* Backdrop — full page blur */}
             <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+              animate={{ opacity: 1, backdropFilter: "blur(16px)" }}
+              exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 backdrop-blur-md"
-              style={{ background: "rgba(20, 5, 40, 0.85)" }}
+              className="absolute inset-0"
+              style={{ background: "rgba(8, 5, 17, 0.75)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}
             />
             
             {/* Modal Box */}
