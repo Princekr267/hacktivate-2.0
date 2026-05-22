@@ -65,7 +65,7 @@ export default function HeroSection() {
 
             <div className="relative z-10 w-full mx-auto flex justify-center items-center scale-150 sm:scale-100 mt-6 sm:mt-0">
               <Image
-                src="/hero-image.png"
+                src="/web_elements/hero-image.png"
                 alt="Hacktivate Hero"
                 width={1200}
                 height={700}

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Hacktivate 2.0 | JIMSEMTC Greater Noida",
   description: "A premium 36-hour hackathon at JIMSEMTC. Join 500+ hackers for non-stop coding, amazing prizes, and the ultimate tech showdown.",
   icons: {
-    icon: "/logo-H-letter.png",
+    icon: "/web_elements/logo-H-letter.png",
   },
 };
 

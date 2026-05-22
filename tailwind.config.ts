@@ -34,9 +34,6 @@ const config: Config = {
         'offset-black': '5px 5px 0px #080511',
         'offset-hover': '8px 8px 0px #B36A04',
         'offset-black-hover': '8px 8px 0px #080511',
-      },
-      backgroundImage: {
-        'circuit': 'url("/circuit-bg.svg")',
       }
     },
   },

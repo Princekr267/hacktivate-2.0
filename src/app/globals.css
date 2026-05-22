@@ -236,18 +236,7 @@ html, body {
   section.py-32 { padding-top: 56px !important; padding-bottom: 56px !important; }
 }
 
-/* ================================================
-   RESPONSIVE: STATS BAR — 2-col grid on mobile
-   ================================================ */
-@media (max-width: 640px) {
-  .stats-grid {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 20px !important;
-    justify-items: center;
-  }
-  .stats-divider { display: none !important; }
-}
+
 
 /* ================================================
    RESPONSIVE: SPONSOR CARDS — smaller min on mobile
@@ -258,17 +247,7 @@ html, body {
   }
 }
 
-/* ================================================
-   RESPONSIVE: FOOTER — stack on mobile
-   ================================================ */
-@media (max-width: 768px) {
-  .footer-grid {
-    grid-template-columns: 1fr !important;
-    text-align: center;
-  }
-  .footer-social { justify-content: center !important; }
-  .footer-bottom { flex-direction: column !important; text-align: center; }
-}
+
 
 /* ================================================
    RESPONSIVE: HERO BUTTONS — stack on mobile

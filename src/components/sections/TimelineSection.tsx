@@ -21,6 +21,44 @@ export default function TimelineSection() {
       <div className="absolute bottom-1/4 right-[-8%] w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(239,216,68,0.08)_0%,transparent_70%)] rounded-full pointer-events-none" style={{ animationDelay: '2s' }} />
       <TimelineBackground />
 
+      {/* Peeking Mascots */}
+      <motion.div
+        initial={{ opacity: 0, x: -80 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ type: "tween", ease: "easeOut", duration: 0.8 }}
+        className="absolute left-[-5px] top-[12%] md:top-[15%] z-[20]"
+        style={{ willChange: "transform, opacity" }}
+      >
+        <motion.img
+          src="/web_elements/peek-left.png"
+          alt="Peek Left Mascot"
+          className="w-[100px] sm:w-[130px] md:w-[160px] lg:w-[250px]"
+          style={{ filter: "drop-shadow(10px 10px 20px rgba(0,0,0,0.5))", willChange: "transform", transform: "translateZ(0)" }}
+          animate={{ y: [0, -15, 0], rotate: [-2, 2, -2] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, x: 80 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ type: "tween", ease: "easeOut", duration: 0.8, delay: 0.15 }}
+        className="absolute right-[-5px] bottom-[12%] md:bottom-[15%] z-[20]"
+        style={{ willChange: "transform, opacity" }}
+      >
+        <motion.img
+          src="/web_elements/peek-right.png"
+          alt="Peek Right Mascot"
+          className="w-[100px] sm:w-[130px] md:w-[160px] lg:w-[250px]"
+          style={{ filter: "drop-shadow(-10px 10px 20px rgba(0,0,0,0.5))", willChange: "transform", transform: "translateZ(0)" }}
+          animate={{ y: [0, 15, 0], rotate: [2, -2, 2] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        />
+      </motion.div>
+
+
       <div className="max-w-5xl mx-auto relative z-10">
         
         {/* Header */}

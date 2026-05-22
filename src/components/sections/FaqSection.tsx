@@ -32,7 +32,11 @@ const FAQS = [
   },
   {
     q: "What do I need to bring on the day?",
-    a: "Bring your laptop, charger, student ID for verification, and any hardware or equipment your project requires. Power outlets may be available at the venue but we strongly recommend bringing your own extension cords to be safe. Wi-Fi arrangements are the participant's responsibility , please plan accordingly and carry a hotspot if needed."
+    a: (
+      <>
+        Bring your laptop, charger, student ID for verification, and any hardware or equipment your project requires. Power outlets may be available at the venue, but we strongly recommend that you <strong className="text-gold">bring your own extension cord</strong> to be safe.
+      </>
+    )
   },
   {
     q: "Will food and accommodation be provided?",

@@ -51,15 +51,32 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-between gap-4">
 
           {/* Logo */}
-          <div className="flex items-center justify-center h-full order-1 shrink-0">
+          <div className="flex items-center justify-center h-full order-1 shrink-0 gap-4">
             <a href="#home" onClick={(e) => scrollToSection(e, "#home")} aria-label="Go to home">
               <Image
-                src="/logo.png"
+                src="/web_elements/logo.png"
                 alt="Hacktivate Logo"
                 width={200}
                 height={70}
                 priority
                 className="w-[148px] md:w-[175px] h-auto object-contain origin-left drop-shadow-[0_0_14px_rgba(239,216,68,0.18)]"
+              />
+            </a>
+            <a 
+              href="https://hashtag-new.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="relative flex items-center justify-center group ml-2 sm:ml-4"
+            >
+              {/* Massive smooth backlight aura */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gold/0 group-hover:bg-gold/30 blur-xl rounded-full transition-colors duration-700 pointer-events-none scale-150" />
+              
+              <Image 
+                src="/web_elements/hashtag-logo.png" 
+                alt="Hashtag Logo" 
+                width={140} 
+                height={50} 
+                className="h-[32px] md:h-[40px] w-auto object-contain relative z-10 transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-0.5 drop-shadow-[0_0_10px_rgba(255,255,255,0.15)] group-hover:drop-shadow-[0_0_20px_rgba(239,216,68,1)] brightness-110"
               />
             </a>
           </div>

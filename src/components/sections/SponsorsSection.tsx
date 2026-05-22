@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Mail, X, CheckCircle2 } from "lucide-react";
 
 const SPONSORS = [
-  { name: "Lazer Crazer", logo: "/data/Sponser/lazer crazer.png" }
+  { name: "Lazer Crazer", logo: "/Sponser/lazer crazer.png" }
 ];
 
 import { useRipple } from "@/hooks/useRipple";
@@ -15,8 +15,19 @@ export default function SponsorsSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name');
+    const company = formData.get('company');
+    const email = formData.get('email');
+    
+    const subject = encodeURIComponent(`Sponsorship Inquiry from ${company}`);
+    const body = encodeURIComponent(`Hello Hacktivate Team,\n\nI am ${name} from ${company}.\n\nWe are interested in sponsoring Hacktivate 2.0. Please send us the sponsor deck.\n\nBest regards,\n${name}\n${email}`);
+    
+    window.location.href = `mailto:hashtag.gn@jagannath.org?subject=${subject}&body=${body}`;
+
     setIsSubmitted(true);
     setTimeout(() => {
       setIsModalOpen(false);
@@ -111,7 +122,7 @@ export default function SponsorsSection() {
             </div>
             <h3 className="font-fredoka text-gold text-3xl mb-4">Want to be a Sponsor? 🤝</h3>
             <p className="font-nunito text-cream opacity-90 mb-8 max-w-md mx-auto">
-              Get your brand in front of 500+ passionate developers, designers, and creators. Help us build the future.
+              Get your brand in front of 3000+ passionate developers, designers, and creators. Help us build the future.
             </p>
             <motion.button 
               onClick={() => setIsModalOpen(true)}
@@ -186,6 +197,7 @@ export default function SponsorsSection() {
                       <label className="block font-nunito font-bold text-cream/80 text-sm mb-1.5">Name</label>
                       <input 
                         required 
+                        name="name"
                         type="text" 
                         placeholder="John Doe"
                         className="w-full bg-black/50 border-2 border-cream/10 rounded-xl px-4 py-2.5 text-cream font-nunito focus:outline-none focus:border-gold transition-colors"
@@ -195,6 +207,7 @@ export default function SponsorsSection() {
                       <label className="block font-nunito font-bold text-cream/80 text-sm mb-1.5">Company</label>
                       <input 
                         required 
+                        name="company"
                         type="text" 
                         placeholder="Acme Corp"
                         className="w-full bg-black/50 border-2 border-cream/10 rounded-xl px-4 py-2.5 text-cream font-nunito focus:outline-none focus:border-gold transition-colors"
@@ -204,6 +217,7 @@ export default function SponsorsSection() {
                       <label className="block font-nunito font-bold text-cream/80 text-sm mb-1.5">Email</label>
                       <input 
                         required 
+                        name="email"
                         type="email" 
                         placeholder="john@acme.com"
                         className="w-full bg-black/50 border-2 border-cream/10 rounded-xl px-4 py-2.5 text-cream font-nunito focus:outline-none focus:border-gold transition-colors"
