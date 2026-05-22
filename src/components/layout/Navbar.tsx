@@ -119,20 +119,20 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
+            initial={{ scaleY: 0, opacity: 0 }}
+            animate={{ scaleY: 1, opacity: 1 }}
+            exit={{ scaleY: 0, opacity: 0 }}
             transition={{ duration: 0.28, ease: "easeInOut" }}
-            className="fixed top-[68px] left-0 right-0 z-40 overflow-hidden border-b-[3px] border-gold/40 md:hidden"
-            style={{ background: "#291648" }}
+            className="fixed top-[68px] left-0 right-0 z-50 overflow-hidden border-b-[3px] border-gold/40 md:hidden"
+            style={{ background: "#291648", transformOrigin: "top" }}
           >
-            <nav className="flex flex-col">
+            <nav className="flex flex-col relative z-10">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => scrollToSection(e, link.href)}
-                  className="font-fredoka text-[18px] text-cream hover:text-gold hover:bg-black/20 transition-colors border-b border-gold/15"
+                  className="font-fredoka text-[18px] text-cream hover:text-gold hover:bg-black/20 transition-colors border-b border-gold/15 cursor-pointer" 
                   style={{ padding: "14px 24px" }}
                 >
                   {link.name}
