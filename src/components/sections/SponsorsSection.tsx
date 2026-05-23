@@ -15,25 +15,55 @@ export default function SponsorsSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    
-    const formData = new FormData(e.currentTarget);
-    const name = formData.get('name');
-    const company = formData.get('company');
-    const email = formData.get('email');
-    
-    const subject = encodeURIComponent(`Sponsorship Inquiry from ${company}`);
-    const body = encodeURIComponent(`Hello Hacktivate Team,\n\nI am ${name} from ${company}.\n\nWe are interested in sponsoring Hacktivate 2.0. Please send us the sponsor deck.\n\nBest regards,\n${name}\n${email}`);
-    
-    window.location.href = `mailto:hashtag.gn@jagannath.org?subject=${subject}&body=${body}`;
+ const handleSubmit = async (
+  e: React.FormEvent<HTMLFormElement>
+) => {
+  e.preventDefault();
 
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsModalOpen(false);
-      setTimeout(() => setIsSubmitted(false), 500); // reset after close
-    }, 2000);
-  };
+  const formData = new FormData(e.currentTarget);
+
+  formData.append(
+    "access_key",
+    "68f7100c-97d3-47bc-b8b6-20cc83152b6b"
+  );
+
+  formData.append(
+    "subject",
+    "New Sponsorship Inquiry"
+  );
+
+  try {
+    const response = await fetch(
+      "https://api.web3forms.com/submit",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.success) {
+      setIsSubmitted(true);
+
+      setTimeout(() => {
+        setIsModalOpen(false);
+
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 500);
+      }, 2000);
+
+    } else {
+      console.error(data);
+      alert("Failed to send request");
+    }
+
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong");
+  }
+};
 
   return (
     <>
@@ -50,19 +80,19 @@ export default function SponsorsSection() {
 
         {/* Ambient glows */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          <div 
+          <div
             className="absolute -left-[20%] top-[20%] w-[800px] h-[800px] rounded-full ambient-blob"
             style={{ background: "radial-gradient(circle, rgba(121,53,156,0.15) 0%, transparent 70%)" }} />
-          <div 
+          <div
             className="absolute -right-[10%] bottom-[10%] w-[600px] h-[600px] rounded-full ambient-blob"
             style={{ background: "radial-gradient(circle, rgba(239,216,68,0.08) 0%, transparent 70%)", animationDelay: '3s' }} />
         </div>
 
         <div className="max-w-5xl mx-auto px-6 relative z-10">
-          
+
           {/* Header */}
           <div className="flex flex-col items-center mb-24 text-center">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -113,7 +143,7 @@ export default function SponsorsSection() {
           </div>
 
           {/* CTA Box */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -126,7 +156,7 @@ export default function SponsorsSection() {
             <p className="font-nunito text-cream opacity-90 mb-8 max-w-md mx-auto">
               Get your brand in front of 3000+ passionate developers, designers, and creators. Help us build the future.
             </p>
-            <motion.button 
+            <motion.button
               onClick={() => setIsModalOpen(true)}
               whileTap={{
                 scale: 0.95,
@@ -150,7 +180,7 @@ export default function SponsorsSection() {
         {isModalOpen && (
           <div className="fixed inset-0 flex items-center justify-center px-4" style={{ zIndex: 999999 }}>
             {/* Backdrop — full page blur */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
               animate={{ opacity: 1, backdropFilter: "blur(16px)" }}
               exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
@@ -158,7 +188,7 @@ export default function SponsorsSection() {
               className="absolute inset-0"
               style={{ background: "rgba(8, 5, 17, 0.75)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}
             />
-            
+
             {/* Modal Box */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -171,7 +201,7 @@ export default function SponsorsSection() {
               {/* Header */}
               <div className="bg-purple-mid border-b-2 border-gold/30 px-6 py-4 flex justify-between items-center">
                 <h3 className="font-fredoka text-xl text-gold">Sponsorship Inquiry</h3>
-                <button 
+                <button
                   onClick={() => setIsModalOpen(false)}
                   className="text-cream/50 hover:text-gold transition-colors"
                 >
@@ -182,7 +212,7 @@ export default function SponsorsSection() {
               {/* Body */}
               <div className="p-6">
                 {isSubmitted ? (
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="flex flex-col items-center justify-center py-8 text-center"
@@ -197,35 +227,59 @@ export default function SponsorsSection() {
                   <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                     <div>
                       <label className="block font-nunito font-bold text-cream/80 text-sm mb-1.5">Name</label>
-                      <input 
-                        required 
+                      <input
+                        required
                         name="name"
-                        type="text" 
+                        type="text"
                         placeholder="John Doe"
                         className="w-full bg-black/50 border-2 border-cream/10 rounded-xl px-4 py-2.5 text-cream font-nunito focus:outline-none focus:border-gold transition-colors"
                       />
                     </div>
                     <div>
                       <label className="block font-nunito font-bold text-cream/80 text-sm mb-1.5">Company</label>
-                      <input 
-                        required 
+                      <input
+                        required
                         name="company"
-                        type="text" 
+                        type="text"
                         placeholder="Acme Corp"
                         className="w-full bg-black/50 border-2 border-cream/10 rounded-xl px-4 py-2.5 text-cream font-nunito focus:outline-none focus:border-gold transition-colors"
                       />
                     </div>
                     <div>
                       <label className="block font-nunito font-bold text-cream/80 text-sm mb-1.5">Email</label>
-                      <input 
-                        required 
+                      <input
+                        required
                         name="email"
-                        type="email" 
+                        type="email"
                         placeholder="john@acme.com"
                         className="w-full bg-black/50 border-2 border-cream/10 rounded-xl px-4 py-2.5 text-cream font-nunito focus:outline-none focus:border-gold transition-colors"
                       />
                     </div>
-                    <button 
+                    <div>
+  <label className="block font-nunito font-bold text-cream/80 text-sm mb-1.5">
+    Phone Number
+  </label>
+
+  <input
+    name="phone"
+    type="tel"
+    placeholder="+91 9876543210"
+    className="w-full bg-black/50 border-2 border-cream/10 rounded-xl px-4 py-2.5 text-cream font-nunito focus:outline-none focus:border-gold transition-colors"
+  />
+</div>
+                    <div>
+  <label className="block font-nunito font-bold text-cream/80 text-sm mb-1.5">
+    Message
+  </label>
+
+  <textarea
+    name="message"
+    placeholder="Optional"
+    rows={4}
+    className="w-full bg-black/50 border-2 border-cream/10 rounded-xl px-4 py-2.5 text-cream font-nunito focus:outline-none focus:border-gold transition-colors resize-none"
+  />
+</div>
+                    <button
                       type="submit"
                       className="mt-2 w-full bg-gold hover:bg-purple-mid text-black hover:text-gold hover:border-gold font-fredoka uppercase px-6 py-3 rounded-xl border-[3px] border-black shadow-offset-black transition-all hover:-translate-y-1 hover:shadow-[5px_5px_0_#080511]"
                     >
