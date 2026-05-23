@@ -63,9 +63,9 @@ export default function Navbar() {
                 <Image
                   src="/web_elements/hashtag-logo.png"
                   alt="Hashtag Official"
-                  width={100}
-                  height={35}
-                  className="h-[26px] w-auto object-contain opacity-100 transition-opacity duration-300 brightness-110"
+                  width={140}
+                  height={50}
+                  className="h-[30px] sm:h-[34px] w-auto object-contain opacity-100 transition-opacity duration-300 brightness-110"
                 />
               </div>
             </a>
