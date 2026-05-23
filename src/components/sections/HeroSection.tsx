@@ -16,7 +16,7 @@ export default function HeroSection() {
     const colors = ["#EFD844", "#a855c8"];
     const end = Date.now() + 1500;
     const burst = () => {
-      confetti({ particleCount: 4, angle: 60,  spread: 55, origin: { x: 0 }, colors });
+      confetti({ particleCount: 4, angle: 60, spread: 55, origin: { x: 0 }, colors });
       confetti({ particleCount: 4, angle: 120, spread: 55, origin: { x: 1 }, colors });
       if (Date.now() < end) requestAnimationFrame(burst);
     };
@@ -75,9 +75,38 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
+          {/* Editorial Divider & Tagline */}
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              show: { opacity: 1, y: 0, transition: { delay: 0.18, type: "spring", bounce: 0.3 } }
+            }}
+            className="flex flex-col items-center justify-center relative z-20 mt-8 sm:mt-0"
+          >
+            {/* Newspaper-style editorial divider */}
+            <div className="flex items-center gap-4 w-full max-w-[280px] sm:max-w-sm mb-6">
+              <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-gold/40" />
+              <span className="font-nunito font-black uppercase tracking-[0.2em] text-gold/80" style={{ fontSize: "10px" }}>
+                HACKTIVATE 2.0
+              </span>
+              <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent to-gold/40" />
+            </div>
+
+            {/* Tagline */}
+            <h2 className="font-fredoka text-4xl sm:text-5xl md:text-6xl text-center leading-tight mb-6 drop-shadow-md">
+              <span className="text-gold" style={{ textShadow: "3px 3px 0 #000" }}>Build Bold.</span>{" "}
+              <span className="text-cream block sm:inline mt-1 sm:mt-0" style={{ textShadow: "3px 3px 0 #000" }}>Break Limits.</span>
+            </h2>
+
+            {/* Micro-line */}
+            <div className="font-nunito font-bold text-cream/70 text-[10px] sm:text-xs tracking-wider uppercase text-center mb-2">
+              ✦ 36 Hours · JIMSEMTC · Greater Noida ✦
+            </div>
+          </motion.div>
+
           <motion.div
             variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.28 } } }}
-            className="hero-cta-row flex flex-wrap lg:flex-nowrap items-center justify-center gap-8 sm:gap-16 mt-20 sm:mt-[calc(12vh-15px)] relative z-30"
+            className="hero-cta-row flex flex-wrap lg:flex-nowrap items-center justify-center gap-8 sm:gap-16 mt-12 sm:mt-10 relative z-30"
           >
             <motion.button
               onClick={handleRegister}

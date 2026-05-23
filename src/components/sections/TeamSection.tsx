@@ -85,7 +85,7 @@ const TEAM = [
   },
   {
     name: "Rimi Kumari",
-    avatar: "",
+    avatar: "/team_photos/rimi.jpg?v=2",
     twitter: "https://www.instagram.com/rimikumari.tech/",
     linkedin: "https://www.linkedin.com/in/rimi-kumari-technical/",
     github: "https://github.com/rimikumari",
@@ -106,7 +106,7 @@ const TEAM = [
   },
   {
     name: "Amisha",
-    avatar: "/team_photos/amisha.jpg",
+    avatar: "/team_photos/amisha.jpg?v=2",
     twitter: "https://www.instagram.com/amixh.aa?igsh=MTFjaHMwemZ2dmw3eA==",
     linkedin: "https://www.linkedin.com/in/amisha-kumari-04bb10328",
     github: "https://github.com/Amisha1kumari",
@@ -177,9 +177,9 @@ const TEAM = [
 ];
 
 const SOCIAL = [
-  { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>,  label: "Instagram"  },
-  { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>, label: "LinkedIn" },
-  { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>, label: "GitHub" },
+  { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>, label: "Instagram" },
+  { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>, label: "LinkedIn" },
+  { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" /></svg>, label: "GitHub" },
 ];
 
 export default function TeamSection() {
@@ -304,27 +304,32 @@ export default function TeamSection() {
                 >
                   {member.avatar !== "" ? (
                     <>
-                      <img 
-                        src={member.avatar} 
-                        alt={member.name} 
+                      <img
+                        src={member.avatar}
+                        alt={member.name}
                         className="w-full h-full object-cover object-center rounded-full"
                         style={{ transform: `translateZ(0) scale(${('scale' in member) ? member.scale : 1})`, backfaceVisibility: "hidden" }}
+                        onLoad={(e) => {
+                          e.currentTarget.style.display = 'block';
+                          const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                          if (fallback) fallback.style.display = 'none';
+                        }}
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';
                           const fallback = e.currentTarget.nextElementSibling as HTMLElement;
                           if (fallback) fallback.style.display = 'block';
                         }}
                       />
-                      <span 
-                        className="font-fredoka" 
+                      <span
+                        className="font-fredoka"
                         style={{ display: 'none', fontSize: 36, color: "#EFD844" }}
                       >
                         {member.name.charAt(0).toUpperCase()}
                       </span>
                     </>
                   ) : (
-                    <span 
-                      className="font-fredoka" 
+                    <span
+                      className="font-fredoka"
                       style={{ fontSize: 36, color: "#EFD844" }}
                     >
                       {member.name.charAt(0).toUpperCase()}
@@ -356,8 +361,8 @@ export default function TeamSection() {
                         s.label === "Instagram"
                           ? member.twitter
                           : s.label === "LinkedIn"
-                          ? member.linkedin
-                          : member.github || "https://github.com"
+                            ? member.linkedin
+                            : member.github || "https://github.com"
                       }
                       target="_blank"
                       rel="noopener noreferrer"

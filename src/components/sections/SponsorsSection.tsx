@@ -37,24 +37,26 @@ export default function SponsorsSection() {
 
   return (
     <>
-      <section id="sponsors" className="relative overflow-hidden bg-purple-bg" style={{ paddingTop: "90px", paddingBottom: "90px" }}>
+      <section id="sponsors" className="relative bg-purple-bg" style={{ paddingTop: "90px", paddingBottom: "90px" }}>
         {/* ── Top wavy divider (gold) ── */}
-        <svg className="w-full h-8 sm:h-12 md:h-16 absolute top-0 left-0 text-gold fill-current" viewBox="0 0 1440 48" preserveAspectRatio="none">
+        <svg className="w-full h-8 sm:h-12 md:h-16 absolute -top-8 sm:-top-12 md:-top-16 left-0 text-gold fill-current z-20" viewBox="0 0 1440 48" preserveAspectRatio="none">
           <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
         </svg>
 
         {/* ── Bottom wavy divider (gold) ── */}
-        <svg className="w-full h-8 sm:h-12 md:h-16 absolute bottom-0 left-0 text-gold fill-current rotate-180" viewBox="0 0 1440 48" preserveAspectRatio="none">
+        <svg className="w-full h-8 sm:h-12 md:h-16 absolute -bottom-8 sm:-bottom-12 md:-bottom-16 left-0 text-gold fill-current rotate-180 z-20" viewBox="0 0 1440 48" preserveAspectRatio="none">
           <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
         </svg>
 
         {/* Ambient glows */}
-        <div 
-          className="absolute -left-[20%] top-[20%] w-[800px] h-[800px] rounded-full pointer-events-none z-0 ambient-blob"
-          style={{ background: "radial-gradient(circle, rgba(121,53,156,0.15) 0%, transparent 70%)" }} />
-        <div 
-          className="absolute -right-[10%] bottom-[10%] w-[600px] h-[600px] rounded-full pointer-events-none z-0 ambient-blob"
-          style={{ background: "radial-gradient(circle, rgba(239,216,68,0.08) 0%, transparent 70%)", animationDelay: '3s' }} />
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          <div 
+            className="absolute -left-[20%] top-[20%] w-[800px] h-[800px] rounded-full ambient-blob"
+            style={{ background: "radial-gradient(circle, rgba(121,53,156,0.15) 0%, transparent 70%)" }} />
+          <div 
+            className="absolute -right-[10%] bottom-[10%] w-[600px] h-[600px] rounded-full ambient-blob"
+            style={{ background: "radial-gradient(circle, rgba(239,216,68,0.08) 0%, transparent 70%)", animationDelay: '3s' }} />
+        </div>
 
         <div className="max-w-5xl mx-auto px-6 relative z-10">
           

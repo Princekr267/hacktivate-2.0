@@ -6,18 +6,18 @@ import { Zap, Menu, X } from "lucide-react";
 import Image from "next/image";
 
 const NAV_LINKS = [
-  { name: "Home",      href: "#home"      },
-  { name: "Tracks",    href: "#tracks"    },
-  { name: "Timeline",  href: "#timeline"  },
-  { name: "Team",      href: "#team"      },
-  { name: "Sponsors",  href: "#sponsors"  },
-  { name: "FAQ",       href: "#faq"       },
+  { name: "Home", href: "#home" },
+  { name: "Tracks", href: "#tracks" },
+  { name: "Timeline", href: "#timeline" },
+  { name: "Team", href: "#team" },
+  { name: "Sponsors", href: "#sponsors" },
+  { name: "FAQ", href: "#faq" },
 ];
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
-  const [scrolled, setScrolled]           = useState(false);
-  const [menuOpen, setMenuOpen]           = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -44,45 +44,49 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 h-[68px] bg-purple-bg/78 backdrop-blur-xl transition-all duration-300 ${
-          scrolled ? "border-b border-gold/35 shadow-[0_10px_30px_rgba(8,5,17,0.4)]" : "border-b border-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 h-[68px] bg-purple-bg/78 backdrop-blur-xl transition-all duration-300 ${scrolled ? "border-b border-gold/35 shadow-[0_10px_30px_rgba(8,5,17,0.4)]" : "border-b border-transparent"
+          }`}
       >
-        <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 flex items-center justify-between gap-2 sm:gap-4">
 
           {/* Logo */}
-          <div className="flex items-center justify-center h-full order-1 shrink-0 gap-4">
-            <a href="#home" onClick={(e) => scrollToSection(e, "#home")} aria-label="Go to home">
+          <div className="flex items-center justify-center h-full order-1 shrink-0 gap-2">
+            <a
+              href="https://hashtag-new.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 group"
+              aria-label="Visit Hashtag Official website"
+            >
+              {/* Logo container */}
+              <div className="flex items-center">
+                <Image
+                  src="/web_elements/hashtag-logo.png"
+                  alt="Hashtag Official"
+                  width={100}
+                  height={35}
+                  className="h-[26px] w-auto object-contain opacity-100 transition-opacity duration-300 brightness-110"
+                />
+              </div>
+            </a>
+            
+            {/* Vertical separator */}
+            <div className="block w-[1.5px] h-6 sm:h-8 bg-gold/25 rounded-full mx-1 sm:mx-2" />
+
+            <a href="#home" className="flex items-center" onClick={(e) => scrollToSection(e, '#home')}>
               <Image
                 src="/web_elements/logo.png"
                 alt="Hacktivate Logo"
                 width={200}
-                height={70}
+                height={60}
                 priority
-                className="w-[148px] md:w-[175px] h-auto object-contain origin-left drop-shadow-[0_0_14px_rgba(239,216,68,0.18)]"
-              />
-            </a>
-            <a 
-              href="https://hashtag-new.vercel.app/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="relative flex items-center justify-center group ml-2 sm:ml-4"
-            >
-              {/* Massive smooth backlight aura */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gold/0 group-hover:bg-gold/30 blur-xl rounded-full transition-colors duration-700 pointer-events-none scale-150" />
-              
-              <Image 
-                src="/web_elements/hashtag-logo.png" 
-                alt="Hashtag Logo" 
-                width={140} 
-                height={50} 
-                className="h-[32px] md:h-[40px] w-auto object-contain relative z-10 transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-0.5 drop-shadow-[0_0_10px_rgba(255,255,255,0.15)] group-hover:drop-shadow-[0_0_20px_rgba(239,216,68,1)] brightness-110"
+                className="w-[120px] sm:w-[148px] lg:w-[175px] h-auto object-contain origin-left drop-shadow-[0_0_14px_rgba(239,216,68,0.18)]"
               />
             </a>
           </div>
 
           {/* Nav links — desktop only */}
-          <nav className="hidden md:flex items-center gap-2 order-2 mx-auto">
+          <nav className="hidden lg:flex items-center gap-2 order-2 mx-auto">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.name}
@@ -91,11 +95,10 @@ export default function Navbar() {
                 className="relative px-5 py-2 font-nunito font-bold text-[15px] uppercase tracking-wider transition-transform duration-200 hover:-translate-y-0.5 group"
               >
                 <span
-                  className={`relative z-10 ${
-                    activeSection === link.href.substring(1)
+                  className={`relative z-10 ${activeSection === link.href.substring(1)
                       ? "text-black"
                       : "text-cream hover:text-gold"
-                  }`}
+                    }`}
                 >
                   {link.name}
                 </span>
@@ -118,14 +121,14 @@ export default function Navbar() {
           <motion.button
             whileTap={{ scale: 0.95, backgroundColor: "#a855c8", color: "#EFD844", borderColor: "#EFD844", boxShadow: "none" }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
-            className="hidden md:flex order-3 shrink-0 bg-gold hover:bg-purple-mid text-black hover:text-gold hover:border-gold font-fredoka uppercase px-6 py-2 rounded-xl border-[3px] border-black shadow-offset-black transition-all items-center gap-2"
+            className="hidden lg:flex order-3 shrink-0 bg-gold hover:bg-purple-mid text-black hover:text-gold hover:border-gold font-fredoka uppercase px-6 py-2 rounded-xl border-[3px] border-black shadow-offset-black transition-all items-center gap-2"
           >
             Register <Zap size={18} fill="currentColor" />
           </motion.button>
 
           {/* Hamburger — mobile only */}
           <button
-            className="md:hidden order-3 text-gold p-2 rounded-lg border-2 border-gold/40"
+            className="lg:hidden order-3 text-gold p-2 rounded-lg border-2 border-gold/40"
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Toggle menu"
           >
@@ -151,7 +154,7 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => scrollToSection(e, link.href)}
-                  className="font-fredoka text-[18px] text-cream hover:text-gold hover:bg-black/20 transition-colors border-b border-gold/15 cursor-pointer" 
+                  className="font-fredoka text-[18px] text-cream hover:text-gold hover:bg-black/20 transition-colors border-b border-gold/15 cursor-pointer"
                   style={{ padding: "14px 24px" }}
                 >
                   {link.name}
@@ -162,6 +165,7 @@ export default function Navbar() {
                   Register <Zap size={18} fill="currentColor" />
                 </button>
               </div>
+
             </nav>
           </motion.div>
         )}

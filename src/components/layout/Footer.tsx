@@ -5,9 +5,9 @@ import { Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 
 const TICKER_ITEMS = [
-  "36 HOURS", "✦", "NON-STOP CODING", "✦", "500+ HACKERS", "✦", "FREE FOOD", "✦", "₹2L+ PRIZE POOL", "✦", 
-  "36 HOURS", "✦", "NON-STOP CODING", "✦", "500+ HACKERS", "✦", "FREE FOOD", "✦", "₹2L+ PRIZE POOL", "✦",
-  "36 HOURS", "✦", "NON-STOP CODING", "✦", "500+ HACKERS", "✦", "FREE FOOD", "✦", "₹2L+ PRIZE POOL", "✦",
+  "36 HOURS", "✦", "NON-STOP CODING", "✦", "3000+ HACKERS", "✦", "FREE FOOD", "✦", "₹2L+ PRIZE POOL", "✦", 
+  "36 HOURS", "✦", "NON-STOP CODING", "✦", "3000+ HACKERS", "✦", "FREE FOOD", "✦", "₹2L+ PRIZE POOL", "✦",
+  "36 HOURS", "✦", "NON-STOP CODING", "✦", "3000+ HACKERS", "✦", "FREE FOOD", "✦", "₹2L+ PRIZE POOL", "✦",
 ];
 
 const TRACKS_TICKER_ITEMS = [
@@ -66,7 +66,8 @@ export default function Footer() {
           
           {/* Brand */}
           <div className="md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
-            <div className="flex items-center mb-6">
+            {/* Hacktivate main logo */}
+            <div className="flex items-center mb-5">
               <Image
                 src="/web_elements/logo.png"
                 alt="Hacktivate Logo"
@@ -76,31 +77,44 @@ export default function Footer() {
                 className="w-[150px] md:w-[170px] h-auto object-contain"
               />
             </div>
-            
-            <div className="mb-8 flex flex-col items-center md:items-start gap-3">
-              <p className="font-nunito font-bold text-cream/50 text-[11px] tracking-[0.2em] uppercase">Organized by Hashtag</p>
-              <a 
-                href="https://hashtag-new.vercel.app/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="relative block w-fit group"
+
+            {/* Tagline */}
+            <p className="font-nunito font-bold text-cream/55 text-sm leading-relaxed mb-6 max-w-[240px]">
+              Build Bold. Break Limits.<br/>
+              <span className="text-cream/35 text-xs">The ultimate 24-hour hackathon at JIMSEMTC, Greater Noida.</span>
+            </p>
+
+            {/* Organized by block */}
+            <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+              <span
+                className="font-nunito font-black uppercase tracking-[0.2em] text-gold/50"
+                style={{ fontSize: "10px" }}
               >
-                {/* Massive smooth backlight aura */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gold/0 group-hover:bg-gold/25 blur-2xl rounded-full transition-colors duration-700 pointer-events-none" />
-                
-                <Image 
-                  src="/web_elements/hashtag-logo.png" 
-                  alt="Hashtag Logo" 
-                  width={150} 
-                  height={50} 
-                  className="h-[32px] w-auto object-contain relative z-10 transition-all duration-500 group-hover:scale-105 group-hover:-translate-y-1 drop-shadow-[0_0_10px_rgba(255,255,255,0.05)] group-hover:drop-shadow-[0_8px_20px_rgba(239,216,68,0.5)]"
-                />
+                Organized by
+              </span>
+              
+              <a
+                href="https://hashtag-new.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 w-fit"
+              >
+                <div
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl border border-gold/20 group-hover:border-gold/55 transition-all duration-400"
+                  style={{
+                    background: "rgba(239,216,68,0.05)",
+                  }}
+                >
+                  <Image
+                    src="/web_elements/hashtag-logo.png"
+                    alt="Hashtag Official — Tech Society at JIMSEMTC"
+                    width={110}
+                    height={38}
+                    className="h-[28px] w-auto object-contain opacity-100 transition-opacity duration-300 brightness-110"
+                  />
+                </div>
               </a>
             </div>
-
-            <p className="font-nunito text-cream/60 text-sm max-w-[250px] leading-relaxed">
-              The ultimate 36-hour hackathon at JIMSEMTC. Build the future, break the limits, and have fun doing it.
-            </p>
           </div>
 
           {/* Navigate */}
@@ -120,11 +134,11 @@ export default function Footer() {
                 <Mail className="w-4 h-4 mt-[2px] shrink-0" />
                 <span>hashtag.gn@jagannath.org</span>
               </a>
-              <a href="https://www.google.com/maps/search/?api=1&query=48%2F4+Knowledge+Park+III%2C+Greater+Noida%2C+Uttar+Pradesh+201308" target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 font-nunito font-semibold text-cream/60 hover:text-gold transition-colors text-sm text-left">
+              <a href="https://www.google.com/maps/search/?api=1&query=48%2F4%2C+Knowledge+Park+III%2C+Greater+Noida%2C+Noida%2C+Uttar+Pradesh+201310" target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 font-nunito font-semibold text-cream/60 hover:text-gold transition-colors text-sm text-left">
                 <MapPin className="w-4 h-4 mt-1 shrink-0" />
                 <span>
-                  48/4 Knowledge Park III, Greater Noida,<br/>
-                  Uttar Pradesh. Pin :- 201308
+                  48/4, Knowledge Park III, Greater Noida,<br/>
+                  Noida, Uttar Pradesh 201310
                 </span>
               </a>
             </div>
@@ -159,7 +173,7 @@ export default function Footer() {
             © 2026 Hacktivate. All rights reserved.
           </p>
           <p className="font-nunito font-bold text-cream/60 text-xs flex items-center justify-center mt-1">
-            Made by hashtag team
+            Made by #Hashtag Team
           </p>
         </div>
 
