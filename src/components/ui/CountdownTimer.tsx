@@ -38,14 +38,14 @@ export default function CountdownTimer() {
     <motion.div 
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex gap-3 sm:gap-5 justify-center text-gold font-fredoka relative z-20"
+      className="flex gap-2.5 sm:gap-4 lg:gap-6 justify-center text-gold font-fredoka relative z-20"
     >
       {Object.entries(timeLeft).map(([unit, value]) => (
         <div key={unit} className="flex flex-col items-center">
-          <div className="w-12 h-12 sm:w-14 sm:h-14 bg-purple-mid border-2 border-gold rounded-xl flex items-center justify-center text-lg sm:text-xl shadow-[4px_4px_0_#B36A04]">
+          <div className="w-14 h-14 lg:w-16 lg:h-16 bg-purple-mid border-2 border-gold rounded-xl flex items-center justify-center text-lg sm:text-xl lg:text-2xl shadow-[4px_4px_0_#B36A04] sm:shadow-[5px_5px_0_#B36A04]">
             {value.toString().padStart(2, '0')}
           </div>
-          <span className="text-[10px] sm:text-xs uppercase tracking-widest mt-2 text-cream font-nunito">{unit}</span>
+          <span className="text-[10px] lg:text-xs uppercase tracking-widest mt-2 sm:mt-3 text-cream font-nunito">{unit}</span>
         </div>
       ))}
     </motion.div>

@@ -12,7 +12,7 @@ const STATS = [
 
 export default function StatsBar() {
   return (
-    <div className="relative w-full z-10 my-10">
+    <div className="relative w-full z-10 mb-10 mt-0">
 
       {/* Top Wavy SVG — seamless, no stroke */}
       <svg
@@ -24,7 +24,7 @@ export default function StatsBar() {
       </svg>
 
       <section className="bg-gold py-10 sm:py-12 px-6 relative">
-        <div className="stats-grid max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-around gap-10 sm:gap-0">
+        <div className="stats-grid max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-around gap-8 sm:gap-0">
           {STATS.map((stat, idx) => (
             <React.Fragment key={idx}>
               {/* Stat block — perfectly self-centered */}
@@ -48,9 +48,9 @@ export default function StatsBar() {
                 </span>
               </motion.div>
 
-              {/* Vertical divider — outside the stat block, invisible on mobile */}
+              {/* Divider — horizontal on mobile, vertical on desktop */}
               {idx < STATS.length - 1 && (
-                <div className="stats-divider hidden sm:block w-[3px] h-16 bg-purple-bg rounded-full opacity-30 mix-blend-overlay shrink-0" />
+                <div className="stats-divider w-24 h-[3px] sm:w-[3px] sm:h-16 bg-purple-bg rounded-full opacity-30 mix-blend-overlay shrink-0" />
               )}
             </React.Fragment>
           ))}

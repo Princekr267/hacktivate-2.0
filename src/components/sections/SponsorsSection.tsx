@@ -75,35 +75,27 @@ export default function SponsorsSection() {
 
           {/* Unified Sponsors Grid */}
           <div className="flex flex-col gap-8">
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-                gap: '16px',
-              }}
-            >
+            <div className="flex flex-wrap justify-center gap-4">
               {SPONSORS.map((sponsor, idx) => (
                 <motion.div
                   key={idx}
                   whileHover={{ y: -5, x: -5, boxShadow: '7px 7px 0 #B36A04' }}
                   onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
-                  className="ripple-element"
+                  className="ripple-element w-[calc(50%-0.5rem)] min-w-[140px] sm:w-[240px] flex items-center justify-center"
                   style={{
                     background: '#43186B',
                     border: '3px solid #EFD844',
                     borderRadius: '16px',
                     boxShadow: '4px 4px 0 #B36A04',
-                    padding: '24px 32px',
+                    padding: '16px 16px',
                     minHeight: '100px',
-                    width: '240px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
                   }}
                 >
                   {sponsor.logo ? (
-                    <img src={sponsor.logo} alt={sponsor.name} className="max-w-full max-h-full object-contain" />
+                    <>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={sponsor.logo} alt={sponsor.name} className="max-w-full max-h-full object-contain" />
+                    </>
                   ) : (
                     <span className="font-fredoka text-[18px] text-gold" style={{ opacity: 0.6 }}>{sponsor.name}</span>
                   )}
@@ -117,7 +109,7 @@ export default function SponsorsSection() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-32 max-w-2xl mx-auto border-[3px] border-dashed border-gold rounded-3xl p-10 text-center bg-purple-bg/50 backdrop-blur-sm relative"
+            className="mt-32 max-w-2xl mx-auto border-[3px] border-dashed border-gold rounded-3xl p-6 sm:p-10 text-center bg-purple-bg/50 backdrop-blur-sm relative"
           >
             <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black border-2 border-gold px-4 py-1 rounded-full text-gold font-nunito font-bold text-sm">
               Partner With Us

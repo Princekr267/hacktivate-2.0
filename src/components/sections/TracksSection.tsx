@@ -62,7 +62,7 @@ function TrackCard({ track, idx }: { track: typeof TRACKS[number]; idx: number }
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: idx * 0.1, type: "spring", bounce: 0.4 }}
-      className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] max-w-[320px] flex"
+      className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] sm:max-w-[320px] flex"
     >
       <TiltCard
         className="card-hover scan-shimmer gold-pulse ripple-element w-full bg-purple-mid border-[3px] border-gold rounded-[20px] p-6 pt-8 relative group shadow-offset flex flex-col justify-center"

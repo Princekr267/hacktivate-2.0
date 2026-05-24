@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { memo } from "react";
 
 // --- Mascot: Hacker Cat ---
-const HackerCat = memo(() => (
+export const HackerCat = memo(() => (
   <svg viewBox="0 0 120 140" width="110" height="128">
     {/* Ears */}
     <polygon points="22,30 10,2 42,18" fill="#79359C" stroke="#080511" strokeWidth="2.5"/>
@@ -44,7 +44,7 @@ const HackerCat = memo(() => (
 HackerCat.displayName = "HackerCat";
 
 // --- Mascot: Pixel Alien ---
-const PixelAlien = memo(() => (
+export const PixelAlien = memo(() => (
   <svg viewBox="0 0 100 120" width="90" height="108">
     {/* Antenna */}
     <line x1="50" y1="8" x2="50" y2="25" stroke="#EFD844" strokeWidth="3"/>
@@ -164,7 +164,7 @@ const PixelSkull = memo(() => (
 PixelSkull.displayName = "PixelSkull";
 
 // --- Mascot: Rocket ---
-const Rocket = memo(() => (
+export const Rocket = memo(() => (
   <svg viewBox="0 0 70 110" width="62" height="98">
     {/* Flame */}
     <ellipse cx="35" cy="102" rx="14" ry="12" fill="#EFD844" opacity="0.9"/>
@@ -218,7 +218,7 @@ const MASCOTS: { Component: React.ComponentType; x: number; yPct: number; delay:
 
 export default function FloatingMascots() {
   return (
-    <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0" aria-hidden="true">
+    <div className="hidden md:block absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0" aria-hidden="true">
       {MASCOTS.filter(m => !m.skipHero).map((m, i) => (
         <motion.div
           key={i}
@@ -233,7 +233,9 @@ export default function FloatingMascots() {
           animate={{ y: [-m.amp, m.amp, -m.amp], rotate: [m.rot, m.rot + 8 * m.rotDir, m.rot] }}
           transition={{ duration: 5 + i * 0.7, delay: m.delay, repeat: Infinity, ease: "easeInOut" }}
         >
-          <m.Component />
+          <div className="scale-[1.6] sm:scale-100 origin-center">
+            <m.Component />
+          </div>
         </motion.div>
       ))}
     </div>

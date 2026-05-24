@@ -9,8 +9,8 @@ const NAV_LINKS = [
   { name: "Home", href: "#home" },
   { name: "Tracks", href: "#tracks" },
   { name: "Timeline", href: "#timeline" },
-  { name: "Team", href: "#team" },
   { name: "Sponsors", href: "#sponsors" },
+  { name: "Team", href: "#team" },
   { name: "FAQ", href: "#faq" },
 ];
 
@@ -50,37 +50,35 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 flex items-center justify-between gap-2 sm:gap-4">
 
           {/* Logo */}
-          <div className="flex items-center justify-center h-full order-1 shrink-0 gap-2">
+          <div className="flex items-center justify-center h-full order-1 shrink-0 gap-1.5 sm:gap-2 max-w-[75vw]">
             <a
               href="https://hashtag-new.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 group"
+              className="flex items-center gap-2 group shrink"
               aria-label="Visit Hashtag Official website"
             >
               {/* Logo container */}
-              <div className="flex items-center">
+              <div className="flex items-center shrink">
                 <Image
                   src="/web_elements/hashtag-logo.png"
                   alt="Hashtag Official"
                   width={140}
                   height={50}
-                  className="h-[30px] sm:h-[34px] w-auto object-contain opacity-100 transition-opacity duration-300 brightness-110"
+                  className="h-[28px] sm:h-[32px] w-auto object-contain opacity-100 transition-opacity duration-300 brightness-110 shrink-0"
                 />
               </div>
             </a>
             
             {/* Vertical separator */}
-            <div className="block w-[1.5px] h-6 sm:h-8 bg-gold/25 rounded-full mx-1 sm:mx-2" />
+            <div className="block w-[1.5px] h-5 sm:h-8 bg-gold/25 rounded-full mx-0.5 sm:mx-2 shrink-0" />
 
-            <a href="#home" className="flex items-center" onClick={(e) => scrollToSection(e, '#home')}>
-              <Image
+            <a href="#home" className="flex items-center shrink min-w-0" onClick={(e) => scrollToSection(e, '#home')}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/web_elements/logo.png"
                 alt="Hacktivate Logo"
-                width={200}
-                height={60}
-                priority
-                className="w-[120px] sm:w-[148px] lg:w-[175px] h-auto object-contain origin-left drop-shadow-[0_0_14px_rgba(239,216,68,0.18)]"
+                className="h-[56px] sm:h-[76px] lg:h-[86px] w-auto object-contain origin-left scale-100 sm:scale-[1.2] lg:scale-[1.2] ml-0 sm:-ml-2 drop-shadow-[0_0_14px_rgba(239,216,68,0.18)]"
               />
             </a>
           </div>
@@ -128,7 +126,7 @@ export default function Navbar() {
 
           {/* Hamburger — mobile only */}
           <button
-            className="lg:hidden order-3 text-gold p-2 rounded-lg border-2 border-gold/40"
+            className="lg:hidden order-3 text-gold p-2 rounded-lg border-2 border-gold/80 min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Toggle menu"
           >

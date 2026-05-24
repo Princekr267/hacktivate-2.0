@@ -27,7 +27,7 @@ export default function TimelineSection() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ type: "tween", ease: "easeOut", duration: 0.8 }}
-        className="absolute left-[-5px] top-[12%] md:top-[15%] z-[20]"
+        className="hidden md:block absolute left-[-5px] top-[15%] z-[20]"
         style={{ willChange: "transform, opacity" }}
       >
         <motion.img
@@ -45,7 +45,7 @@ export default function TimelineSection() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ type: "tween", ease: "easeOut", duration: 0.8, delay: 0.15 }}
-        className="absolute right-[-5px] bottom-[12%] md:bottom-[15%] z-[20]"
+        className="hidden md:block absolute right-[-5px] bottom-[15%] z-[20]"
         style={{ willChange: "transform, opacity" }}
       >
         <motion.img
@@ -77,9 +77,9 @@ export default function TimelineSection() {
         {/* Timeline Container */}
         <div className="relative">
           
-          {/* Vertical Spine — hidden on mobile */}
+          {/* Vertical Spine */}
           <div
-            className="hidden md:block absolute left-8 md:left-1/2 top-0 bottom-0 w-[5px] -translate-x-1/2 rounded-full"
+            className="absolute left-2 md:left-1/2 top-0 bottom-0 w-1 md:w-[5px] md:-translate-x-1/2 rounded-full"
             style={{
               background: "linear-gradient(to bottom, #EFD844, #D89202)",
               boxShadow: "0 0 15px rgba(239, 216, 68, 0.4)"
@@ -108,7 +108,7 @@ export default function TimelineSection() {
                     />
                   </div>
                   {/* Mobile dot */}
-                  <div className="md:hidden absolute left-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gold" style={{ boxShadow: "0 0 8px #EFD844" }} />
+                  <div className="md:hidden absolute left-[3px] top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gold" style={{ boxShadow: "0 0 8px #EFD844" }} />
 
                   {/* Card Content — full width on mobile, 45% on desktop */}
                   <motion.div 
@@ -116,7 +116,7 @@ export default function TimelineSection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ type: "spring", bounce: 0.4 }}
-                    className="w-full md:w-[45%] pl-6 md:pl-0"
+                    className="w-full md:w-[45%] pl-8 md:pl-0"
                   >
                     <div className="bg-purple-mid border-[3px] border-gold rounded-2xl p-6 shadow-offset relative">
                       {/* Arrow tail for desktop */}

@@ -108,9 +108,9 @@ export default function FaqSection() {
               >
                 <button 
                   onClick={() => toggleOpen(idx)}
-                  className="flex items-center justify-between w-full p-6 text-left focus:outline-none"
+                  className="flex items-center justify-between w-full p-4 sm:p-6 text-left focus:outline-none"
                 >
-                  <span className="faq-question font-fredoka text-gold text-xl pr-4">{faq.q}</span>
+                  <span className="faq-question font-fredoka text-gold text-base sm:text-xl pr-4">{faq.q}</span>
                   <motion.div 
                     animate={{ rotate: isOpen ? 45 : 0 }}
                     transition={{ type: "spring", bounce: 0.5 }}
@@ -129,7 +129,7 @@ export default function FaqSection() {
                       transition={{ duration: 0.35, ease: [0.04, 0.62, 0.23, 0.98] }}
                       className="overflow-hidden"
                     >
-                      <div className="p-6 pt-0 border-t-2 border-gold/30 mt-2 mx-6">
+                      <div className="p-4 sm:p-6 pt-0 border-t-2 border-gold/30 mt-2 mx-4 sm:mx-6">
                         <p className="font-nunito text-cream opacity-90 pt-4 leading-relaxed">
                           {faq.a}
                         </p>

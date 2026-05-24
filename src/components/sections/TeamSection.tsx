@@ -49,20 +49,6 @@ const TEAM = [
     github: "https://github.com/ankit77003",
   },
   {
-    name: "Avishka Bhardwaj",
-    avatar: "/team_photos/avishka.jpg",
-    twitter: "https://www.instagram.com/avishka.20?utm_source=qr&igsh=MTNzZ2I3cDdsYWV2NQ==",
-    linkedin: "https://www.linkedin.com/in/avishka-bhardwaj-091807327",
-    github: "https://github.com/avishkabhardwaj",
-  },
-  {
-    name: "Anantabh Kashyap",
-    avatar: "",
-    twitter: "https://www.instagram.com/arxnkshyp/",
-    linkedin: "https://www.linkedin.com/in/arin-kashyap/",
-    github: "https://github.com/arxnkshyp/",
-  },
-  {
     name: "Atulya Mukesh",
     avatar: "/team_photos/atulya.jpg",
     twitter: "https://www.instagram.com/atulya.mukesh/profilecard/?igsh=MThyenFxOTEydWZ5Zw==",
@@ -75,6 +61,20 @@ const TEAM = [
     twitter: "https://www.instagram.com/akshatjain2411",
     linkedin: "https://www.linkedin.com/in/Akshatjain",
     github: "https://github.com/Akshatjain2411",
+  },
+  {
+    name: "Avishka Bhardwaj",
+    avatar: "/team_photos/avishka.jpg",
+    twitter: "https://www.instagram.com/avishka.20?utm_source=qr&igsh=MTNzZ2I3cDdsYWV2NQ==",
+    linkedin: "https://www.linkedin.com/in/avishka-bhardwaj-091807327",
+    github: "https://github.com/avishkabhardwaj",
+  },
+  {
+    name: "Anantabh Kashyap",
+    avatar: "/team_photos/arin.jpg",
+    twitter: "https://www.instagram.com/arxnkshyp/",
+    linkedin: "https://www.linkedin.com/in/arin-kashyap/",
+    github: "https://github.com/arxnkshyp/",
   },
   {
     name: "Shreya Sai",
@@ -168,7 +168,7 @@ const TEAM = [
     github: "https://github.com/shuklarimjhim87-a11y",
   },
   {
-    name: "Bhumika Dobha",
+    name: "Bhumika Dobhal",
     avatar: "/team_photos/bhumika.jpg",
     twitter: "https://www.instagram.com/bhumika_dobhal?igsh=MXBkb3g3NmNtdzBhbg==",
     linkedin: "https://www.linkedin.com/in/bhumika-dobhal-06118b381?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
@@ -292,10 +292,8 @@ export default function TeamSection() {
                     ],
                   }}
                   transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="mx-auto flex items-center justify-center relative overflow-hidden"
+                  className="mx-auto flex items-center justify-center relative overflow-hidden w-[100px] h-[100px] sm:w-[130px] sm:h-[130px]"
                   style={{
-                    width: 130,
-                    height: 130,
                     borderRadius: "50%",
                     background: "linear-gradient(135deg, #291648, #43186B)",
                     border: "3px solid #EFD844",
@@ -304,6 +302,7 @@ export default function TeamSection() {
                 >
                   {member.avatar !== "" ? (
                     <>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={member.avatar}
                         alt={member.name}
@@ -369,10 +368,8 @@ export default function TeamSection() {
                       aria-label={s.label}
                       whileHover={{ y: -2, background: "#EFD844", color: "#291648" }}
                       transition={{ duration: 0.18 }}
-                      className="font-fredoka"
+                      className="font-fredoka w-[44px] h-[44px] sm:w-[40px] sm:h-[40px]"
                       style={{
-                        width: 40,
-                        height: 40,
                         background: "#291648",
                         border: "2px solid #EFD844",
                         borderRadius: 8,

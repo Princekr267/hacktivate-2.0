@@ -7,7 +7,7 @@
    ================================================ */
 @layer base {
   body {
-    @apply bg-purple-bg text-cream font-nunito overflow-x-hidden;
+    @apply bg-purple-bg text-cream font-nunito;
     cursor: none;
   }
 
@@ -15,18 +15,25 @@
     cursor: none;
   }
 
-  ::-webkit-scrollbar { width: 12px; }
+  /* ================================================
+     CUSTOM SCROLLBAR (Premium Theme)
+     ================================================ */
+  ::-webkit-scrollbar {
+    width: 14px;
+  }
   ::-webkit-scrollbar-track {
-    background: #080511;
-    border-left: 2px solid #291648;
+    background: #0a0314; /* Deep dark purple matching the background */
   }
   ::-webkit-scrollbar-thumb {
-    background: #EFD844;
-    border: 2px solid #080511;
+    background: linear-gradient(180deg, #EFD844 0%, #D89202 100%);
+    border-radius: 10px;
+    border: 4px solid #0a0314; /* Creates a sleek floating pill effect */
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #D89202;
+    background: linear-gradient(180deg, #FFEA55 0%, #EFD844 100%);
   }
+
+
 
   ::selection {
     background: #EFD844;
@@ -226,7 +233,7 @@ canvas,
    RESPONSIVE: PREVENT HORIZONTAL OVERFLOW
    ================================================ */
 html, body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* ================================================
