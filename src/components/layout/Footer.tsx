@@ -67,12 +67,12 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
             {/* Hacktivate main logo */}
-            <div className="flex items-center -ml-8 md:-ml-12 mb-0 md:-mb-2">
+            <div className="flex items-center justify-center md:justify-start w-full md:w-auto ml-0 md:-ml-12 mb-0 md:-mb-2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/web_elements/logo.png"
                 alt="Hacktivate Logo"
-                className="h-[70px] md:h-[90px] w-auto object-contain scale-[1.4] md:scale-[1.6] origin-left"
+                className="h-[70px] md:h-[90px] w-auto object-contain scale-[1.4] md:scale-[1.6] origin-center md:origin-left mx-auto md:mx-0"
               />
             </div>
 

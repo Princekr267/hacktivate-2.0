@@ -78,7 +78,7 @@ export default function Navbar() {
               <img
                 src="/web_elements/logo.png"
                 alt="Hacktivate Logo"
-                className="h-[56px] sm:h-[76px] lg:h-[86px] w-auto object-contain origin-left scale-100 sm:scale-[1.2] lg:scale-[1.2] ml-0 sm:-ml-2 drop-shadow-[0_0_14px_rgba(239,216,68,0.18)]"
+                className="h-[56px] sm:h-[76px] lg:h-[86px] w-auto object-contain origin-left scale-[1.25] sm:scale-[1.2] lg:scale-[1.2] ml-0 sm:-ml-2 drop-shadow-[0_0_14px_rgba(239,216,68,0.18)]"
               />
             </a>
           </div>

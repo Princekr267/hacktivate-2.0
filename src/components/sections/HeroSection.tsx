@@ -45,7 +45,7 @@ export default function HeroSection() {
         
         {/* Top fold: Location Badge & Hero Image */}
         <motion.div
-          className="relative flex flex-col items-center justify-center w-full min-h-[calc(100vh-68px)] px-4 py-8 sm:py-4 sm:px-8"
+          className="relative flex flex-col items-center justify-start pt-16 sm:justify-center sm:pt-4 w-full min-h-[60vh] sm:min-h-[calc(100vh-68px)] px-4 pb-0 sm:pb-8 sm:py-4 sm:px-8"
           initial="hidden"
           animate="show"
           variants={{ hidden: {}, show: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } } }}
@@ -55,7 +55,7 @@ export default function HeroSection() {
             variants={{ hidden: { opacity: 0, y: 18, scale: 0.96 }, show: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", bounce: 0.35 } } }}
             animate={{ y: [0, -5, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-nowrap items-center justify-center gap-1.5 sm:gap-2 bg-black/85 text-cream border-[1.5px] border-gold rounded-full px-3 py-1.5 sm:px-5 sm:py-2 font-nunito font-bold text-[9px] sm:text-xs md:text-sm shadow-[0_4px_25px_rgba(239,216,68,0.25)] mb-6 mx-auto relative z-20 text-center max-w-full w-fit"
+            className="flex flex-nowrap items-center justify-center gap-1.5 sm:gap-2 bg-black/85 text-cream border-[1.5px] border-gold rounded-full px-3 py-1.5 sm:px-5 sm:py-2 font-nunito font-bold text-[9px] sm:text-xs md:text-sm shadow-[0_4px_25px_rgba(239,216,68,0.25)] mb-8 sm:mb-6 mx-auto relative z-20 text-center max-w-full w-fit"
           >
             <span className="text-gold animate-pulse shrink-0 text-[10px] sm:text-sm">✦</span>
             <span className="leading-none whitespace-nowrap pt-[2px]">11-12 SEP 2026 · JIMSEMTC · GREATER NOIDA</span>
@@ -64,27 +64,29 @@ export default function HeroSection() {
           {/* Hero image */}
           <motion.div
             variants={{ hidden: { opacity: 0, scale: 0.94 }, show: { opacity: 1, scale: 1, transition: { type: "spring", bounce: 0.3, duration: 0.8 } } }}
-            className="relative w-full max-w-[340px] sm:max-w-[750px] md:max-w-[900px] mx-auto select-none -mt-4 sm:-mt-24 md:-mt-36"
+            className="relative w-full max-w-[650px] sm:max-w-[750px] md:max-w-[900px] mx-auto select-none -mt-2 sm:-mt-24 md:-mt-36"
           >
-            {/* Oval background radial matching user's red oval */}
-            <div className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 w-[130%] h-[75%] rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(130,50,180,0.85)_0%,rgba(80,30,120,0.55)_45%,transparent_80%)] blur-[90px] pointer-events-none mix-blend-screen" />
+            <div className="relative w-full scale-[1.45] sm:scale-100 origin-center">
+              {/* Oval background radial matching user's red oval */}
+              <div className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 w-[130%] h-[75%] rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(130,50,180,0.85)_0%,rgba(80,30,120,0.55)_45%,transparent_80%)] blur-[90px] pointer-events-none mix-blend-screen" />
 
-            <div className="relative z-10 w-full mx-auto flex justify-center items-center mt-2 sm:mt-0">
-              <Image
-                src="/web_elements/hero-image.png"
-                alt="Hacktivate Hero"
-                width={1000}
-                height={600}
-                priority
-                className="w-full h-auto object-contain drop-shadow-[0_15px_40px_rgba(8,5,17,0.4)]"
-              />
+              <div className="relative z-10 w-full mx-auto flex justify-center items-center mt-2 sm:mt-0">
+                <Image
+                  src="/web_elements/hero-image.png"
+                  alt="Hacktivate Hero"
+                  width={1000}
+                  height={600}
+                  priority
+                  className="w-full h-auto object-contain drop-shadow-[0_15px_40px_rgba(8,5,17,0.4)]"
+                />
+              </div>
             </div>
           </motion.div>
         </motion.div>
 
         {/* Bottom fold: Tagline & CTA row (revealed when scrolling) */}
         <motion.div
-          className="relative flex flex-col items-center justify-center w-full py-16 sm:py-24 z-20"
+          className="relative flex flex-col items-center justify-center w-full pt-4 pb-16 sm:py-24 z-20"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
