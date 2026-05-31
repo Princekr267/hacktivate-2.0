@@ -26,6 +26,7 @@ export default function HeroSection() {
   const handleRegister = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
     ripple.onClick(e as React.MouseEvent<HTMLElement>);
     triggerConfetti();
+    window.open("https://hackculture.io/hackathons/hacktivate-2-0", "_blank", "noopener,noreferrer");
   }, [ripple, triggerConfetti]);
 
   return (

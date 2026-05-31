@@ -5,9 +5,9 @@ import { Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 
 const TICKER_ITEMS = [
-  "36 HOURS", "✦", "NON-STOP CODING", "✦", "3000+ HACKERS", "✦", "FREE FOOD", "✦", "₹2L+ PRIZE POOL", "✦",
-  "36 HOURS", "✦", "NON-STOP CODING", "✦", "3000+ HACKERS", "✦", "FREE FOOD", "✦", "₹2L+ PRIZE POOL", "✦",
-  "36 HOURS", "✦", "NON-STOP CODING", "✦", "3000+ HACKERS", "✦", "FREE FOOD", "✦", "₹2L+ PRIZE POOL", "✦",
+  "36 HOURS", "✦", "NON-STOP CODING", "✦", "3000+ HACKERS", "✦", "FREE FOOD", "✦", "₹1L+ PRIZE POOL", "✦",
+  "36 HOURS", "✦", "NON-STOP CODING", "✦", "3000+ HACKERS", "✦", "FREE FOOD", "✦", "₹1L+ PRIZE POOL", "✦",
+  "36 HOURS", "✦", "NON-STOP CODING", "✦", "3000+ HACKERS", "✦", "FREE FOOD", "✦", "₹1L+ PRIZE POOL", "✦",
 ];
 
 const TRACKS_TICKER_ITEMS = [

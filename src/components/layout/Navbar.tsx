@@ -115,14 +115,20 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* CTA — desktop */}
-          <motion.button
-            whileTap={{ scale: 0.95, backgroundColor: "#a855c8", color: "#EFD844", borderColor: "#EFD844", boxShadow: "none" }}
-            transition={{ type: "spring", stiffness: 400, damping: 15 }}
-            className="hidden lg:flex order-3 shrink-0 bg-gold hover:bg-purple-mid text-black hover:text-gold hover:border-gold font-fredoka uppercase px-6 py-2 rounded-xl border-[3px] border-black shadow-offset-black transition-all items-center gap-2"
+          <a
+            href="https://hackculture.io/hackathons/hacktivate-2-0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden lg:flex order-3 shrink-0"
           >
-            Register <Zap size={18} fill="currentColor" />
-          </motion.button>
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 15 }}
+              className="bg-gold hover:bg-purple-mid text-black hover:text-gold hover:border-gold font-fredoka uppercase px-6 py-2 rounded-xl border-[3px] border-black shadow-offset-black transition-all flex items-center gap-2 active:bg-purple-mid active:text-gold active:border-gold active:shadow-none"
+            >
+              Register <Zap size={18} fill="currentColor" />
+            </motion.button>
+          </a>
 
           {/* Hamburger — mobile only */}
           <button
@@ -159,9 +165,16 @@ export default function Navbar() {
                 </a>
               ))}
               <div className="p-4">
-                <button className="w-full bg-gold hover:bg-purple-mid text-black hover:text-gold hover:border-gold font-fredoka uppercase px-6 py-3 rounded-xl border-[3px] border-black shadow-offset-black flex items-center justify-center gap-2 transition-colors">
-                  Register <Zap size={18} fill="currentColor" />
-                </button>
+                <a
+                  href="https://hackculture.io/hackathons/hacktivate-2-0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full"
+                >
+                  <button className="w-full bg-gold hover:bg-purple-mid text-black hover:text-gold hover:border-gold font-fredoka uppercase px-6 py-3 rounded-xl border-[3px] border-black shadow-offset-black flex items-center justify-center gap-2 transition-colors">
+                    Register <Zap size={18} fill="currentColor" />
+                  </button>
+                </a>
               </div>
 
             </nav>

@@ -99,22 +99,96 @@ export default function SponsorsSection() {
             </motion.h2>
           </div>
 
-          {/* Sponsors Grid */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-wrap justify-center gap-6 md:gap-8 mb-20"
-          >
-            <div className="bg-purple-bg/40 backdrop-blur-md border-2 border-gold/30 rounded-2xl p-5 sm:p-6 flex items-center justify-center hover:border-gold/80 hover:bg-purple-mid/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(239,216,68,0.25)] hover:-translate-y-1">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img 
-                src="/Sponser/lazer%20crazer.png" 
-                alt="Lazer Crazer" 
-                className="w-auto h-16 sm:h-20 object-contain drop-shadow-md"
-              />
-            </div>
-          </motion.div>
+          {/* Sponsors — Tiered Layout */}
+          <div className="flex flex-col items-center gap-10 mb-20">
+
+            {/* Platform Partner — HackCulture */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="w-full flex flex-col items-center gap-3"
+            >
+              <div className="flex items-center gap-3">
+                <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-cyan-400/60" />
+                <span className="font-nunito font-black text-[11px] uppercase tracking-[0.2em] text-cyan-300 border border-cyan-400/40 bg-cyan-400/10 rounded-full px-4 py-1">
+                  Platform Partner
+                </span>
+                <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-cyan-400/60" />
+              </div>
+              <div className="w-full max-w-sm">
+                <div className="w-full h-44 bg-purple-bg/40 backdrop-blur-md border-2 border-cyan-400/40 rounded-2xl p-6 flex items-center justify-center hover:border-cyan-400/80 hover:bg-purple-mid/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] hover:-translate-y-1">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/Sponser/HackCulture.png"
+                    alt="HackCulture"
+                    className="max-w-[75%] max-h-[75%] object-contain drop-shadow-md"
+                  />
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Divider */}
+            <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+
+            {/* Gold Sponsor — Logitech */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="w-full flex flex-col items-center gap-3"
+            >
+              <div className="flex items-center gap-3">
+                <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-gold/60" />
+                <span className="font-nunito font-black text-[11px] uppercase tracking-[0.2em] text-gold border border-gold/40 bg-gold/10 rounded-full px-4 py-1">
+                  🥇 Gold Sponsor
+                </span>
+                <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-gold/60" />
+              </div>
+              <div className="w-full max-w-sm">
+                <div className="w-full h-44 bg-purple-bg/40 backdrop-blur-md border-2 border-gold/50 rounded-2xl p-6 flex items-center justify-center hover:border-gold/90 hover:bg-purple-mid/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(239,216,68,0.25)] hover:-translate-y-1">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/Sponser/Logitech_print_white_L.png"
+                    alt="Logitech"
+                    className="max-w-[75%] max-h-[75%] object-contain drop-shadow-md"
+                  />
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Divider */}
+            <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+
+            {/* In-Kind Sponsor — Lazer Crazer */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="w-full flex flex-col items-center gap-3"
+            >
+              <div className="flex items-center gap-3">
+                <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-purple-400/60" />
+                <span className="font-nunito font-black text-[11px] uppercase tracking-[0.2em] text-purple-300 border border-purple-400/40 bg-purple-400/10 rounded-full px-4 py-1">
+                  In-Kind Sponsor
+                </span>
+                <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-purple-400/60" />
+              </div>
+              <div className="w-full max-w-sm">
+                <div className="w-full h-44 bg-purple-bg/40 backdrop-blur-md border-2 border-purple-400/40 rounded-2xl p-6 flex items-center justify-center hover:border-purple-400/80 hover:bg-purple-mid/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] hover:-translate-y-1">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/Sponser/lazer_crazer.jpeg"
+                    alt="Lazer Crazer"
+                    className="max-w-[75%] max-h-[75%] object-contain drop-shadow-md rounded-xl"
+                  />
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
 
           {/* CTA Box */}
           <motion.div 
@@ -130,7 +204,10 @@ export default function SponsorsSection() {
             <motion.button 
               onClick={() => setIsModalOpen(true)}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 bg-gold text-black font-fredoka uppercase px-8 py-4 rounded-xl border-[3px] border-black hover:bg-purple-mid hover:text-gold transition-all shadow-[6px_6px_0px_#000] hover:shadow-none hover:translate-y-1 hover:translate-x-1"
+              animate={{ boxShadow: ["6px 6px 0px #000", "6px 6px 0px #000, 0 0 20px rgba(239,216,68,0.6)", "6px 6px 0px #000"] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="inline-flex items-center gap-2 bg-gold text-black font-fredoka uppercase px-8 py-4 rounded-xl border-[3px] border-black hover:bg-purple-mid hover:text-gold hover:border-gold transition-all hover:-translate-y-1 hover:-translate-x-1"
+              style={{ boxShadow: "6px 6px 0px #000" }}
             >
               Request Deck
             </motion.button>
