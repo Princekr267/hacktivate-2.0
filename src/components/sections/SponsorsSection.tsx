@@ -109,9 +109,9 @@ export default function SponsorsSection() {
               viewport={{ once: true }}
               className="w-full flex flex-col items-center gap-3"
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center gap-3">
                 <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-cyan-400/60" />
-                <span className="font-nunito font-black text-[11px] uppercase tracking-[0.2em] text-cyan-300 border border-cyan-400/40 bg-cyan-400/10 rounded-full px-4 py-1">
+                <span className="font-nunito font-black text-[11px] uppercase tracking-[0.2em] text-cyan-300 border border-cyan-400/40 bg-cyan-400/10 rounded-full px-4 py-1 text-center">
                   Platform Partner
                 </span>
                 <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-cyan-400/60" />
@@ -139,9 +139,9 @@ export default function SponsorsSection() {
               transition={{ delay: 0.1 }}
               className="w-full flex flex-col items-center gap-3"
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center gap-3">
                 <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-gold/60" />
-                <span className="font-nunito font-black text-[11px] uppercase tracking-[0.2em] text-gold border border-gold/40 bg-gold/10 rounded-full px-4 py-1">
+                <span className="font-nunito font-black text-[11px] uppercase tracking-[0.2em] text-gold border border-gold/40 bg-gold/10 rounded-full px-4 py-1 text-center">
                   🥇 Gold Sponsor
                 </span>
                 <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-gold/60" />
@@ -169,9 +169,9 @@ export default function SponsorsSection() {
               transition={{ delay: 0.2 }}
               className="w-full flex flex-col items-center gap-3"
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center gap-3">
                 <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-purple-400/60" />
-                <span className="font-nunito font-black text-[11px] uppercase tracking-[0.2em] text-purple-300 border border-purple-400/40 bg-purple-400/10 rounded-full px-4 py-1">
+                <span className="font-nunito font-black text-[11px] uppercase tracking-[0.2em] text-purple-300 border border-purple-400/40 bg-purple-400/10 rounded-full px-4 py-1 text-center">
                   In-Kind Sponsor
                 </span>
                 <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-purple-400/60" />
