@@ -49,6 +49,12 @@ const TRACKS = [
     desc: "Protect our planet through technology. Create tools for pollution monitoring, waste reduction, and ecological preservation.",
     tags: ["Sustainability", "Sensors", "Data"],
   },
+  {
+    icon: "💡",
+    title: "Open Innovation",
+    desc: "Got an idea that doesn't fit the box? Good. Build it anyway. Open Innovation is for the ones who see a problem nobody else is solving yet.",
+    tags: ["Self-defined", "Emerging Tech", "Real-world"],
+  },
 ];
 
 /** Single track card with cursor-following radial glow overlay */
@@ -93,9 +99,9 @@ function TrackCard({ track, idx }: { track: typeof TRACKS[number]; idx: number }
 
         {/* Content */}
         <h3 className="font-fredoka text-gold text-[21px] mb-3 relative z-10">{track.title}</h3>
-        <p className="font-nunito font-semibold text-cream opacity-90 mb-6 text-sm leading-relaxed flex-1 relative z-10">
+        <div className="font-nunito font-semibold text-cream opacity-90 mb-6 text-sm leading-relaxed flex-1 relative z-10">
           {track.desc}
-        </p>
+        </div>
 
         {/* Tags removed as requested */}
       </TiltCard>
