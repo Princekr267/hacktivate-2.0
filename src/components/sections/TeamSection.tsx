@@ -189,17 +189,13 @@ export default function TeamSection() {
   const gridRef = useRef<HTMLDivElement>(null);
 
   const rafMoveRef = useRef<number>(0);
+  const cardRectsRef = useRef<{ card: HTMLElement; rect: DOMRect }[]>([]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { clientX, clientY } = e;
     cancelAnimationFrame(rafMoveRef.current);
     rafMoveRef.current = requestAnimationFrame(() => {
-      const grid = gridRef.current;
-      if (!grid) return;
-      const cards = grid.querySelectorAll(".team-card");
-      cards.forEach((cardNode) => {
-        const card = cardNode as HTMLElement;
-        const rect = card.getBoundingClientRect();
+      cardRectsRef.current.forEach(({ card, rect }) => {
         card.style.setProperty("--mouse-x", `${clientX - rect.left}px`);
         card.style.setProperty("--mouse-y", `${clientY - rect.top}px`);
       });
@@ -210,6 +206,14 @@ export default function TeamSection() {
     const grid = gridRef.current;
     if (grid) {
       grid.classList.add("grid-hovered");
+      // Cache card positions to eliminate layout thrashing inside handleMouseMove
+      const cards = grid.querySelectorAll(".team-card");
+      const rects: { card: HTMLElement; rect: DOMRect }[] = [];
+      cards.forEach((cardNode) => {
+        const card = cardNode as HTMLElement;
+        rects.push({ card, rect: card.getBoundingClientRect() });
+      });
+      cardRectsRef.current = rects;
     }
   };
 

@@ -92,7 +92,7 @@ export default function Navbar() {
           </div>
 
           {/* Nav links — desktop only */}
-          <nav className="hidden lg:flex items-center gap-2 order-2 mx-auto">
+          <nav className="hidden lg:flex items-center gap-2 order-2 mx-auto relative">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.name}

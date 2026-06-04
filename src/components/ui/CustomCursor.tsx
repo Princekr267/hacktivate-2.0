@@ -80,13 +80,16 @@ export default function CustomCursor() {
       mouseX.set(e.clientX - 7);
       mouseY.set(e.clientY - 7);
 
-      const target = e.target as HTMLElement;
-      const hovering = !!(
-        target.tagName.toLowerCase() === "a" ||
-        target.tagName.toLowerCase() === "button" ||
-        target.closest("a") ||
-        target.closest("button")
-      );
+      const target = e.target as HTMLElement | null;
+      let hovering = false;
+      if (target && target.tagName) {
+        const tagName = target.tagName.toLowerCase();
+        hovering = !!(
+          tagName === "a" ||
+          tagName === "button" ||
+          (typeof target.closest === "function" && (target.closest("a") || target.closest("button")))
+        );
+      }
       if (hovering !== isHoveringRef.current) {
         isHoveringRef.current = hovering;
         setIsHovering(hovering);

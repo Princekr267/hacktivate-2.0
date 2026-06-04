@@ -10,7 +10,7 @@ export default function PageFadeIn({ children }: { children: ReactNode }) {
       animate={{ opacity: 1 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
       className="contents-fade-wrapper"
-      style={{ minHeight: '100%', width: '100%', display: 'block' }}
+      style={{ minHeight: '100%', width: '100%', display: 'block', position: 'relative' }}
     >
       {children}
     </motion.div>
