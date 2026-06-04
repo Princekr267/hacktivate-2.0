@@ -1,7 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll } from "framer-motion";
 import TimelineBackground from "@/components/backgrounds/TimelineBackground";
+import AnimatedHeading from "@/components/ui/AnimatedHeading";
 
 const TIMELINE = [
   {
@@ -37,6 +39,12 @@ const TIMELINE = [
 
 
 export default function TimelineSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"],
+  });
+
   return (
     <section id="timeline" className="py-20 px-6 bg-black relative z-0 overflow-hidden">
       {/* Ambient glows */}
@@ -85,26 +93,25 @@ export default function TimelineSection() {
 
         {/* Header */}
         <div className="flex flex-col items-center mb-12 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-fredoka text-cream"
-            style={{ fontSize: "clamp(38px, 5vw, 60px)", textShadow: "4px 4px 0 #B36A04" }}
-          >
-            Timeline
-          </motion.h2>
+          <AnimatedHeading text="Timeline" shadowColor="#B36A04" />
         </div>
 
         {/* Timeline Container */}
-        <div className="relative">
+        <div ref={containerRef} className="relative">
 
-          {/* Vertical Spine */}
+          {/* Vertical Spine Background (dimmed) */}
           <div
+            className="absolute left-2 md:left-1/2 top-0 bottom-0 w-1 md:w-[5px] md:-translate-x-1/2 rounded-full bg-gold/15"
+          />
+
+          {/* Vertical Spine Foreground (progressive glow filling) */}
+          <motion.div
             className="absolute left-2 md:left-1/2 top-0 bottom-0 w-1 md:w-[5px] md:-translate-x-1/2 rounded-full"
             style={{
+              scaleY: scrollYProgress,
+              originY: 0,
               background: "linear-gradient(to bottom, #EFD844, #D89202)",
-              boxShadow: "0 0 15px rgba(239, 216, 68, 0.4)",
+              boxShadow: "0 0 15px rgba(239, 216, 68, 0.6)",
             }}
           />
 

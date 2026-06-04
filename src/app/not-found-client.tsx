@@ -2,8 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import CanvasParticles from "@/components/backgrounds/CanvasParticles";
-import { HackerCat, PixelAlien, Rocket } from "@/components/ui/FloatingMascots";
+import { HackerCat, PixelAlien } from "@/components/ui/FloatingMascots";
 
 const ERROR_CODES = [
   { text: "ERROR", top: "15%", left: "10%", delay: "0s", duration: "4s" },
@@ -17,8 +16,6 @@ const ERROR_CODES = [
 export default function NotFoundClient() {
   return (
     <main className="min-h-screen bg-[#130522] relative flex flex-col items-center justify-center overflow-hidden">
-      {/* Background Particles */}
-      <CanvasParticles />
 
       {/* Large radial purple glow */}
       <div
@@ -63,13 +60,7 @@ export default function NotFoundClient() {
           <PixelAlien />
         </motion.div>
 
-        <motion.div
-          className="absolute bottom-[15%] left-[50%] -translate-x-1/2"
-          animate={{ y: [-18, 18, -18], rotate: [-10, 10, -10] }}
-          transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-        >
-          <Rocket />
-        </motion.div>
+
       </div>
 
       {/* Main Content */}

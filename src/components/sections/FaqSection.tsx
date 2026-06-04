@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
 import FaqBackground from "@/components/backgrounds/FaqBackground";
+import AnimatedHeading from "@/components/ui/AnimatedHeading";
 
 const FAQS = [
   {
@@ -72,7 +73,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="py-32 px-6 bg-purple-bg relative z-0 overflow-hidden">
+    <section id="faq" className="py-32 px-6 bg-transparent relative z-0 overflow-hidden">
       {/* Ambient glows */}
       <div className="absolute top-[-5%] right-[-5%] w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(239,216,68,0.1)_0%,transparent_70%)] rounded-full pointer-events-none" />
       <div className="absolute bottom-[-5%] left-[-5%] w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(168,85,200,0.2)_0%,transparent_70%)] rounded-full pointer-events-none" style={{ animationDelay: '3s' }} />
@@ -81,15 +82,7 @@ export default function FaqSection() {
         
         {/* Header */}
         <div className="flex flex-col items-center mb-16 text-center">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-fredoka text-cream"
-            style={{ fontSize: "clamp(38px, 5vw, 60px)", textShadow: "4px 4px 0 #080511" }}
-          >
-            FAQ
-          </motion.h2>
+          <AnimatedHeading text="FAQ" shadowColor="#080511" />
         </div>
 
         {/* Accordion */}

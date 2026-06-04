@@ -79,7 +79,7 @@ export default function Footer() {
             {/* Tagline */}
             <p className="font-nunito font-bold text-cream/55 text-sm leading-relaxed mb-6 max-w-[240px]">
               Build Bold. Break Limits.<br />
-              <span className="text-cream/35 text-xs">The ultimate 24-hour hackathon at JIMSEMTC, Greater Noida.</span>
+              <span className="text-cream/35 text-xs">The ultimate 36-hour hackathon at JIMSEMTC, Greater Noida.</span>
             </p>
 
             {/* Organized by block */}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
 import confetti from "canvas-confetti";
@@ -11,6 +11,25 @@ import { useRipple } from "@/hooks/useRipple";
 
 export default function HeroSection() {
   const ripple = useRipple();
+  
+  // Tagline typewriter states
+  const [taglineCount, setTaglineCount] = useState(0);
+
+  useEffect(() => {
+    let taglineIdx = 0;
+    const typeTagline = setInterval(() => {
+      if (taglineIdx <= 24) {
+        setTaglineCount(taglineIdx);
+        taglineIdx++;
+      } else {
+        clearInterval(typeTagline);
+      }
+    }, 60);
+
+    return () => {
+      clearInterval(typeTagline);
+    };
+  }, []);
 
   const triggerConfetti = useCallback(() => {
     const colors = ["#EFD844", "#a855c8"];
@@ -33,8 +52,6 @@ export default function HeroSection() {
     <section id="home" className="relative min-h-screen w-full flex flex-col items-center justify-start overflow-hidden" style={{ paddingTop: "68px" }}>
       <HeroBackground />
 
-      {/* Base layer */}
-      <div className="absolute inset-0 bg-[#080511] pointer-events-none z-0" />
       
       {/* Dark vignette overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_40%,rgba(255,255,255,0.04)_0%,rgba(0,0,0,0.22)_45%,rgba(8,5,17,0.65)_100%)] pointer-events-none z-10" />
@@ -52,37 +69,38 @@ export default function HeroSection() {
           variants={{ hidden: {}, show: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } } }}
         >
           {/* Location badge */}
-          <motion.div
-            variants={{ hidden: { opacity: 0, y: 18, scale: 0.96 }, show: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", bounce: 0.35 } } }}
-            animate={{ y: [0, -5, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-nowrap items-center justify-center gap-1.5 sm:gap-2 bg-black/85 text-cream border-[1.5px] border-gold rounded-full px-3 py-1.5 sm:px-5 sm:py-2 font-nunito font-bold text-[9px] sm:text-xs md:text-sm shadow-[0_4px_25px_rgba(239,216,68,0.25)] mb-8 sm:mb-6 mx-auto relative z-20 text-center max-w-full w-fit"
-          >
-            <span className="text-gold animate-pulse shrink-0 text-[10px] sm:text-sm">✦</span>
-            <span className="leading-none whitespace-nowrap pt-[2px]">11-12 SEP 2026 · JIMSEMTC · GREATER NOIDA</span>
-          </motion.div>
+          <div className="relative z-20 mx-auto w-fit mb-8 sm:mb-6">
+            <motion.div
+              variants={{ hidden: { opacity: 0, y: 18, scale: 0.96 }, show: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", bounce: 0.35 } } }}
+              className="flex flex-nowrap items-center justify-center gap-1.5 sm:gap-2 bg-black/85 text-cream border-[1.5px] border-gold rounded-full px-3 py-1.5 sm:px-5 sm:py-2 font-nunito font-bold text-[9px] sm:text-xs md:text-sm shadow-[0_4px_25px_rgba(239,216,68,0.25)] text-center max-w-full w-fit"
+            >
+              <span className="text-gold animate-pulse shrink-0 text-[10px] sm:text-sm">✦</span>
+              <span className="leading-none whitespace-nowrap pt-[2px]">11-12 SEP 2026 · JIMSEMTC · GREATER NOIDA</span>
+            </motion.div>
+          </div>
 
           {/* Hero image */}
-          <motion.div
-            variants={{ hidden: { opacity: 0, scale: 0.94 }, show: { opacity: 1, scale: 1, transition: { type: "spring", bounce: 0.3, duration: 0.8 } } }}
-            className="relative w-full max-w-[650px] sm:max-w-[750px] md:max-w-[900px] mx-auto select-none -mt-2 sm:-mt-24 md:-mt-36"
-          >
-            <div className="relative w-full scale-[1.45] sm:scale-100 origin-center">
-              {/* Oval background radial matching user's red oval */}
-              <div className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 w-[130%] h-[75%] rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(130,50,180,0.85)_0%,rgba(80,30,120,0.55)_45%,transparent_80%)] blur-[90px] pointer-events-none mix-blend-screen" />
+          <div className="relative w-full max-w-[650px] sm:max-w-[750px] md:max-w-[900px] mx-auto select-none -mt-2 sm:-mt-24 md:-mt-36 z-10">
+            <motion.div
+              variants={{ hidden: { opacity: 0, scale: 0.94 }, show: { opacity: 1, scale: 1, transition: { type: "spring", bounce: 0.3, duration: 0.8 } } }}
+            >
+              <div className="relative w-full scale-[1.45] sm:scale-100 origin-center">
+                {/* Oval background radial */}
+                <div className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 w-[130%] h-[75%] rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(130,50,180,0.85)_0%,rgba(80,30,120,0.55)_45%,transparent_80%)] blur-[90px] pointer-events-none" />
 
-              <div className="relative z-10 w-full mx-auto flex justify-center items-center mt-2 sm:mt-0">
-                <Image
-                  src="/web_elements/hero-image.png"
-                  alt="Hacktivate Hero"
-                  width={1000}
-                  height={600}
-                  priority
-                  className="w-full h-auto object-contain drop-shadow-[0_15px_40px_rgba(8,5,17,0.4)]"
-                />
+                <div className="relative z-10 w-full mx-auto flex justify-center items-center mt-2 sm:mt-0">
+                  <Image
+                    src="/web_elements/hero-image.png"
+                    alt="Hacktivate Hero"
+                    width={1000}
+                    height={600}
+                    priority
+                    className="w-full h-auto object-contain drop-shadow-[0_15px_40px_rgba(8,5,17,0.4)]"
+                  />
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* Bottom fold: Tagline & CTA row (revealed when scrolling) */}
@@ -93,11 +111,25 @@ export default function HeroSection() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          {/* Tagline */}
-          <div className="flex flex-col items-center justify-center relative z-20">
-            <h2 className="font-fredoka text-4xl sm:text-5xl md:text-6xl text-center leading-tight mb-6 drop-shadow-md flex flex-col sm:flex-row items-center justify-center sm:gap-3">
-              <span className="text-gold" style={{ textShadow: "3px 3px 0 #000" }}>Build Bold.</span>
-              <span className="text-cream mt-1 sm:mt-0" style={{ textShadow: "3px 3px 0 #000" }}>Break Limits.</span>
+          {/* Tagline typewriter wrapper */}
+          <div className="flex flex-col items-center justify-center relative z-20 w-full">
+            <h2 className="font-fredoka text-4xl sm:text-5xl md:text-6xl text-center leading-tight mb-6 drop-shadow-md flex flex-col sm:flex-row items-center justify-center sm:gap-3 min-h-[80px] sm:min-h-[120px]">
+              {taglineCount <= 11 ? (
+                <span className="text-gold flex items-center justify-center gap-0.5" style={{ textShadow: "3px 3px 0 #000" }}>
+                  {"Build Bold.".substring(0, taglineCount)}
+                  <span className="animate-blink bg-gold inline-block w-[4px] h-[36px] sm:h-[48px] md:h-[56px] ml-1 align-middle" />
+                </span>
+              ) : (
+                <>
+                  <span className="text-gold flex items-center justify-center gap-0.5" style={{ textShadow: "3px 3px 0 #000" }}>
+                    Build Bold.
+                  </span>
+                  <span className="text-cream mt-1 sm:mt-0 flex items-center justify-center gap-0.5" style={{ textShadow: "3px 3px 0 #000" }}>
+                    {"Break Limits.".substring(0, taglineCount - 11)}
+                    <span className="animate-blink bg-cream inline-block w-[4px] h-[36px] sm:h-[48px] md:h-[56px] ml-1 align-middle" />
+                  </span>
+                </>
+              )}
             </h2>
 
             {/* Micro-line */}

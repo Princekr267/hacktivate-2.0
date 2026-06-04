@@ -23,7 +23,6 @@ export const metadata: Metadata = {
 };
 
 import CustomCursor from "@/components/ui/CustomCursor";
-import CanvasParticles from "@/components/backgrounds/CanvasParticles";
 import ErrorBoundary from "@/components/ErrorBoundary";
 
 export default function RootLayout({
@@ -38,7 +37,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className={`${fredoka.variable} ${nunito.variable} antialiased`} suppressHydrationWarning>
-        <CanvasParticles />
         <CustomCursor />
         {/* Subtle grid overlay for depth */}
         <div className="bg-grid fixed inset-0 opacity-[0.06] pointer-events-none z-0 mix-blend-screen" />

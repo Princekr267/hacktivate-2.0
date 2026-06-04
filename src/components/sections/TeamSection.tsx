@@ -1,7 +1,9 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { useRipple } from "@/hooks/useRipple";
+import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import SponsorsBackground from "@/components/backgrounds/SponsorsBackground";
 
 const TEAM = [
@@ -184,6 +186,43 @@ const SOCIAL = [
 
 export default function TeamSection() {
   const ripple = useRipple();
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  const rafMoveRef = useRef<number>(0);
+  const cardRectsRef = useRef<{ card: HTMLElement; rect: DOMRect }[]>([]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { clientX, clientY } = e;
+    cancelAnimationFrame(rafMoveRef.current);
+    rafMoveRef.current = requestAnimationFrame(() => {
+      cardRectsRef.current.forEach(({ card, rect }) => {
+        card.style.setProperty("--mouse-x", `${clientX - rect.left}px`);
+        card.style.setProperty("--mouse-y", `${clientY - rect.top}px`);
+      });
+    });
+  };
+
+  const handleMouseEnter = () => {
+    const grid = gridRef.current;
+    if (grid) {
+      grid.classList.add("grid-hovered");
+      // Cache card positions to eliminate layout thrashing inside handleMouseMove
+      const cards = grid.querySelectorAll(".team-card");
+      const rects: { card: HTMLElement; rect: DOMRect }[] = [];
+      cards.forEach((cardNode) => {
+        const card = cardNode as HTMLElement;
+        rects.push({ card, rect: card.getBoundingClientRect() });
+      });
+      cardRectsRef.current = rects;
+    }
+  };
+
+  const handleMouseLeave = () => {
+    const grid = gridRef.current;
+    if (grid) {
+      grid.classList.remove("grid-hovered");
+    }
+  };
 
   return (
     <section
@@ -221,22 +260,7 @@ export default function TeamSection() {
           </motion.div>
 
           {/* Heading */}
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ type: "spring", bounce: 0.3, delay: 0.08 }}
-            className="font-fredoka"
-            style={{
-              fontSize: "clamp(38px, 5vw, 58px)",
-              textShadow: "3px 3px 0 #B36A04",
-              color: "#EFD844",
-              lineHeight: 1.15,
-            }}
-          >
-            Meet The{" "}
-            <span style={{ color: "#FFFCF3" }}>Team</span>
-          </motion.h2>
+          <AnimatedHeading text="Meet The Team" shadowColor="#B36A04" />
 
           {/* Subtext */}
           <motion.p
@@ -257,135 +281,133 @@ export default function TeamSection() {
         </div>
 
         {/* ── Team grid ── */}
-        <div className="team-grid flex flex-wrap justify-center gap-8">
+        <div 
+          ref={gridRef}
+          onMouseMove={handleMouseMove}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className="team-grid flex flex-wrap justify-center gap-8"
+        >
           {TEAM.map((member, idx) => (
             <motion.div
               key={member.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0, transition: { type: "spring", bounce: 0.35, delay: idx * 0.08 } }}
-              viewport={{ once: true, margin: "-50px" }}
-              whileHover={{ y: -6, boxShadow: "10px 10px 0 #B36A04", transition: { type: "spring", stiffness: 400, damping: 17 } }}
+              initial={{ opacity: 0, scale: 0.9, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ delay: Math.min(idx * 0.05, 0.4), type: "spring", stiffness: 120, damping: 18 }}
               onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
-              className="ripple-element w-full sm:w-[310px]"
+              className="ripple-element w-full sm:w-[310px] team-card"
               style={{
-                background: "#1a0832",
-                border: "3px solid #EFD844",
                 borderRadius: 20,
-                boxShadow: "6px 6px 0 #B36A04",
                 overflow: "hidden",
                 cursor: "none",
+                padding: "3px",
               }}
             >
-              {/* Gold crown band */}
-              <div style={{ height: 6, background: "#EFD844", width: "100%" }} className="team-card-band" />
+              <div className="team-card-inner">
+                {/* Gold crown band */}
+                <div style={{ height: 6, background: "#EFD844", width: "100%" }} className="team-card-band" />
 
-              {/* Card content */}
-              <div style={{ padding: "24px 20px 22px", textAlign: "center" }}>
+                {/* Card content wrapped in team-card-content */}
+                <div className="team-card-content" style={{ padding: "24px 20px 22px", textAlign: "center" }}>
 
-                {/* Avatar with double-ring + glow */}
-                <motion.div
-                  animate={{
-                    boxShadow: [
-                      "0 0 0 4px #291648, 0 0 10px rgba(239,216,68,0.2)",
-                      "0 0 0 4px #291648, 0 0 30px rgba(239,216,68,0.6)",
-                      "0 0 0 4px #291648, 0 0 10px rgba(239,216,68,0.2)",
-                    ],
-                  }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="mx-auto flex items-center justify-center relative overflow-hidden w-[100px] h-[100px] sm:w-[130px] sm:h-[130px]"
-                  style={{
-                    borderRadius: "50%",
-                    background: "linear-gradient(135deg, #291648, #43186B)",
-                    border: "3px solid #EFD844",
-                    marginBottom: 16,
-                  }}
-                >
-                  {member.avatar !== "" ? (
-                    <>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={member.avatar}
-                        alt={member.name}
-                        className="w-full h-full object-cover object-center rounded-full"
-                        style={{ transform: `translateZ(0) scale(${('scale' in member) ? member.scale : 1})`, backfaceVisibility: "hidden" }}
-                        onLoad={(e) => {
-                          e.currentTarget.style.display = 'block';
-                          const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-                          if (fallback) fallback.style.display = 'none';
-                        }}
-                        onError={(e) => {
-                          e.currentTarget.style.display = 'none';
-                          const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-                          if (fallback) fallback.style.display = 'block';
-                        }}
-                      />
+                  {/* Avatar */}
+                  <div
+                    className="mx-auto flex items-center justify-center relative overflow-hidden w-[100px] h-[100px] sm:w-[130px] sm:h-[130px] team-card-avatar"
+                    style={{
+                      borderRadius: "50%",
+                      background: "linear-gradient(135deg, #291648, #43186B)",
+                      border: "3px solid #EFD844",
+                      marginBottom: 16,
+                    }}
+                  >
+                    {member.avatar !== "" ? (
+                      <>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={member.avatar}
+                          alt={member.name}
+                          className="w-full h-full object-cover object-center rounded-full"
+                          style={{ transform: `translateZ(0) scale(${('scale' in member) ? member.scale : 1})`, backfaceVisibility: "hidden" }}
+                          onLoad={(e) => {
+                            e.currentTarget.style.display = 'block';
+                            const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                            if (fallback) fallback.style.display = 'none';
+                          }}
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                            const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                            if (fallback) fallback.style.display = 'block';
+                          }}
+                        />
+                        <span
+                          className="font-fredoka"
+                          style={{ display: 'none', fontSize: 36, color: "#EFD844" }}
+                        >
+                          {member.name.charAt(0).toUpperCase()}
+                        </span>
+                      </>
+                    ) : (
                       <span
                         className="font-fredoka"
-                        style={{ display: 'none', fontSize: 36, color: "#EFD844" }}
+                        style={{ fontSize: 36, color: "#EFD844" }}
                       >
                         {member.name.charAt(0).toUpperCase()}
                       </span>
-                    </>
-                  ) : (
-                    <span
-                      className="font-fredoka"
-                      style={{ fontSize: 36, color: "#EFD844" }}
-                    >
-                      {member.name.charAt(0).toUpperCase()}
-                    </span>
-                  )}
-                </motion.div>
+                    )}
+                  </div>
 
-                {/* Name */}
-                <p className="font-fredoka" style={{ fontSize: 21, color: "#EFD844", marginBottom: 16 }}>
-                  {member.name}
-                </p>
+                  {/* Name */}
+                  <p className="font-fredoka" style={{ fontSize: 21, color: "#EFD844", marginBottom: 16 }}>
+                    {member.name}
+                  </p>
 
-                {/* Divider */}
-                <div
-                  style={{
-                    height: 1,
-                    background: "rgba(239,216,68,0.15)",
-                    width: "60%",
-                    margin: "0 auto 14px",
-                  }}
-                />
+                  {/* Divider */}
+                  <div
+                    style={{
+                      height: 1,
+                      background: "rgba(239,216,68,0.15)",
+                      width: "60%",
+                      margin: "0 auto 14px",
+                    }}
+                  />
 
-                {/* Social icons */}
-                <div style={{ display: "flex", justifyContent: "center", gap: 8 }}>
-                  {SOCIAL.map((s) => (
-                    <motion.a
-                      key={s.label}
-                      href={
-                        s.label === "Instagram"
-                          ? member.twitter
-                          : s.label === "LinkedIn"
-                            ? member.linkedin
-                            : member.github || "https://github.com"
-                      }
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={s.label}
-                      whileHover={{ y: -2, background: "#EFD844", color: "#291648" }}
-                      transition={{ duration: 0.18 }}
-                      className="font-fredoka w-[44px] h-[44px] sm:w-[40px] sm:h-[40px]"
-                      style={{
-                        background: "#291648",
-                        border: "2px solid #EFD844",
-                        borderRadius: 8,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: 14,
-                        color: "#EFD844",
-                        boxShadow: "2px 2px 0 #000",
-                        textDecoration: "none",
-                        cursor: "none",
-                      }}
-                    >
-                      {s.icon}
-                    </motion.a>
-                  ))}
+                  {/* Social icons */}
+                  <div style={{ display: "flex", justifyContent: "center", gap: 8 }}>
+                    {SOCIAL.map((s) => (
+                      <motion.a
+                        key={s.label}
+                        href={
+                          s.label === "Instagram"
+                            ? member.twitter
+                            : s.label === "LinkedIn"
+                              ? member.linkedin
+                              : member.github || "https://github.com"
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={s.label}
+                        whileHover={{ y: -2, background: "#EFD844", color: "#291648" }}
+                        transition={{ duration: 0.18 }}
+                        className="font-fredoka w-[44px] h-[44px] sm:w-[40px] sm:h-[40px]"
+                        style={{
+                          background: "#291648",
+                          border: "2px solid #EFD844",
+                          borderRadius: 8,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: 14,
+                          color: "#EFD844",
+                          boxShadow: "2px 2px 0 #000",
+                          textDecoration: "none",
+                          cursor: "none",
+                        }}
+                      >
+                        {s.icon}
+                      </motion.a>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>

@@ -11,7 +11,12 @@
     cursor: none;
   }
 
-  a, button, input, textarea, select, label {
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  label {
     cursor: none;
   }
 
@@ -21,14 +26,19 @@
   ::-webkit-scrollbar {
     width: 14px;
   }
+
   ::-webkit-scrollbar-track {
-    background: #0a0314; /* Deep dark purple matching the background */
+    background: #0a0314;
+    /* Deep dark purple matching the background */
   }
+
   ::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #EFD844 0%, #D89202 100%);
     border-radius: 10px;
-    border: 4px solid #0a0314; /* Creates a sleek floating pill effect */
+    border: 4px solid #0a0314;
+    /* Creates a sleek floating pill effect */
   }
+
   ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(180deg, #FFEA55 0%, #EFD844 100%);
   }
@@ -48,9 +58,10 @@
   .bg-grid {
     background-size: 40px 40px;
     background-image:
-      linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   }
+
   .text-balance {
     text-wrap: balance;
   }
@@ -60,23 +71,28 @@
    SCAN-LINE SHIMMER — card shine effect
    ================================================ */
 @keyframes scan {
-  0%   { background-position: 0% -200%; }
-  100% { background-position: 0% 300%; }
+  0% {
+    background-position: 0% -200%;
+  }
+
+  100% {
+    background-position: 0% 300%;
+  }
 }
+
 .scan-shimmer {
   position: relative;
   overflow: hidden;
 }
+
 .scan-shimmer::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(239, 216, 68, 0.07) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(239, 216, 68, 0.07) 50%,
+      transparent 100%);
   background-size: 100% 60%;
   animation: scan 4s linear infinite;
   pointer-events: none;
@@ -87,9 +103,17 @@
    GOLD BORDER GLOW PULSE
    ================================================ */
 @keyframes border-pulse {
-  0%, 100% { box-shadow: 5px 5px 0 #B36A04; }
-  50%       { box-shadow: 5px 5px 0 #B36A04, 0 0 20px 4px rgba(239, 216, 68, 0.25); }
+
+  0%,
+  100% {
+    box-shadow: 5px 5px 0 #B36A04;
+  }
+
+  50% {
+    box-shadow: 5px 5px 0 #B36A04, 0 0 20px 4px rgba(239, 216, 68, 0.25);
+  }
 }
+
 .gold-pulse {
   animation: border-pulse 3s ease-in-out infinite;
 }
@@ -98,9 +122,17 @@
    FLOAT-CHIP BOUNCE
    ================================================ */
 @keyframes float-chip {
-  0%, 100% { transform: translateY(0px) rotate(-1deg); }
-  50%       { transform: translateY(-8px) rotate(1deg); }
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(-1deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
 }
+
 .float-chip {
   animation: float-chip 3s ease-in-out infinite;
 }
@@ -111,29 +143,38 @@
 .card-hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 .card-hover:hover {
   transform: translate(-4px, -4px);
-  box-shadow: 8px 8px 0 #B36A04, 0 0 40px rgba(239,216,68,0.25);
+  box-shadow: 8px 8px 0 #B36A04, 0 0 40px rgba(239, 216, 68, 0.25);
 }
 
 /* ================================================
    SHIMMER BUTTON
    ================================================ */
 @keyframes btn-shimmer {
-  0%   { left: -80%; }
-  100% { left: 130%;  }
+  0% {
+    left: -80%;
+  }
+
+  100% {
+    left: 130%;
+  }
 }
+
 .btn-shimmer {
   position: relative;
   overflow: hidden;
 }
+
 .btn-shimmer::after {
   content: "";
   position: absolute;
-  top: 0; bottom: 0;
+  top: 0;
+  bottom: 0;
   left: -80%;
   width: 60%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
   animation: btn-shimmer 2.5s ease-in-out infinite;
   pointer-events: none;
 }
@@ -142,23 +183,33 @@
    NEON TEXT GLOW
    ================================================ */
 .neon-gold {
-  text-shadow: 0 0 10px #EFD844, 0 0 30px rgba(239,216,68,0.6), 0 0 60px rgba(239,216,68,0.2);
+  text-shadow: 0 0 10px #EFD844, 0 0 30px rgba(239, 216, 68, 0.6), 0 0 60px rgba(239, 216, 68, 0.2);
 }
+
 .neon-purple {
-  text-shadow: 0 0 10px #a855c8, 0 0 30px rgba(168,85,200,0.6);
+  text-shadow: 0 0 10px #a855c8, 0 0 30px rgba(168, 85, 200, 0.6);
 }
 
 /* ================================================
    RIPPLE CLICK EFFECT
    ================================================ */
 @keyframes ripple-out {
-  0%   { transform: scale(0); opacity: 1; }
-  100% { transform: scale(2); opacity: 0; }
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
 }
+
 .ripple-element {
   position: relative;
   overflow: hidden;
 }
+
 .ripple-element .ripple-circle {
   position: absolute;
   border-radius: 50%;
@@ -174,9 +225,11 @@
 .faq-item {
   transition: padding-left 0.2s ease;
 }
+
 .faq-item:hover .faq-question {
   padding-left: 8px;
 }
+
 .faq-question {
   transition: padding-left 0.2s ease;
 }
@@ -186,9 +239,19 @@
    Adds a rich, breathing glow to sections
    ================================================ */
 @keyframes glow-pulse {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50%       { opacity: 0.7; transform: scale(1.08); }
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.08);
+  }
 }
+
 .ambient-blob {
   position: absolute;
   border-radius: 50%;
@@ -200,9 +263,17 @@
    INTERACTIVE CARD GLOW (hover aura)
    ================================================ */
 @keyframes card-aura {
-  0%, 100% { box-shadow: 6px 6px 0 #B36A04, 0 0 0px rgba(239,216,68,0); }
-  50%       { box-shadow: 6px 6px 0 #B36A04, 0 0 40px rgba(239,216,68,0.3); }
+
+  0%,
+  100% {
+    box-shadow: 6px 6px 0 #B36A04, 0 0 0px rgba(239, 216, 68, 0);
+  }
+
+  50% {
+    box-shadow: 6px 6px 0 #B36A04, 0 0 40px rgba(239, 216, 68, 0.3);
+  }
 }
+
 .aura-card {
   animation: card-aura 4s ease-in-out infinite;
 }
@@ -211,8 +282,15 @@
    TOUCH DEVICE: DISABLE CUSTOM CURSOR
    ================================================ */
 @media (hover: none) {
-  #custom-cursor-root { display: none !important; }
-  body, a, button { cursor: auto !important; }
+  #custom-cursor-root {
+    display: none !important;
+  }
+
+  body,
+  a,
+  button {
+    cursor: auto !important;
+  }
 }
 
 /* ================================================
@@ -222,8 +300,7 @@
 .gold-pulse,
 .scan-shimmer::after,
 .section-glow,
-canvas,
-.floating-mascot {
+canvas {
   will-change: transform;
   backface-visibility: hidden;
   transform: translateZ(0);
@@ -232,7 +309,8 @@ canvas,
 /* ================================================
    RESPONSIVE: PREVENT HORIZONTAL OVERFLOW
    ================================================ */
-html, body {
+html,
+body {
   overflow-x: clip;
 }
 
@@ -240,7 +318,10 @@ html, body {
    RESPONSIVE: SECTION PADDING SCALE-DOWN
    ================================================ */
 @media (max-width: 768px) {
-  section.py-32 { padding-top: 56px !important; padding-bottom: 56px !important; }
+  section.py-32 {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
 }
 
 
@@ -265,6 +346,7 @@ html, body {
     align-items: stretch !important;
     width: 100%;
   }
+
   .hero-cta-row button,
   .hero-cta-row a {
     width: 100% !important;
@@ -276,10 +358,15 @@ html, body {
    RESPONSIVE: TRACKS GRID
    ================================================ */
 @media (max-width: 1024px) {
-  .tracks-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .tracks-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
+
 @media (max-width: 640px) {
-  .tracks-grid { grid-template-columns: 1fr !important; }
+  .tracks-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 /* ================================================
@@ -290,16 +377,173 @@ html, body {
   grid-template-columns: repeat(4, 1fr);
   gap: 28px;
 }
+
 @media (max-width: 1023px) {
-  .team-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
 }
+
 @media (max-width: 767px) {
-  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  section#team { padding-top: 56px !important; padding-bottom: 56px !important; }
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  section#team {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
 }
+
 .team-card-band {
   transition: background 0.2s ease;
 }
-.team-grid > div:hover .team-card-band {
+
+.team-grid>div:hover .team-card-band {
   background: #FFE566;
 }
+
+/* ================================================
+   SPOTLIGHT GRID EFFECT (Team Section)
+   ================================================ */
+.team-grid {
+  position: relative;
+}
+
+.team-card {
+  position: relative;
+  background: #EFD844; /* default bright gold border */
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 6px 6px 0 #B36A04;
+}
+
+/* Internal content wrapper */
+.team-card-inner {
+  position: relative;
+  z-index: 2;
+  background: #1a0832;
+  border-radius: 17px; /* fits inside the 20px border-radius of parent */
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Border spotlight glow */
+.team-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    300px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    #EFD844 0%,
+    rgba(239, 216, 68, 0.4) 50%,
+    transparent 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Inside card background spotlight glow */
+.team-card-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    250px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(239, 216, 68, 0.08) 0%,
+    rgba(152, 60, 176, 0.03) 50%,
+    transparent 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Make sure inner elements in card stand above the glow */
+.team-card-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Under hover or active spotlight states when mouse enters the grid */
+.team-grid.grid-hovered .team-card::before,
+.team-grid.grid-hovered .team-card-inner::before {
+  opacity: 1;
+}
+
+/* Dim default state of cards when grid is hovered, except where spotlight shines */
+.team-grid.grid-hovered .team-card {
+  background: rgba(239, 216, 68, 0.15) !important; /* Dim border */
+  box-shadow: 6px 6px 0 rgba(179, 106, 4, 0.2) !important; /* Dim shadow */
+}
+
+/* Hovering a card lights it up and lifts it */
+.team-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 10px 10px 0 #B36A04 !important;
+  background: #EFD844 !important; /* Force border to be fully gold on direct hover */
+}
+
+/* ================================================
+   3D FLIP CARD HELPER CLASSES (Track Card Icon)
+   ================================================ */
+.perspective-3d {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.group:hover .preserve-3d {
+  transform: rotateY(180deg);
+}
+
+/* ================================================
+   AURORA BOREALIS LAYER — translate-only for GPU compositing
+   ================================================ */
+@keyframes aurora-drift-1 {
+  0%, 100% { transform: translate(0px, 0px); }
+  33%  { transform: translate(60px, -80px); }
+  66%  { transform: translate(-40px, 60px); }
+}
+
+@keyframes aurora-drift-2 {
+  0%, 100% { transform: translate(0px, 0px); }
+  50%  { transform: translate(-80px, 100px); }
+}
+
+@keyframes aurora-drift-3 {
+  0%, 100% { transform: translate(0px, 0px); }
+  40%  { transform: translate(70px, -60px); }
+  80%  { transform: translate(-50px, 40px); }
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+  pointer-events: none;
+  z-index: 0;
+  contain: layout style;
+}
+
+
