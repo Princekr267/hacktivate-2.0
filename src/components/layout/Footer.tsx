@@ -172,9 +172,9 @@ export default function Footer() {
 
       {/* Corner Elements */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/web_elements/corner%20element%20robo.png" alt="Corner Element Robo" className="absolute bottom-0 left-0 w-[80px] md:w-[250px] pointer-events-none z-0" />
+      <img src="/web_elements/corner%20element%20robo.png" alt="Corner Element Robo" className="absolute bottom-0 left-0 w-[160px] sm:w-[200px] md:w-[250px] pointer-events-none z-0" />
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/web_elements/corner%20element%20bar.png" alt="Corner Element Bar" className="absolute bottom-0 right-0 w-[100px] md:w-[340px] pointer-events-none z-0" />
+      <img src="/web_elements/corner%20element%20bar.png" alt="Corner Element Bar" className="absolute bottom-0 right-0 w-[180px] sm:w-[260px] md:w-[340px] pointer-events-none z-0" />
 
     </footer>
   );
