@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import TracksBackground from "@/components/backgrounds/TracksBackground";
+import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import TiltCard from "@/components/ui/TiltCard";
 import { useRipple } from "@/hooks/useRipple";
 
@@ -64,10 +65,10 @@ function TrackCard({ track, idx }: { track: typeof TRACKS[number]; idx: number }
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: idx * 0.1, type: "spring", bounce: 0.4 }}
+      initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
+      whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ delay: idx * 0.08, type: "spring", stiffness: 100, damping: 15 }}
       className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] sm:max-w-[320px] flex"
     >
       <TiltCard
@@ -92,9 +93,18 @@ function TrackCard({ track, idx }: { track: typeof TRACKS[number]; idx: number }
           />
         )}
 
-        {/* Icon Box */}
-        <div className="w-[68px] h-[68px] bg-black border-2 border-gold rounded-2xl shadow-offset-black flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10">
-          {track.icon}
+        {/* Icon Box with 3D Flip */}
+        <div className="w-[68px] h-[68px] mb-6 relative perspective-3d z-10">
+          <div className="w-full h-full preserve-3d relative">
+            {/* Front: standard emoji on black background */}
+            <div className="absolute inset-0 bg-black border-2 border-gold rounded-2xl shadow-offset-black flex items-center justify-center text-3xl backface-hidden">
+              {track.icon}
+            </div>
+            {/* Back: emoji on glowing gold background */}
+            <div className="absolute inset-0 bg-gold border-2 border-gold rounded-2xl flex items-center justify-center text-3xl backface-hidden rotate-y-180 shadow-[0_0_20px_rgba(239,216,68,0.7)] text-black">
+              {track.icon}
+            </div>
+          </div>
         </div>
 
         {/* Content */}
@@ -111,7 +121,7 @@ function TrackCard({ track, idx }: { track: typeof TRACKS[number]; idx: number }
 
 export default function TracksSection() {
   return (
-    <section id="tracks" className="py-32 px-6 bg-purple-bg relative z-0 overflow-hidden">
+    <section id="tracks" className="py-32 px-6 bg-transparent relative z-0 overflow-hidden">
       {/* Ambient glows */}
       <div className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(168,85,200,0.15)_0%,transparent_70%)] rounded-full pointer-events-none" />
       <div className="absolute bottom-[-10%] right-[-5%] w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(239,216,68,0.1)_0%,transparent_70%)] rounded-full pointer-events-none" style={{ animationDelay: '3s' }} />
@@ -128,16 +138,7 @@ export default function TracksSection() {
           >
             The Challenge
           </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="font-fredoka text-cream neon-gold"
-            style={{ fontSize: "clamp(38px, 5vw, 60px)", textShadow: "4px 4px 0 #080511" }}
-          >
-            Tracks &amp; Themes
-          </motion.h2>
+          <AnimatedHeading text="Tracks & Themes" shadowColor="#080511" />
         </div>
 
         {/* Grid */}

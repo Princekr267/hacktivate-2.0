@@ -17,7 +17,7 @@ const TRACKS_TICKER_ITEMS = [
 
 export default function Footer() {
   return (
-    <footer className="relative w-full bg-black">
+    <footer className="relative w-full bg-transparent">
 
       {/* Top Wavy SVG — no stroke, seamless gold */}
       <svg className="w-full h-[calc(2rem+2px)] sm:h-[calc(3rem+2px)] absolute -top-8 sm:-top-12 left-0 text-gold fill-current" viewBox="0 0 1440 48" preserveAspectRatio="none">

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import FaqBackground from "@/components/backgrounds/FaqBackground";
+import AnimatedHeading from "@/components/ui/AnimatedHeading";
 
 export default function SponsorsSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -62,7 +63,7 @@ export default function SponsorsSection() {
   };
 
   return (
-    <section id="sponsors" className="relative w-full py-24 sm:py-32 bg-purple-bg">
+    <section id="sponsors" className="relative w-full py-24 sm:py-32 bg-transparent">
         {/* Top Wavy SVG */}
         <svg className="w-full h-[calc(2rem+2px)] sm:h-[calc(3rem+2px)] absolute -top-8 sm:-top-12 left-0 text-gold fill-current z-20" viewBox="0 0 1440 48" preserveAspectRatio="none">
           <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
@@ -89,14 +90,7 @@ export default function SponsorsSection() {
           
           {/* Header */}
           <div className="flex flex-col items-center mb-16 text-center">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-fredoka text-4xl sm:text-5xl text-gold mb-6 drop-shadow-md"
-            >
-              Our Sponsors
-            </motion.h2>
+            <AnimatedHeading text="Our Sponsors" shadowColor="#080511" />
           </div>
 
           {/* Sponsors — Tiered Layout */}
@@ -104,9 +98,10 @@ export default function SponsorsSection() {
 
             {/* Platform Partner — HackCulture */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 100, damping: 15 }}
               className="w-full flex flex-col items-center gap-3"
             >
               <div className="flex items-center justify-center gap-3">
@@ -133,10 +128,10 @@ export default function SponsorsSection() {
 
             {/* Gold Sponsor — Logitech */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              transition={{ delay: 0.1, type: "spring", stiffness: 100, damping: 15 }}
               className="w-full flex flex-col items-center gap-3"
             >
               <div className="flex items-center justify-center gap-3">
@@ -163,10 +158,10 @@ export default function SponsorsSection() {
 
             {/* In-Kind Sponsor — Lazer Crazer */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.2, type: "spring", stiffness: 100, damping: 15 }}
               className="w-full flex flex-col items-center gap-3"
             >
               <div className="flex items-center justify-center gap-3">

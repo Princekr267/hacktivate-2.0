@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { Zap, Menu, X } from "lucide-react";
 import Image from "next/image";
@@ -19,27 +19,35 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { scrollY } = useScroll();
+  const activeSectionRef = useRef("home");
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 50);
     const sections = NAV_LINKS.map(l => l.href.substring(1));
-    let current = "";
+    let current = latest < 200 ? "home" : "";
     for (const section of sections) {
       const el = document.getElementById(section);
       if (el && latest >= el.offsetTop - 200) current = section;
     }
-    if (current) setActiveSection(current);
-    else if (latest < 200) setActiveSection("home");
+    if (current && current !== activeSectionRef.current) {
+      activeSectionRef.current = current;
+      setActiveSection(current);
+    }
   });
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const scrollToSection = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    const targetSection = href.substring(1);
+    if (targetSection !== activeSectionRef.current) {
+      activeSectionRef.current = targetSection;
+      setActiveSection(targetSection);
+    }
     const el = document.querySelector(href);
     if (el) {
       window.scrollTo({ top: (el as HTMLElement).offsetTop - 68, behavior: "smooth" });
     }
     setMenuOpen(false);
-  };
+  }, []);
 
   return (
     <>
@@ -108,7 +116,7 @@ export default function Navbar() {
                   <motion.div
                     layoutId="nav-pill"
                     className="absolute inset-0 bg-gold rounded-full border-2 border-black shadow-[0_4px_0_rgba(8,5,17,1)]"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 35, mass: 0.5 }}
                   />
                 )}
               </a>

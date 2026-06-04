@@ -6,7 +6,6 @@ import TracksSection from "@/components/sections/TracksSection";
 import TimelineSection from "@/components/sections/TimelineSection";
 import SponsorsSection from "@/components/sections/SponsorsSection";
 import FaqSection from "@/components/sections/FaqSection";
-import FloatingMascots from "@/components/ui/FloatingMascots";
 import TeamSection from "@/components/sections/TeamSection";
 import PageFadeIn from "@/components/ui/PageFadeIn";
 
@@ -14,14 +13,11 @@ export default function Home() {
   return (
     <main className="min-h-screen relative" style={{ overflowX: 'clip' }}>
       <PageFadeIn>
-        {/* Background Glowing Blobs for Premium Depth */}
-        <div className="absolute top-[5%] left-[50%] -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle_at_center,rgba(168,85,200,0.18),transparent_70%)] pointer-events-none z-0" />
-        <div className="absolute top-[28%] right-[-15%] w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle_at_center,rgba(239,216,68,0.05),transparent_70%)] pointer-events-none z-0" />
-        <div className="absolute top-[48%] left-[10%] w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle_at_center,rgba(121,53,156,0.2),transparent_70%)] pointer-events-none z-0" />
-        <div className="absolute top-[72%] right-[-10%] w-[650px] h-[650px] rounded-full bg-[radial-gradient(circle_at_center,rgba(168,85,200,0.1),transparent_70%)] pointer-events-none z-0" />
-        <div className="absolute top-[88%] left-[2%] w-[550px] h-[550px] rounded-full bg-[radial-gradient(circle_at_center,rgba(239,216,68,0.05),transparent_70%)] pointer-events-none z-0" />
+        {/* Aurora Borealis Background Blobs — 3 blobs, translate-only for GPU compositing */}
+        <div className="aurora-blob top-[0%] left-[30%] w-[700px] h-[700px] opacity-[0.45]" style={{ background: "radial-gradient(circle, #43186B 0%, #291648 50%, transparent 75%)", animation: "aurora-drift-1 28s ease-in-out infinite" }} />
+        <div className="aurora-blob top-[35%] right-[-12%] w-[650px] h-[650px] opacity-[0.4]" style={{ background: "radial-gradient(circle, #79359C 0%, #43186B 45%, transparent 75%)", animation: "aurora-drift-2 34s ease-in-out infinite" }} />
+        <div className="aurora-blob top-[65%] left-[-8%] w-[700px] h-[700px] opacity-[0.38]" style={{ background: "radial-gradient(circle, #43186B 0%, #291648 50%, transparent 75%)", animation: "aurora-drift-3 30s ease-in-out infinite" }} />
 
-        <FloatingMascots />
         <Navbar />
         <HeroSection />
         <StatsBar />
