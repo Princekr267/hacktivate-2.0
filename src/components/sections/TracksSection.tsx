@@ -50,12 +50,14 @@ const TRACKS = [
     desc: "Protect our planet through technology. Create tools for pollution monitoring, waste reduction, and ecological preservation.",
     tags: ["Sustainability", "Sensors", "Data"],
   },
-  {
-    icon: "⚡",
-    title: "Best Use of n8n",
-    desc: "Build powerful workflow automations and integrations using n8n. Connect APIs, automate tasks, or design AI-powered workflows.",
-    tags: ["Automation", "APIs", "Low-Code"],
-  },
+  // ── HIDDEN until confirmed ──────────────────────────────────────────────────
+  // {
+  //   icon: "⚡",
+  //   title: "Best Use of n8n",
+  //   desc: "Build powerful workflow automations and integrations using n8n. Connect APIs, automate tasks, or design AI-powered workflows.",
+  //   tags: ["Automation", "APIs", "Low-Code"],
+  // },
+  // ────────────────────────────────────────────────────────────────────────────
   {
     icon: "💡",
     title: "Open Innovation",
