@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import AnimatedNumber from "@/components/ui/AnimatedNumber";
 
 const STATS = [
-  { num: 8,                  label: "Tracks"    },
+  { num: 9,                  label: "Tracks"    },
   { num: 36,  suffix: "h",  label: "Non-Stop"  },
   { num: 1,   prefix: "₹", suffix: "L+", label: "Prize Pool" },
 ];

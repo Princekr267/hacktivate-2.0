@@ -4,10 +4,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import FaqBackground from "@/components/backgrounds/FaqBackground";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
+import { useRipple } from "@/hooks/useRipple";
 
 export default function SponsorsSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const ripple = useRipple();
 
   const handleSubmit = async (
     e: React.FormEvent<HTMLFormElement>
@@ -29,7 +31,7 @@ export default function SponsorsSection() {
     try {
       // Obscured URL to bypass overzealous Windows Defender heuristics
       const targetEndpoint = atob("aHR0cHM6Ly9hcGkud2ViM2Zvcm1zLmNvbS9zdWJtaXQ=");
-      
+
       const response = await fetch(
         targetEndpoint,
         {
@@ -64,158 +66,200 @@ export default function SponsorsSection() {
 
   return (
     <section id="sponsors" className="relative w-full py-24 sm:py-32 bg-transparent">
-        {/* Top Wavy SVG */}
-        <svg className="w-full h-[calc(2rem+2px)] sm:h-[calc(3rem+2px)] absolute -top-8 sm:-top-12 left-0 text-gold fill-current z-20" viewBox="0 0 1440 48" preserveAspectRatio="none">
-          <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
-        </svg>
+      {/* Top Wavy SVG */}
+      <svg className="w-full h-[calc(2rem+2px)] sm:h-[calc(3rem+2px)] absolute -top-8 sm:-top-12 left-0 text-gold fill-current z-20" viewBox="0 0 1440 48" preserveAspectRatio="none">
+        <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
+      </svg>
 
-        <FaqBackground />
+      <FaqBackground />
 
-        {/* Bottom Wavy SVG */}
-        <svg className="w-full h-[calc(2rem+2px)] sm:h-[calc(3rem+2px)] absolute -bottom-8 sm:-bottom-12 left-0 text-gold fill-current rotate-180 z-20" viewBox="0 0 1440 48" preserveAspectRatio="none">
-          <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
-        </svg>
+      {/* Bottom Wavy SVG */}
+      <svg className="w-full h-[calc(2rem+2px)] sm:h-[calc(3rem+2px)] absolute -bottom-8 sm:-bottom-12 left-0 text-gold fill-current rotate-180 z-20" viewBox="0 0 1440 48" preserveAspectRatio="none">
+        <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
+      </svg>
 
-        {/* Ambient glows */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          <div 
-            className="absolute -left-[20%] top-[20%] w-[800px] h-[800px] rounded-full ambient-blob"
-            style={{ background: "radial-gradient(circle, rgba(121,53,156,0.15) 0%, transparent 70%)" }} />
-          <div 
-            className="absolute -right-[10%] bottom-[10%] w-[600px] h-[600px] rounded-full ambient-blob"
-            style={{ background: "radial-gradient(circle, rgba(239,216,68,0.08) 0%, transparent 70%)", animationDelay: '3s' }} />
+      {/* Ambient glows */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div
+          className="absolute -left-[20%] top-[20%] w-[800px] h-[800px] rounded-full ambient-blob"
+          style={{ background: "radial-gradient(circle, rgba(121,53,156,0.15) 0%, transparent 70%)" }} />
+        <div
+          className="absolute -right-[10%] bottom-[10%] w-[600px] h-[600px] rounded-full ambient-blob"
+          style={{ background: "radial-gradient(circle, rgba(239,216,68,0.08) 0%, transparent 70%)", animationDelay: "3s" }} />
+      </div>
+
+      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+
+        {/* Header */}
+        <div className="flex flex-col items-center mb-16 text-center">
+          <AnimatedHeading text="Our Sponsors" shadowColor="#080511" />
         </div>
 
-        <div className="max-w-5xl mx-auto px-6 relative z-10">
-          
-          {/* Header */}
-          <div className="flex flex-col items-center mb-16 text-center">
-            <AnimatedHeading text="Our Sponsors" shadowColor="#080511" />
-          </div>
+        {/* Sponsors — stacked vertically, one per row */}
+        <div className="flex flex-col items-center gap-10 mb-20">
 
-          {/* Sponsors — Tiered Layout */}
-          <div className="flex flex-col items-center gap-10 mb-20">
-
-            {/* Platform Partner — HackCulture */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
-              whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              viewport={{ once: true }}
-              transition={{ type: "spring", stiffness: 100, damping: 15 }}
-              className="w-full flex flex-col items-center gap-3"
-            >
-              <div className="flex items-center justify-center gap-3">
-                <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-cyan-400/60" />
-                <span className="font-nunito font-black text-[11px] uppercase tracking-[0.2em] text-cyan-300 border border-cyan-400/40 bg-cyan-400/10 rounded-full px-4 py-1 text-center">
-                  Platform Partner
-                </span>
-                <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-cyan-400/60" />
-              </div>
-              <div className="w-full max-w-sm">
-                <div className="w-full h-44 bg-purple-bg/40 backdrop-blur-md border-2 border-cyan-400/40 rounded-2xl p-6 flex items-center justify-center hover:border-cyan-400/80 hover:bg-purple-mid/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] hover:-translate-y-1">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/Sponser/HackCulture.png"
-                    alt="HackCulture"
-                    className="max-w-[75%] max-h-[75%] object-contain drop-shadow-md"
-                  />
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Divider */}
-            <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
-
-            {/* Gold Sponsor — Logitech */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
-              whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1, type: "spring", stiffness: 100, damping: 15 }}
-              className="w-full flex flex-col items-center gap-3"
-            >
-              <div className="flex items-center justify-center gap-3">
-                <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-gold/60" />
-                <span className="font-nunito font-black text-[11px] uppercase tracking-[0.2em] text-gold border border-gold/40 bg-gold/10 rounded-full px-4 py-1 text-center">
-                  🥇 Gold Sponsor
-                </span>
-                <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-gold/60" />
-              </div>
-              <div className="w-full max-w-sm">
-                <div className="w-full h-44 bg-purple-bg/40 backdrop-blur-md border-2 border-gold/50 rounded-2xl p-6 flex items-center justify-center hover:border-gold/90 hover:bg-purple-mid/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(239,216,68,0.25)] hover:-translate-y-1">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/Sponser/Logitech_print_white_L.png"
-                    alt="Logitech"
-                    className="max-w-[75%] max-h-[75%] object-contain drop-shadow-md"
-                  />
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Divider */}
-            <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
-
-            {/* In-Kind Sponsor — Lazer Crazer */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
-              whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 100, damping: 15 }}
-              className="w-full flex flex-col items-center gap-3"
-            >
-              <div className="flex items-center justify-center gap-3">
-                <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-purple-400/60" />
-                <span className="font-nunito font-black text-[11px] uppercase tracking-[0.2em] text-purple-300 border border-purple-400/40 bg-purple-400/10 rounded-full px-4 py-1 text-center">
-                  In-Kind Sponsor
-                </span>
-                <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-purple-400/60" />
-              </div>
-              <div className="w-full max-w-sm">
-                <div className="w-full h-44 bg-purple-bg/40 backdrop-blur-md border-2 border-purple-400/40 rounded-2xl p-6 flex items-center justify-center hover:border-purple-400/80 hover:bg-purple-mid/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] hover:-translate-y-1">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/Sponser/lazer_crazer.jpeg"
-                    alt="Lazer Crazer"
-                    className="max-w-[75%] max-h-[75%] object-contain drop-shadow-md rounded-xl"
-                  />
-                </div>
-              </div>
-            </motion.div>
-
-          </div>
-
-          {/* CTA Box */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          {/* Platform Partner — HackCulture */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             viewport={{ once: true }}
-            className="relative bg-purple-bg/30 backdrop-blur-md border-[3px] border-dashed border-gold/40 rounded-[2rem] p-8 sm:p-12 text-center max-w-3xl mx-auto group hover:border-gold/80 transition-colors duration-500"
+            transition={{ type: "spring", stiffness: 100, damping: 15 }}
+            className="w-full flex flex-col items-center gap-3"
           >
-            <h3 className="font-fredoka text-gold text-2xl sm:text-3xl mb-4">Want to be a Sponsor? 🤝</h3>
-            <p className="font-nunito text-cream opacity-90 mb-8 max-w-md mx-auto">
-              Get your brand in front of 3000+ passionate developers, designers, and creators. Help us build the future.
-            </p>
-            <motion.button 
-              onClick={() => setIsModalOpen(true)}
-              whileTap={{ scale: 0.95 }}
-              animate={{ boxShadow: ["6px 6px 0px #000", "6px 6px 0px #000, 0 0 20px rgba(239,216,68,0.6)", "6px 6px 0px #000"] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="inline-flex items-center gap-2 bg-gold text-black font-fredoka uppercase px-8 py-4 rounded-xl border-[3px] border-black hover:bg-purple-mid hover:text-gold hover:border-gold transition-all hover:-translate-y-1 hover:-translate-x-1"
-              style={{ boxShadow: "6px 6px 0px #000" }}
-            >
-              Request Deck
-            </motion.button>
+            <div className="flex items-center justify-center gap-2 w-full">
+              <div className="h-[1px] w-6 bg-gradient-to-r from-transparent to-cyan-400/60" />
+              <span className="font-nunito font-black text-[10px] uppercase tracking-[0.2em] text-cyan-300 border border-cyan-400/40 bg-cyan-400/10 rounded-full px-3 py-1 text-center whitespace-nowrap">
+                Platform Partner
+              </span>
+              <div className="h-[1px] w-6 bg-gradient-to-l from-transparent to-cyan-400/60" />
+            </div>
+            <div className="w-full max-w-sm">
+              <div
+                className="ripple-element w-full h-40 bg-purple-bg/40 backdrop-blur-md border-2 border-cyan-400/40 rounded-2xl p-6 flex items-center justify-center hover:border-cyan-400/80 hover:bg-purple-mid/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] hover:-translate-y-1 cursor-pointer overflow-hidden relative"
+                onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/Sponser/HackCulture.png"
+                  alt="HackCulture"
+                  className="h-14 md:h-16 w-auto max-w-[75%] object-contain drop-shadow-md"
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Divider */}
+          <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+
+          {/* Gold Sponsor — Logitech */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, type: "spring", stiffness: 100, damping: 15 }}
+            className="w-full flex flex-col items-center gap-3"
+          >
+            <div className="flex items-center justify-center gap-2 w-full">
+              <div className="h-[1px] w-6 bg-gradient-to-r from-transparent to-gold/60" />
+              <span className="font-nunito font-black text-[10px] uppercase tracking-[0.2em] text-gold border border-gold/40 bg-gold/10 rounded-full px-3 py-1 text-center whitespace-nowrap">
+                🥇 Gold Sponsor
+              </span>
+              <div className="h-[1px] w-6 bg-gradient-to-l from-transparent to-gold/60" />
+            </div>
+            <div className="w-full max-w-sm">
+              <div
+                className="ripple-element w-full h-40 bg-purple-bg/40 backdrop-blur-md border-2 border-gold/50 rounded-2xl p-6 flex items-center justify-center hover:border-gold/90 hover:bg-purple-mid/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(239,216,68,0.25)] hover:-translate-y-1 cursor-pointer overflow-hidden relative"
+                onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/Sponser/Logitech_print_white_L.png"
+                  alt="Logitech"
+                  className="h-14 md:h-16 w-auto max-w-[75%] object-contain drop-shadow-md"
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Divider */}
+          <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+
+          {/* Track Sponsor — n8n */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15, type: "spring", stiffness: 100, damping: 15 }}
+            className="w-full flex flex-col items-center gap-3"
+          >
+            <div className="flex items-center justify-center gap-2 w-full">
+              <div className="h-[1px] w-6 bg-gradient-to-r from-transparent to-pink-400/60" />
+              <span className="font-nunito font-black text-[10px] uppercase tracking-[0.2em] text-pink-300 border border-pink-400/40 bg-pink-400/10 rounded-full px-3 py-1 text-center whitespace-nowrap">
+                Track Sponsor
+              </span>
+              <div className="h-[1px] w-6 bg-gradient-to-l from-transparent to-pink-400/60" />
+            </div>
+            <div className="w-full max-w-sm">
+              <div
+                className="ripple-element w-full h-40 bg-purple-bg/40 backdrop-blur-md border-2 border-pink-400/40 rounded-2xl p-6 flex items-center justify-center hover:border-pink-400/80 hover:bg-purple-mid/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(244,63,94,0.25)] hover:-translate-y-1 cursor-pointer overflow-hidden relative"
+                onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/Sponser/n8n_pink+white_logo.png"
+                  alt="n8n"
+                  className="h-14 md:h-16 w-auto max-w-[75%] object-contain drop-shadow-md"
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Divider */}
+          <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+
+          {/* In-Kind Sponsor — Lazer Crazer */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 100, damping: 15 }}
+            className="w-full flex flex-col items-center gap-3"
+          >
+            <div className="flex items-center justify-center gap-2 w-full">
+              <div className="h-[1px] w-6 bg-gradient-to-r from-transparent to-purple-400/60" />
+              <span className="font-nunito font-black text-[10px] uppercase tracking-[0.2em] text-purple-300 border border-purple-400/40 bg-purple-400/10 rounded-full px-3 py-1 text-center whitespace-nowrap">
+                In-Kind Sponsor
+              </span>
+              <div className="h-[1px] w-6 bg-gradient-to-l from-transparent to-purple-400/60" />
+            </div>
+            <div className="w-full max-w-sm">
+              <div
+                className="ripple-element w-full h-40 bg-purple-bg/40 backdrop-blur-md border-2 border-purple-400/40 rounded-2xl p-6 flex items-center justify-center hover:border-purple-400/80 hover:bg-purple-mid/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] hover:-translate-y-1 cursor-pointer overflow-hidden relative"
+                onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/Sponser/lazer_crazer.jpeg"
+                  alt="Lazer Crazer"
+                  className="h-14 md:h-16 w-auto max-w-[75%] object-contain drop-shadow-md rounded-xl"
+                />
+              </div>
+            </div>
           </motion.div>
 
         </div>
 
-        {/* Modal */}
-        <AnimatePresence>
+        {/* CTA Box */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative bg-purple-bg/30 backdrop-blur-md border-[3px] border-dashed border-gold/40 rounded-[2rem] p-8 sm:p-12 text-center max-w-3xl mx-auto group hover:border-gold/80 transition-colors duration-500"
+        >
+          <h3 className="font-fredoka text-gold text-2xl sm:text-3xl mb-4">Want to be a Sponsor? 🤝</h3>
+          <p className="font-nunito text-cream opacity-90 mb-8 max-w-md mx-auto">
+            Get your brand in front of 3000+ passionate developers, designers, and creators. Help us build the future.
+          </p>
+          <motion.button
+            onClick={() => setIsModalOpen(true)}
+            whileTap={{ scale: 0.95 }}
+            animate={{ boxShadow: ["6px 6px 0px #000", "6px 6px 0px #000, 0 0 20px rgba(239,216,68,0.6)", "6px 6px 0px #000"] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="inline-flex items-center gap-2 bg-gold text-black font-fredoka uppercase px-8 py-4 rounded-xl border-[3px] border-black hover:bg-purple-mid hover:text-gold hover:border-gold transition-all hover:-translate-y-1 hover:-translate-x-1"
+            style={{ boxShadow: "6px 6px 0px #000" }}
+          >
+            Request Deck
+          </motion.button>
+        </motion.div>
+
+      </div>
+
+      {/* Modal */}
+      <AnimatePresence>
         {isModalOpen && (
           <div className="fixed inset-0 flex items-center justify-center px-4" style={{ zIndex: 999999 }}>
             {/* Backdrop — full page blur */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
               animate={{ opacity: 1, backdropFilter: "blur(16px)" }}
               exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
@@ -223,7 +267,7 @@ export default function SponsorsSection() {
               className="absolute inset-0"
               style={{ background: "rgba(8, 5, 17, 0.75)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}
             />
-            
+
             {/* Modal Box */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -231,11 +275,11 @@ export default function SponsorsSection() {
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               className="relative w-full max-w-md bg-black border-2 border-gold/30 rounded-2xl shadow-[0_0_40px_rgba(158,64,164,0.3)] overflow-hidden flex flex-col max-h-[90vh]"
             >
-              
+
               {/* Header */}
               <div className="bg-purple-mid border-b-2 border-gold/30 px-6 py-4 flex justify-between items-center">
                 <h3 className="font-fredoka text-xl text-gold">Sponsorship Inquiry</h3>
-                <button 
+                <button
                   onClick={() => setIsModalOpen(false)}
                   className="text-cream/50 hover:text-gold transition-colors"
                 >
@@ -246,7 +290,7 @@ export default function SponsorsSection() {
               {/* Body */}
               <div className="p-6 overflow-y-auto">
                 {isSubmitted ? (
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="flex flex-col items-center justify-center py-8 text-center"
@@ -293,7 +337,6 @@ export default function SponsorsSection() {
                       <label className="block font-nunito font-bold text-cream/80 text-sm mb-1.5">
                         Phone Number
                       </label>
-
                       <input
                         name="phone"
                         type="tel"
@@ -305,7 +348,6 @@ export default function SponsorsSection() {
                       <label className="block font-nunito font-bold text-cream/80 text-sm mb-1.5">
                         Message
                       </label>
-
                       <textarea
                         name="message"
                         placeholder="Optional"
@@ -325,7 +367,7 @@ export default function SponsorsSection() {
             </motion.div>
           </div>
         )}
-        </AnimatePresence>
+      </AnimatePresence>
     </section>
   );
 }

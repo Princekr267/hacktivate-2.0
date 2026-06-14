@@ -51,6 +51,12 @@ const TRACKS = [
     tags: ["Sustainability", "Sensors", "Data"],
   },
   {
+    icon: "⚡",
+    title: "Best Use of n8n",
+    desc: "Build powerful workflow automations and integrations using n8n. Connect APIs, automate tasks, or design AI-powered workflows.",
+    tags: ["Automation", "APIs", "Low-Code"],
+  },
+  {
     icon: "💡",
     title: "Open Innovation",
     desc: "Got an idea that doesn't fit the box? Good. Build it anyway. Open Innovation is for the ones who see a problem nobody else is solving yet.",
@@ -69,7 +75,7 @@ function TrackCard({ track, idx }: { track: typeof TRACKS[number]; idx: number }
       whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: idx * 0.08, type: "spring", stiffness: 100, damping: 15 }}
-      className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] sm:max-w-[320px] flex"
+      className="w-full sm:w-[310px] flex"
     >
       <TiltCard
         className="card-hover scan-shimmer gold-pulse ripple-element w-full bg-purple-mid border-[3px] border-gold rounded-[20px] p-6 pt-8 relative group shadow-offset flex flex-col justify-center"
@@ -126,7 +132,7 @@ export default function TracksSection() {
       <div className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(168,85,200,0.15)_0%,transparent_70%)] rounded-full pointer-events-none" />
       <div className="absolute bottom-[-10%] right-[-5%] w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(239,216,68,0.1)_0%,transparent_70%)] rounded-full pointer-events-none" style={{ animationDelay: '3s' }} />
       <TracksBackground />
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-[1400px] mx-auto relative z-10">
 
         {/* Header */}
         <div className="flex flex-col items-center mb-16 text-center">
