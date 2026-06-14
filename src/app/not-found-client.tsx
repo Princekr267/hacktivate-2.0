@@ -45,7 +45,7 @@ export default function NotFoundClient() {
       {/* Ambient floating mini-mascots */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
         <motion.div
-          className="absolute top-[30%] left-[8%]"
+          className="absolute top-[30%] left-[8%] hidden md:block"
           animate={{ y: [-15, 15, -15], rotate: [-8, 8, -8] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >
@@ -53,7 +53,7 @@ export default function NotFoundClient() {
         </motion.div>
 
         <motion.div
-          className="absolute top-[25%] right-[8%]"
+          className="absolute top-[25%] right-[8%] hidden md:block"
           animate={{ y: [-20, 20, -20], rotate: [5, -5, 5] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         >
