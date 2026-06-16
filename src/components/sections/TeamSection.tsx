@@ -291,10 +291,10 @@ export default function TeamSection() {
           {TEAM.map((member, idx) => (
             <motion.div
               key={member.name}
-              initial={{ opacity: 0, scale: 0.9, filter: "blur(8px)" }}
-              whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-30px" }}
-              transition={{ delay: Math.min(idx * 0.05, 0.4), type: "spring", stiffness: 120, damping: 18 }}
+              transition={{ delay: Math.min(idx * 0.04, 0.3), type: "spring", stiffness: 130, damping: 20 }}
               onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
               className="ripple-element w-full sm:w-[310px] team-card"
               style={{

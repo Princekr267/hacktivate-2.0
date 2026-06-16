@@ -50,14 +50,12 @@ const TRACKS = [
     desc: "Protect our planet through technology. Create tools for pollution monitoring, waste reduction, and ecological preservation.",
     tags: ["Sustainability", "Sensors", "Data"],
   },
-  // ── HIDDEN until confirmed ──────────────────────────────────────────────────
-  // {
-  //   icon: "⚡",
-  //   title: "Best Use of n8n",
-  //   desc: "Build powerful workflow automations and integrations using n8n. Connect APIs, automate tasks, or design AI-powered workflows.",
-  //   tags: ["Automation", "APIs", "Low-Code"],
-  // },
-  // ────────────────────────────────────────────────────────────────────────────
+  {
+    icon: "⚡",
+    title: "Best Use of n8n",
+    desc: "Build powerful workflow automations and integrations using n8n. Connect APIs, automate tasks, or design AI-powered workflows.",
+    tags: ["Automation", "APIs", "Low-Code"],
+  },
   {
     icon: "💡",
     title: "Open Innovation",
@@ -73,10 +71,10 @@ function TrackCard({ track, idx }: { track: typeof TRACKS[number]; idx: number }
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
-      whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ delay: idx * 0.08, type: "spring", stiffness: 100, damping: 15 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-30px" }}
+      transition={{ delay: Math.min(idx * 0.06, 0.35), type: "spring", stiffness: 120, damping: 20 }}
       className="w-full sm:w-[310px] flex"
     >
       <TiltCard

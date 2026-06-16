@@ -100,10 +100,10 @@ export default function SponsorsSection() {
 
           {/* Platform Partner — HackCulture */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
-            whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 100, damping: 15 }}
+            transition={{ type: "spring", stiffness: 120, damping: 20 }}
             className="w-full flex flex-col items-center gap-3"
           >
             <div className="flex items-center justify-center gap-2 w-full">
@@ -115,7 +115,7 @@ export default function SponsorsSection() {
             </div>
             <div className="w-full max-w-sm">
               <div
-                className="ripple-element w-full h-40 bg-purple-bg/40 backdrop-blur-md border-2 border-cyan-400/40 rounded-2xl p-6 flex items-center justify-center hover:border-cyan-400/80 hover:bg-purple-mid/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] hover:-translate-y-1 cursor-pointer overflow-hidden relative"
+                className="ripple-element w-full h-40 bg-[rgba(20,12,40,0.85)] border-2 border-cyan-400/40 rounded-2xl p-6 flex items-center justify-center hover:border-cyan-400/80 hover:bg-[rgba(40,20,70,0.9)] transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] hover:-translate-y-1 cursor-pointer overflow-hidden relative"
                 onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -133,10 +133,10 @@ export default function SponsorsSection() {
 
           {/* Gold Sponsor — Logitech */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
-            whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1, type: "spring", stiffness: 100, damping: 15 }}
+            transition={{ delay: 0.07, type: "spring", stiffness: 120, damping: 20 }}
             className="w-full flex flex-col items-center gap-3"
           >
             <div className="flex items-center justify-center gap-2 w-full">
@@ -148,7 +148,7 @@ export default function SponsorsSection() {
             </div>
             <div className="w-full max-w-sm">
               <div
-                className="ripple-element w-full h-40 bg-purple-bg/40 backdrop-blur-md border-2 border-gold/50 rounded-2xl p-6 flex items-center justify-center hover:border-gold/90 hover:bg-purple-mid/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(239,216,68,0.25)] hover:-translate-y-1 cursor-pointer overflow-hidden relative"
+                className="ripple-element w-full h-40 bg-[rgba(20,12,40,0.85)] border-2 border-gold/50 rounded-2xl p-6 flex items-center justify-center hover:border-gold/90 hover:bg-[rgba(40,20,70,0.9)] transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(239,216,68,0.25)] hover:-translate-y-1 cursor-pointer overflow-hidden relative"
                 onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -166,10 +166,10 @@ export default function SponsorsSection() {
 
           {/* Track Sponsor — n8n */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
-            whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.15, type: "spring", stiffness: 100, damping: 15 }}
+            transition={{ delay: 0.12, type: "spring", stiffness: 120, damping: 20 }}
             className="w-full flex flex-col items-center gap-3"
           >
             <div className="flex items-center justify-center gap-2 w-full">
@@ -181,7 +181,7 @@ export default function SponsorsSection() {
             </div>
             <div className="w-full max-w-sm">
               <div
-                className="ripple-element w-full h-40 bg-purple-bg/40 backdrop-blur-md border-2 border-pink-400/40 rounded-2xl p-6 flex items-center justify-center hover:border-pink-400/80 hover:bg-purple-mid/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(244,63,94,0.25)] hover:-translate-y-1 cursor-pointer overflow-hidden relative"
+                className="ripple-element w-full h-40 bg-[rgba(20,12,40,0.85)] border-2 border-pink-400/40 rounded-2xl p-6 flex items-center justify-center hover:border-pink-400/80 hover:bg-[rgba(40,20,70,0.9)] transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(244,63,94,0.25)] hover:-translate-y-1 cursor-pointer overflow-hidden relative"
                 onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -199,10 +199,10 @@ export default function SponsorsSection() {
 
           {/* In-Kind Sponsor — Lazer Crazer */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
-            whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 100, damping: 15 }}
+            transition={{ delay: 0.18, type: "spring", stiffness: 120, damping: 20 }}
             className="w-full flex flex-col items-center gap-3"
           >
             <div className="flex items-center justify-center gap-2 w-full">
@@ -214,7 +214,7 @@ export default function SponsorsSection() {
             </div>
             <div className="w-full max-w-sm">
               <div
-                className="ripple-element w-full h-40 bg-purple-bg/40 backdrop-blur-md border-2 border-purple-400/40 rounded-2xl p-6 flex items-center justify-center hover:border-purple-400/80 hover:bg-purple-mid/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] hover:-translate-y-1 cursor-pointer overflow-hidden relative"
+                className="ripple-element w-full h-40 bg-[rgba(20,12,40,0.85)] border-2 border-purple-400/40 rounded-2xl p-6 flex items-center justify-center hover:border-purple-400/80 hover:bg-[rgba(40,20,70,0.9)] transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] hover:-translate-y-1 cursor-pointer overflow-hidden relative"
                 onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
