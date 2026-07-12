@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRipple } from "@/hooks/useRipple";
 
@@ -68,46 +69,49 @@ export default function SponsorCard({
       transition={{ delay, type: "spring", stiffness: 120, damping: 20 }}
       className="w-full flex flex-col items-center gap-3"
     >
-      {/* Heading */}
+      {/* Tier label */}
       <div className="flex items-center justify-center gap-2 w-full">
-        <div className={`h-[1px] w-6 bg-gradient-to-r from-transparent ${style.line}`} />
+        <div className={`h-[1px] flex-1 max-w-[3rem] bg-gradient-to-r from-transparent ${style.line}`} />
         <span
-          className={`font-nunito font-black text-[10px] uppercase tracking-[0.2em] rounded-full px-3 py-1 whitespace-nowrap border ${style.text} ${style.border} ${style.bg}`}
+          className={`font-nunito font-black text-[9px] sm:text-[10px] uppercase tracking-[0.15em] sm:tracking-[0.2em] rounded-full px-2.5 sm:px-3 py-1 whitespace-nowrap border ${style.text} ${style.border} ${style.bg}`}
         >
           {title}
         </span>
-        <div className={`h-[1px] w-6 bg-gradient-to-l from-transparent ${style.line}`} />
+        <div className={`h-[1px] flex-1 max-w-[3rem] bg-gradient-to-l from-transparent ${style.line}`} />
       </div>
 
-      {/* Card */}
-      <div className="w-full max-w-sm">
+      {/* Card — aspect-ratio-based so it scales at every viewport width */}
+      <div className="w-full">
         <div
-          onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
+          {...ripple}
           className={`
-            ripple-element w-full h-44 bg-[rgba(20,12,40,0.85)] rounded-2xl border-2
-            ${style.cardBorder} flex items-center justify-center p-8 overflow-hidden
+            ripple-element w-full aspect-[16/7] sm:aspect-[16/8] lg:aspect-[16/9]
+            bg-[rgba(20,12,40,0.85)] rounded-2xl border-2
+            ${style.cardBorder} flex items-center justify-center
+            px-6 sm:px-8 overflow-hidden
             relative transition-all duration-300 hover:bg-[rgba(40,20,70,0.9)]
             hover:-translate-y-1 shadow-lg ${style.glow}
           `}
         >
-          {/* Fixed-size inner box so every logo occupies the same visual footprint,
-              regardless of its native aspect ratio */}
-<div className="w-full h-full flex items-center justify-center">
-  <img
-    src={image}
-    alt={alt}
-    draggable={false}
-    className={`
-      max-w-[70%] max-h-20 sm:max-h-24 w-auto h-auto
-      object-contain object-center select-none pointer-events-none
-      drop-shadow-md
-      ${imageClassName || ""}
-    `}
-    style={imageStyle}
-  />
-</div>
+          <div className="w-full h-full flex items-center justify-center">
+            <Image
+              src={image}
+              alt={alt}
+              width={320}
+              height={128}
+              draggable={false}
+              className={`
+                max-w-[65%] max-h-[55%] w-auto h-auto
+                object-contain object-center select-none pointer-events-none
+                drop-shadow-md
+                ${imageClassName || ""}
+              `}
+              style={imageStyle}
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
     </motion.div>
   );
-}
+}
