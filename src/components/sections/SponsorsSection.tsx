@@ -4,13 +4,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import FaqBackground from "@/components/backgrounds/FaqBackground";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
-import { useRipple } from "@/hooks/useRipple";
 import SponsorCard from "../ui/SponserCard";
 
 export default function SponsorsSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const ripple = useRipple();
 
   const handleSubmit = async (
     e: React.FormEvent<HTMLFormElement>
@@ -96,80 +94,71 @@ export default function SponsorsSection() {
           <AnimatedHeading text="Our Sponsors" shadowColor="#080511" />
         </div>
 
-        {/* Sponsors — stacked vertically, one per row */}
-{/* Sponsors — stacked vertically, one per row */}
-<div className="flex flex-col items-center gap-10 mb-20">
+        {/* Sponsors — uniform grid, all cards identical */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-20 w-full px-4 sm:px-0">
 
-  <SponsorCard
-    title="Platform Partner"
-    image="/Sponser/HackCulture.png"
-    alt="HackCulture"
-    accent="cyan"
-  />
+          <SponsorCard
+            title="Platform Partner"
+            image="/Sponser/HackCulture.png"
+            alt="HackCulture"
+            accent="cyan"
+          />
 
-  <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+          <SponsorCard
+            title="🥇 Gold Sponsor"
+            image="/Sponser/Logitech_print_white_L.png"
+            alt="Logitech"
+            accent="gold"
+            delay={0.05}
+          />
 
-  <SponsorCard
-    title="🥇 Gold Sponsor"
-    image="/Sponser/Logitech_print_white_L.png"
-    alt="Logitech"
-    accent="gold"
-    delay={0.05}
-  />
+          <SponsorCard
+            title="Track Sponsor"
+            image="/Sponser/n8n_pink+white_logo.png"
+            alt="n8n"
+            accent="pink"
+            delay={0.1}
+          />
 
-  <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+          <SponsorCard
+            title="In-Kind Sponsor"
+            image="/Sponser/lazer_crazer.jpeg"
+            alt="Lazer Crazer"
+            accent="purple"
+            delay={0.15}
+          />
 
-  <SponsorCard
-    title="Track Sponsor"
-    image="/Sponser/n8n_pink+white_logo.png"
-    alt="n8n"
-    accent="pink"
-    delay={0.1}
-  />
+          <SponsorCard
+            title="Credential Partner"
+            image="/Sponser/TruScholar.png"
+            alt="TruScholar"
+            accent="purple"
+            delay={0.2}
+            imageStyle={{ transform: "scale(2.5) translateY(6px)" }}
+          />
 
-  <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+          <SponsorCard
+            title="Media Partner"
+            image="/Sponser/EvePaper.jpeg"
+            alt="EvePaper"
+            accent="purple"
+            delay={0.25}
+          />
 
-<SponsorCard
-  title="In-Kind Sponsor"
-  image="/Sponser/lazer_crazer.jpeg"
-  alt="Lazer Crazer"
-  accent="purple"
-  delay={0.15}
-/>
+          {/* 7th card — centred in its own row */}
+          <div className="col-span-1 sm:col-span-2 lg:col-span-3 flex justify-center">
+            <div className="w-full sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)]">
+              <SponsorCard
+                title="Sponsor"
+                image="/Sponser/bindu_logo_icon.png"
+                alt="Bindu"
+                accent="purple"
+                delay={0.3}
+              />
+            </div>
+          </div>
 
-  <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
-
-<div className="w-full flex flex-col sm:flex-row items-center sm:items-start justify-center gap-6 sm:gap-4">
-
-<SponsorCard
-  title="Official Credential Partner"
-  image="/Sponser/TruScholar.png"
-  alt="TruScholar"
-  accent="purple"
-  delay={0.2}
-  imageStyle={{ transform: "scale(2.5) translateY(6px)" }}
-/>
-
-  <SponsorCard
-    title="Official Media Partner"
-    image="/Sponser/EvePaper.jpeg"
-    alt="EvePaper"
-    accent="purple"
-    delay={0.25}
-  />
-
-  <SponsorCard
-    title="Sponsor"
-    image="/Sponser/bindu_logo_icon.png"
-    alt="Bindu"
-    accent="purple"
-    delay={0.3}
-  />
-
-</div>
-  <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
-
-</div>
+        </div>
 
         {/* CTA Box */}
         <motion.div
