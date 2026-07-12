@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import FaqBackground from "@/components/backgrounds/FaqBackground";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import { useRipple } from "@/hooks/useRipple";
+import SponsorCard from "../ui/SponserCard";
 
 export default function SponsorsSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -96,138 +97,79 @@ export default function SponsorsSection() {
         </div>
 
         {/* Sponsors — stacked vertically, one per row */}
-        <div className="flex flex-col items-center gap-10 mb-20">
+{/* Sponsors — stacked vertically, one per row */}
+<div className="flex flex-col items-center gap-10 mb-20">
 
-          {/* Platform Partner — HackCulture */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 120, damping: 20 }}
-            className="w-full flex flex-col items-center gap-3"
-          >
-            <div className="flex items-center justify-center gap-2 w-full">
-              <div className="h-[1px] w-6 bg-gradient-to-r from-transparent to-cyan-400/60" />
-              <span className="font-nunito font-black text-[10px] uppercase tracking-[0.2em] text-cyan-300 border border-cyan-400/40 bg-cyan-400/10 rounded-full px-3 py-1 text-center whitespace-nowrap">
-                Platform Partner
-              </span>
-              <div className="h-[1px] w-6 bg-gradient-to-l from-transparent to-cyan-400/60" />
-            </div>
-            <div className="w-full max-w-sm">
-              <div
-                className="ripple-element w-full h-40 bg-[rgba(20,12,40,0.85)] border-2 border-cyan-400/40 rounded-2xl p-6 flex items-center justify-center hover:border-cyan-400/80 hover:bg-[rgba(40,20,70,0.9)] transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] hover:-translate-y-1 cursor-pointer overflow-hidden relative"
-                onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/Sponser/HackCulture.png"
-                  alt="HackCulture"
-                  className="h-14 md:h-16 w-auto max-w-[75%] object-contain drop-shadow-md"
-                />
-              </div>
-            </div>
-          </motion.div>
+  <SponsorCard
+    title="Platform Partner"
+    image="/Sponser/HackCulture.png"
+    alt="HackCulture"
+    accent="cyan"
+  />
 
-          {/* Divider */}
-          <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+  <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
 
-          {/* Gold Sponsor — Logitech */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.07, type: "spring", stiffness: 120, damping: 20 }}
-            className="w-full flex flex-col items-center gap-3"
-          >
-            <div className="flex items-center justify-center gap-2 w-full">
-              <div className="h-[1px] w-6 bg-gradient-to-r from-transparent to-gold/60" />
-              <span className="font-nunito font-black text-[10px] uppercase tracking-[0.2em] text-gold border border-gold/40 bg-gold/10 rounded-full px-3 py-1 text-center whitespace-nowrap">
-                🥇 Gold Sponsor
-              </span>
-              <div className="h-[1px] w-6 bg-gradient-to-l from-transparent to-gold/60" />
-            </div>
-            <div className="w-full max-w-sm">
-              <div
-                className="ripple-element w-full h-40 bg-[rgba(20,12,40,0.85)] border-2 border-gold/50 rounded-2xl p-6 flex items-center justify-center hover:border-gold/90 hover:bg-[rgba(40,20,70,0.9)] transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(239,216,68,0.25)] hover:-translate-y-1 cursor-pointer overflow-hidden relative"
-                onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/Sponser/Logitech_print_white_L.png"
-                  alt="Logitech"
-                  className="h-14 md:h-16 w-auto max-w-[75%] object-contain drop-shadow-md"
-                />
-              </div>
-            </div>
-          </motion.div>
+  <SponsorCard
+    title="🥇 Gold Sponsor"
+    image="/Sponser/Logitech_print_white_L.png"
+    alt="Logitech"
+    accent="gold"
+    delay={0.05}
+  />
 
-          {/* Divider */}
-          <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+  <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
 
-          {/* Track Sponsor — n8n */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.12, type: "spring", stiffness: 120, damping: 20 }}
-            className="w-full flex flex-col items-center gap-3"
-          >
-            <div className="flex items-center justify-center gap-2 w-full">
-              <div className="h-[1px] w-6 bg-gradient-to-r from-transparent to-pink-400/60" />
-              <span className="font-nunito font-black text-[10px] uppercase tracking-[0.2em] text-pink-300 border border-pink-400/40 bg-pink-400/10 rounded-full px-3 py-1 text-center whitespace-nowrap">
-                Track Sponsor
-              </span>
-              <div className="h-[1px] w-6 bg-gradient-to-l from-transparent to-pink-400/60" />
-            </div>
-            <div className="w-full max-w-sm">
-              <div
-                className="ripple-element w-full h-40 bg-[rgba(20,12,40,0.85)] border-2 border-pink-400/40 rounded-2xl p-6 flex items-center justify-center hover:border-pink-400/80 hover:bg-[rgba(40,20,70,0.9)] transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(244,63,94,0.25)] hover:-translate-y-1 cursor-pointer overflow-hidden relative"
-                onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/Sponser/n8n_pink+white_logo.png"
-                  alt="n8n"
-                  className="h-14 md:h-16 w-auto max-w-[75%] object-contain drop-shadow-md"
-                />
-              </div>
-            </div>
-          </motion.div>
+  <SponsorCard
+    title="Track Sponsor"
+    image="/Sponser/n8n_pink+white_logo.png"
+    alt="n8n"
+    accent="pink"
+    delay={0.1}
+  />
 
-          {/* Divider */}
-          <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+  <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
 
-          {/* In-Kind Sponsor — Lazer Crazer */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.18, type: "spring", stiffness: 120, damping: 20 }}
-            className="w-full flex flex-col items-center gap-3"
-          >
-            <div className="flex items-center justify-center gap-2 w-full">
-              <div className="h-[1px] w-6 bg-gradient-to-r from-transparent to-purple-400/60" />
-              <span className="font-nunito font-black text-[10px] uppercase tracking-[0.2em] text-purple-300 border border-purple-400/40 bg-purple-400/10 rounded-full px-3 py-1 text-center whitespace-nowrap">
-                In-Kind Sponsor
-              </span>
-              <div className="h-[1px] w-6 bg-gradient-to-l from-transparent to-purple-400/60" />
-            </div>
-            <div className="w-full max-w-sm">
-              <div
-                className="ripple-element w-full h-40 bg-[rgba(20,12,40,0.85)] border-2 border-purple-400/40 rounded-2xl p-6 flex items-center justify-center hover:border-purple-400/80 hover:bg-[rgba(40,20,70,0.9)] transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] hover:-translate-y-1 cursor-pointer overflow-hidden relative"
-                onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/Sponser/lazer_crazer.jpeg"
-                  alt="Lazer Crazer"
-                  className="h-14 md:h-16 w-auto max-w-[75%] object-contain drop-shadow-md rounded-xl"
-                />
-              </div>
-            </div>
-          </motion.div>
+<SponsorCard
+  title="In-Kind Sponsor"
+  image="/Sponser/lazer_crazer.jpeg"
+  alt="Lazer Crazer"
+  accent="purple"
+  delay={0.15}
+/>
 
-        </div>
+  <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+
+<div className="w-full flex flex-col sm:flex-row items-center sm:items-start justify-center gap-6 sm:gap-4">
+
+<SponsorCard
+  title="Official Credential Partner"
+  image="/Sponser/TruScholar.png"
+  alt="TruScholar"
+  accent="purple"
+  delay={0.2}
+  imageStyle={{ transform: "scale(2.5) translateY(6px)" }}
+/>
+
+  <SponsorCard
+    title="Official Media Partner"
+    image="/Sponser/EvePaper.jpeg"
+    alt="EvePaper"
+    accent="purple"
+    delay={0.25}
+  />
+
+  <SponsorCard
+    title="Sponsor"
+    image="/Sponser/bindu_logo_icon.png"
+    alt="Bindu"
+    accent="purple"
+    delay={0.3}
+  />
+
+</div>
+  <div className="w-full max-w-lg h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+
+</div>
 
         {/* CTA Box */}
         <motion.div
@@ -251,6 +193,8 @@ export default function SponsorsSection() {
             Request Deck
           </motion.button>
         </motion.div>
+
+
 
       </div>
 
