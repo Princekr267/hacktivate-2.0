@@ -33,18 +33,20 @@ export default function CustomCursor() {
     return () => window.removeEventListener("resize", checkTouch);
   }, []);
 
-  // Canvas sparkle renderer
+  // Canvas sparkle renderer — only runs RAF when active sparkles exist
   useEffect(() => {
     if (isTouchDevice) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
+
+    let isAnimating = false;
 
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
     resize();
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", resize, { passive: true });
 
     const render = () => {
       const ctx = canvas.getContext("2d");
@@ -52,6 +54,12 @@ export default function CustomCursor() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const now = performance.now();
       sparklesRef.current = sparklesRef.current.filter(s => now - s.born < 700);
+      
+      if (sparklesRef.current.length === 0) {
+        isAnimating = false;
+        return;
+      }
+
       ctx.font = "14px sans-serif";
       for (const s of sparklesRef.current) {
         const age = now - s.born;
@@ -64,7 +72,14 @@ export default function CustomCursor() {
       ctx.globalAlpha = 1;
       rafRef.current = requestAnimationFrame(render);
     };
-    rafRef.current = requestAnimationFrame(render);
+
+    // Helper to start animation loop if not running
+    (window as unknown as { startSparkles?: () => void }).startSparkles = () => {
+      if (!isAnimating) {
+        isAnimating = true;
+        rafRef.current = requestAnimationFrame(render);
+      }
+    };
 
     return () => {
       cancelAnimationFrame(rafRef.current);
@@ -72,42 +87,44 @@ export default function CustomCursor() {
     };
   }, [isTouchDevice]);
 
-  // Mouse tracking — no React state updates for position
+  // Mouse tracking — optimized target checking & sparkle spawning
   useEffect(() => {
     if (isTouchDevice) return;
+    let ticking = false;
 
     const updateCursor = (e: MouseEvent) => {
-      mouseX.set(e.clientX - 7);
-      mouseY.set(e.clientY - 7);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        mouseX.set(e.clientX - 7);
+        mouseY.set(e.clientY - 7);
 
-      const target = e.target as HTMLElement | null;
-      let hovering = false;
-      if (target && target.tagName) {
-        const tagName = target.tagName.toLowerCase();
-        hovering = !!(
-          tagName === "a" ||
-          tagName === "button" ||
-          (typeof target.closest === "function" && (target.closest("a") || target.closest("button")))
-        );
-      }
-      if (hovering !== isHoveringRef.current) {
-        isHoveringRef.current = hovering;
-        setIsHovering(hovering);
-      }
+        const target = e.target as HTMLElement | null;
+        if (target) {
+          const isInteractive = target.closest("a, button, [role='button'], input, textarea");
+          const hovering = !!isInteractive;
+          if (hovering !== isHoveringRef.current) {
+            isHoveringRef.current = hovering;
+            setIsHovering(hovering);
+          }
+        }
 
-      const now = performance.now();
-      if (now - lastSparkleTime.current > 180) {
-        lastSparkleTime.current = now;
-        const CHARS = ["✦", "⚡", "★"];
-        sparklesRef.current.push({
-          x: e.clientX,
-          y: e.clientY,
-          char: CHARS[Math.floor(Math.random() * CHARS.length)],
-          born: now,
-          vx: Math.random() * 2 - 1,
-          vy: 0,
-        });
-      }
+        const now = performance.now();
+        if (now - lastSparkleTime.current > 220) {
+          lastSparkleTime.current = now;
+          const CHARS = ["✦", "⚡", "★"];
+          sparklesRef.current.push({
+            x: e.clientX,
+            y: e.clientY,
+            char: CHARS[Math.floor(Math.random() * CHARS.length)],
+            born: now,
+            vx: Math.random() * 2 - 1,
+            vy: 0,
+          });
+          (window as unknown as { startSparkles?: () => void }).startSparkles?.();
+        }
+      });
     };
 
     window.addEventListener("mousemove", updateCursor, { passive: true });

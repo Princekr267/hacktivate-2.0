@@ -549,7 +549,7 @@ body {
 .aurora-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
+  filter: blur(20px);
   will-change: transform;
   pointer-events: none;
   z-index: 0;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import TracksBackground from "@/components/backgrounds/TracksBackground";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
@@ -66,8 +66,8 @@ const TRACKS = [
 
 /** Single track card with cursor-following radial glow overlay */
 function TrackCard({ track, idx }: { track: typeof TRACKS[number]; idx: number }) {
-  const [glow, setGlow] = useState<{ x: number; y: number } | null>(null);
   const ripple = useRipple();
+  const cardRectRef = useRef<DOMRect | null>(null);
 
   return (
     <motion.div
@@ -78,26 +78,33 @@ function TrackCard({ track, idx }: { track: typeof TRACKS[number]; idx: number }
       className="w-full sm:w-[310px] flex"
     >
       <TiltCard
-        className="card-hover scan-shimmer gold-pulse ripple-element w-full bg-purple-mid border-[3px] border-gold rounded-[20px] p-6 pt-8 relative group shadow-offset flex flex-col justify-center"
+        className="track-card card-hover scan-shimmer gold-pulse ripple-element w-full bg-purple-mid border-[3px] border-gold rounded-[20px] p-6 pt-8 relative group shadow-offset flex flex-col justify-center"
         onMouseMove={(e: React.MouseEvent<HTMLDivElement>) => {
-          const rect = e.currentTarget.getBoundingClientRect();
-          setGlow({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+          if (!cardRectRef.current) {
+            cardRectRef.current = e.currentTarget.getBoundingClientRect();
+          }
+          const rect = cardRectRef.current;
+          e.currentTarget.style.setProperty("--glow-x", `${e.clientX - rect.left}px`);
+          e.currentTarget.style.setProperty("--glow-y", `${e.clientY - rect.top}px`);
+          e.currentTarget.style.setProperty("--glow-opacity", "1");
         }}
         onClick={(e) => ripple.onClick(e as React.MouseEvent<HTMLElement>)}
-        onMouseLeave={() => setGlow(null)}
+        onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
+          cardRectRef.current = null;
+          e.currentTarget.style.setProperty("--glow-opacity", "0");
+        }}
       >
         {/* Top Accent Bar */}
         <div className="absolute top-0 left-6 right-6 h-[5px] bg-gold rounded-b-md" />
 
-        {/* Cursor-following radial glow overlay (Change 4B) */}
-        {glow && (
-          <div
-            className="absolute inset-0 pointer-events-none rounded-[20px] transition-opacity duration-200"
-            style={{
-              background: `radial-gradient(circle at ${glow.x}px ${glow.y}px, rgba(239,216,68,0.14) 0%, rgba(168,85,200,0.06) 50%, transparent 70%)`,
-            }}
-          />
-        )}
+        {/* Cursor-following radial glow overlay (CSS GPU accelerated) */}
+        <div
+          className="absolute inset-0 pointer-events-none rounded-[20px] transition-opacity duration-200"
+          style={{
+            opacity: "var(--glow-opacity, 0)" as unknown as number,
+            background: `radial-gradient(circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(239,216,68,0.14) 0%, rgba(168,85,200,0.06) 50%, transparent 70%)`,
+          }}
+        />
 
         {/* Icon Box with 3D Flip */}
         <div className="w-[68px] h-[68px] mb-6 relative perspective-3d z-10">

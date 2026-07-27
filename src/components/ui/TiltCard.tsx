@@ -40,15 +40,25 @@ export default function TiltCard({
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["8deg", "-8deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
 
+  const rectRef = useRef<DOMRect | null>(null);
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    rectRef.current = e.currentTarget.getBoundingClientRect();
+  };
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current || prefersReducedMotion || isMobile) return;
-    const rect = ref.current.getBoundingClientRect();
+    if (!rectRef.current) {
+      rectRef.current = ref.current.getBoundingClientRect();
+    }
+    const rect = rectRef.current;
     x.set((e.clientX - rect.left) / rect.width - 0.5);
     y.set((e.clientY - rect.top) / rect.height - 0.5);
     externalMouseMove?.(e);
   };
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    rectRef.current = null;
     x.set(0);
     y.set(0);
     externalMouseLeave?.(e);
@@ -57,6 +67,7 @@ export default function TiltCard({
   return (
     <motion.div
       ref={ref}
+      onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}

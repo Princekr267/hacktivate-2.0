@@ -7,7 +7,7 @@ import AnimatedNumber from "@/components/ui/AnimatedNumber";
 const STATS = [
   { num: 9,                  label: "Tracks"    },
   { num: 36,  suffix: "h",  label: "Non-Stop"  },
-  { num: 1,   prefix: "₹", suffix: "L+", label: "Prize Pool" },
+  { num: 15,  prefix: "₹", suffix: "L+", label: "Prize Pool" },
 ];
 
 export default function StatsBar() {

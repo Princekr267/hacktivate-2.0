@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { Zap, Menu, X } from "lucide-react";
 import Image from "next/image";
@@ -20,14 +20,29 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { scrollY } = useScroll();
   const activeSectionRef = useRef("home");
+  const sectionOffsetsRef = useRef<{ id: string; top: number }[]>([]);
+
+  // Cache section offsets on mount & window resize to eliminate layout thrashing during scroll
+  useEffect(() => {
+    const updateOffsets = () => {
+      const sections = NAV_LINKS.map(l => l.href.substring(1));
+      sectionOffsetsRef.current = sections.map(id => {
+        const el = document.getElementById(id);
+        return { id, top: el ? el.offsetTop : 0 };
+      });
+    };
+    updateOffsets();
+    window.addEventListener("resize", updateOffsets, { passive: true });
+    return () => window.removeEventListener("resize", updateOffsets);
+  }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setScrolled(latest > 50);
-    const sections = NAV_LINKS.map(l => l.href.substring(1));
+    const isScrolled = latest > 50;
+    setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
+
     let current = latest < 200 ? "home" : "";
-    for (const section of sections) {
-      const el = document.getElementById(section);
-      if (el && latest >= el.offsetTop - 200) current = section;
+    for (const item of sectionOffsetsRef.current) {
+      if (latest >= item.top - 200) current = item.id;
     }
     if (current && current !== activeSectionRef.current) {
       activeSectionRef.current = current;
