@@ -111,7 +111,7 @@ export default function Footer() {
           {/* Navigate */}
           <div className="flex flex-col items-center md:items-start gap-3">
             <h4 className="font-fredoka text-gold mb-2 text-lg">Navigate</h4>
-            {["Home", "Tracks", "Timeline", "Sponsors", "Team", "FAQ"].map(link => (
+            {["Home", "Tracks", "Prizes", "Timeline", "Sponsors", "Team", "FAQ"].map(link => (
               <a key={link} href={`#${link.toLowerCase()}`} className="font-nunito font-semibold text-cream/60 hover:text-gold transition-colors text-sm w-fit text-center md:text-left">
                 {link}
               </a>

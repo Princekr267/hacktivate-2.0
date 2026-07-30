@@ -145,8 +145,8 @@ export default function SponsorsSection() {
             delay={0.25}
           />
 
-          {/* 7th card — centred in its own row */}
-          <div className="col-span-1 sm:col-span-2 lg:col-span-3 flex justify-center">
+          {/* 7th & 8th cards — centred in their own row */}
+          <div className="col-span-1 sm:col-span-2 lg:col-span-3 flex flex-col sm:flex-row justify-center gap-6 sm:gap-8">
             <div className="w-full sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)]">
               <SponsorCard
                 title="Sponsor"
@@ -154,6 +154,17 @@ export default function SponsorsSection() {
                 alt="Bindu"
                 accent="purple"
                 delay={0.3}
+              />
+            </div>
+            <div className="w-full sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)]">
+              <SponsorCard
+                title="Community Partner"
+                image="/Sponser/ASI_ONE_Ghaziabad.png"
+                alt="ASI ONE Ghaziabad"
+                accent="cyan"
+                delay={0.35}
+                imageClassName="invert"
+                imageStyle={{ transform: "scale(1.35)" }}
               />
             </div>
           </div>

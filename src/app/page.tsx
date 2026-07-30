@@ -3,6 +3,7 @@ import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/sections/HeroSection";
 import StatsBar from "@/components/sections/StatsBar";
 import TracksSection from "@/components/sections/TracksSection";
+import PrizesSection from "@/components/sections/PrizesSection";
 import TimelineSection from "@/components/sections/TimelineSection";
 import SponsorsSection from "@/components/sections/SponsorsSection";
 import FaqSection from "@/components/sections/FaqSection";
@@ -22,6 +23,7 @@ export default function Home() {
         <HeroSection />
         <StatsBar />
         <TracksSection />
+        <PrizesSection />
         <TimelineSection />
         <SponsorsSection />
         <TeamSection />
