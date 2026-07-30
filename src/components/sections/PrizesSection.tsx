@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useMotionValue, useMotionTemplate, useReducedMotion } from "framer-motion";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import { useRipple } from "@/hooks/useRipple";
 
@@ -152,6 +152,32 @@ function GiftIcon({ className = "w-14 h-14 sm:w-16 sm:h-16" }: { className?: str
 function PrizeCard({ prize, idx }: { prize: Prize; idx: number }) {
   const ripple = useRipple();
   const prefersReducedMotion = useReducedMotion();
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent<HTMLDivElement>) {
+    if (prefersReducedMotion) return;
+    const rect = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - rect.left);
+    mouseY.set(clientY - rect.top);
+  }
+
+  const spotlightMask = useMotionTemplate`
+    radial-gradient(
+      280px circle at ${mouseX}px ${mouseY}px,
+      rgba(255, 255, 255, 1) 0%,
+      transparent 80%
+    )
+  `;
+
+  const spotlightBg = useMotionTemplate`
+    radial-gradient(
+      320px circle at ${mouseX}px ${mouseY}px,
+      rgba(239, 216, 68, 0.22),
+      rgba(152, 60, 176, 0.12) 50%,
+      transparent 85%
+    )
+  `;
 
   const renderIcon = () => {
     switch (prize.iconType) {
@@ -176,21 +202,41 @@ function PrizeCard({ prize, idx }: { prize: Prize; idx: number }) {
       }}
       whileHover={prefersReducedMotion ? {} : { y: -6 }}
       whileTap={prefersReducedMotion ? {} : { scale: 0.97 }}
+      onMouseMove={handleMouseMove}
       tabIndex={0}
       aria-label={`${prize.title}: ${prize.amount ? prize.amount + ',' : ''} ${prize.winners}, ${prize.description}`}
       className="group relative flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-6 bg-purple-mid/90 backdrop-blur-md border-[3px] border-gold/40 hover:border-gold rounded-[24px] p-6 sm:p-7 shadow-offset-black transition-colors duration-300 overflow-hidden ripple-element focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-purple-bg cursor-pointer"
       onClick={ripple.onClick}
     >
+      {/* Hardware-Accelerated GPU Radial Spotlight Background */}
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-[24px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
+        style={{ background: spotlightBg }}
+      />
+
+      {/* Hardware-Accelerated GPU Dot Matrix Reveal Masked Under Cursor */}
+      {!prefersReducedMotion && (
+        <motion.div
+          className="pointer-events-none absolute inset-0 rounded-[24px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
+          style={{
+            backgroundImage: `radial-gradient(rgba(239, 216, 68, 0.45) 1.2px, transparent 1.2px)`,
+            backgroundSize: "16px 16px",
+            maskImage: spotlightMask,
+            WebkitMaskImage: spotlightMask,
+          }}
+        />
+      )}
+
       {/* Top Accent Bar */}
-      <div className="absolute top-0 left-6 right-6 h-[4px] bg-gradient-to-r from-transparent via-gold to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute top-0 left-6 right-6 h-[4px] bg-gradient-to-r from-transparent via-gold to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-300 z-10" />
 
       {/* Animated Icon Container */}
-      <div className="group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 ease-out shrink-0">
+      <div className="group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 ease-out shrink-0 relative z-10">
         {renderIcon()}
       </div>
 
       {/* Content Container */}
-      <div className="flex flex-col flex-1 min-w-0">
+      <div className="flex flex-col flex-1 min-w-0 relative z-10">
         <h3 className="font-fredoka text-xl sm:text-2xl text-cream group-hover:text-gold transition-colors duration-300 mb-2.5 tracking-wide">
           {prize.title}
         </h3>
