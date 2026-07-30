@@ -21,7 +21,7 @@ const FAQS = [
   },
   {
     q: "Do I need a team to participate?",
-    a: "Teams must have 4 members. Solo participation is not allowed."
+    a: "Teams can have 2 to 4 members. Solo participation is not allowed."
   },
   {
     q: "Can team members be from different colleges?",
