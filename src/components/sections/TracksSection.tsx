@@ -171,33 +171,26 @@ const TRACKS: TrackItem[] = [
   },
 ];
 
-/** Aceternity UI style Expandable Card item in grid */
+/** Track card item in grid with expandable layout morphing */
 function TrackCard({
   track,
-  idx,
   onOpenModal,
 }: {
   track: TrackItem;
-  idx: number;
   onOpenModal: (track: TrackItem) => void;
 }) {
   const ripple = useRipple();
   const cardRectRef = useRef<DOMRect | null>(null);
+  const shortDesc = track.desc.length > 130 ? `${track.desc.slice(0, 125).replace(/[\s.,]+$/, "")}...` : track.desc;
 
   return (
     <motion.div
       layoutId={`card-${track.id}`}
+      transition={{ type: "spring", stiffness: 320, damping: 26, mass: 0.8 }}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-20px" }}
-      transition={{
-        layout: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
-        delay: Math.min(idx * 0.05, 0.3),
-        type: "spring",
-        stiffness: 120,
-        damping: 20,
-      }}
-      className="w-full h-[330px] flex cursor-pointer will-change-transform"
+      className="w-full h-[330px] flex cursor-pointer"
       onClick={(e) => {
         ripple.onClick(e as React.MouseEvent<HTMLElement>);
         onOpenModal(track);
@@ -242,11 +235,7 @@ function TrackCard({
 
         <div className="flex flex-col flex-1 overflow-hidden">
           {/* Icon Box with 3D Flip */}
-          <motion.div
-            layoutId={`icon-${track.id}`}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="w-[60px] h-[60px] mb-4 relative perspective-3d z-10 shrink-0"
-          >
+          <div className="w-[60px] h-[60px] mb-4 relative perspective-3d z-10 shrink-0">
             <div className="w-full h-full preserve-3d relative">
               {/* Front */}
               <div className="absolute inset-0 bg-black border-2 border-gold rounded-2xl shadow-offset-black flex items-center justify-center text-2xl backface-hidden">
@@ -257,25 +246,17 @@ function TrackCard({
                 {track.icon}
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Title */}
-          <motion.h3
-            layoutId={`title-${track.id}`}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="font-fredoka text-gold text-[20px] mb-2 relative z-10 leading-snug shrink-0 line-clamp-1"
-          >
+          <h3 className="font-fredoka text-gold text-[20px] mb-2 relative z-10 leading-snug shrink-0 line-clamp-1">
             {track.title}
-          </motion.h3>
+          </h3>
 
-          {/* Description */}
-          <motion.div
-            layoutId={`desc-${track.id}`}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="font-nunito font-semibold text-cream opacity-90 text-xs sm:text-sm leading-relaxed relative z-10 line-clamp-4 flex-1"
-          >
-            {track.desc}
-          </motion.div>
+          {/* Description truncated cleanly to 4 lines */}
+          <div className="font-nunito font-semibold text-cream opacity-90 text-xs sm:text-sm leading-relaxed relative z-10 overflow-hidden line-clamp-4 flex-1">
+            {shortDesc}
+          </div>
         </div>
 
         {/* Interactive Footer Button */}
@@ -350,63 +331,58 @@ export default function TracksSection() {
 
         {/* Tracks Grid: 4 columns on PC (xl:grid-cols-4), 3 on desktop, 2 on tablet, 1 on mobile */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 max-w-[1400px] mx-auto">
-          {TRACKS.map((track, idx) => (
+          {TRACKS.map((track) => (
             <TrackCard
               key={track.id}
               track={track}
-              idx={idx}
               onOpenModal={(t) => setActive(t)}
             />
           ))}
         </div>
       </div>
 
-      {/* Aceternity UI Expandable Modal Portal with Framer Motion shared layoutId morphing */}
+      {/* Expandable Card Modal Portal with container layoutId morphing */}
       {isMounted &&
         createPortal(
           <AnimatePresence>
             {active && (
               <>
-                {/* Smooth Fade Overlay */}
+                {/* Backdrop Overlay */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                  className="fixed inset-0 bg-black/85 backdrop-blur-sm z-[999998]"
+                  transition={{ duration: 0.2 }}
+                  className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[999998]"
                   onClick={() => setActive(null)}
                 />
 
-                {/* Expanded Card Modal Wrapper */}
+                {/* Expanded Card Container */}
                 <div className="fixed inset-0 z-[999999] flex items-center justify-center p-3 sm:p-6 pt-20 sm:pt-24 pb-6 overflow-y-auto pointer-events-none">
                   <motion.div
                     layoutId={`card-${active.id}`}
-                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="bg-[#240c3d] border-[3px] border-gold rounded-[24px] max-w-2xl w-full p-5 sm:p-8 relative shadow-[0_0_50px_rgba(239,216,68,0.35)] my-auto max-h-[82vh] flex flex-col pointer-events-auto will-change-transform"
+                    transition={{ type: "spring", stiffness: 320, damping: 26, mass: 0.8 }}
+                    className="bg-[#240c3d] border-[3px] border-gold rounded-[24px] max-w-2xl w-full p-5 sm:p-8 relative shadow-[0_0_50px_rgba(239,216,68,0.35)] my-auto max-h-[82vh] flex flex-col z-[999999] pointer-events-auto"
                     onClick={(e) => e.stopPropagation()}
                   >
                     {/* Close Button */}
-                    <motion.button
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.15 }}
+                    <button
                       onClick={() => setActive(null)}
                       className="absolute top-4 right-4 bg-black border-2 border-gold text-gold hover:bg-gold hover:text-black w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-base sm:text-lg transition-colors shadow-[2px_2px_0px_#080511] z-30 shrink-0"
                       aria-label="Close card"
                     >
                       ✕
-                    </motion.button>
+                    </button>
 
-                    {/* Scrollable Content Container */}
-                    <div className="overflow-y-auto pr-1 sm:pr-3 custom-scrollbar flex-1">
+                    {/* Faded Inner Scrollable Content Container */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.2, delay: 0.08 }}
+                      className="overflow-y-auto pr-1 sm:pr-3 custom-scrollbar flex-1"
+                    >
                       {/* Modal Top Badges */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="flex flex-wrap items-center gap-2 mb-3"
-                      >
+                      <div className="flex flex-wrap items-center gap-2 mb-3">
                         {active.badge && (
                           <span className="bg-gold text-black font-fredoka font-bold text-[11px] sm:text-xs px-3 py-0.5 rounded-full border border-black uppercase shadow-[2px_2px_0px_#080511]">
                             {active.badge}
@@ -415,38 +391,23 @@ export default function TracksSection() {
                         <span className="bg-black text-gold font-nunito font-bold text-[11px] sm:text-xs px-3 py-0.5 rounded-full border border-gold/60">
                           THEME: {active.title}
                         </span>
-                      </motion.div>
+                      </div>
 
-                      {/* Header with shared layoutId icon and title */}
+                      {/* Header */}
                       <div className="flex items-center gap-3 sm:gap-4 mb-4">
-                        <motion.div
-                          layoutId={`icon-${active.id}`}
-                          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                          className="w-12 h-12 sm:w-16 sm:h-16 bg-black border-2 border-gold rounded-2xl flex items-center justify-center text-3xl sm:text-4xl shadow-[3px_3px_0px_#EFD844] shrink-0"
-                        >
-                          <div className="w-full h-full flex items-center justify-center">
-                            {active.icon}
-                          </div>
-                        </motion.div>
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-black border-2 border-gold rounded-2xl flex items-center justify-center text-3xl sm:text-4xl shadow-[3px_3px_0px_#EFD844] shrink-0">
+                          {active.icon}
+                        </div>
                         <div>
-                          <motion.h3
-                            layoutId={`title-${active.id}`}
-                            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                            className="font-fredoka text-gold text-xl sm:text-2xl md:text-3xl leading-tight"
-                          >
+                          <h3 className="font-fredoka text-gold text-xl sm:text-2xl md:text-3xl leading-tight">
                             {active.title}
-                          </motion.h3>
+                          </h3>
                         </div>
                       </div>
 
                       {/* Perk highlight if available */}
                       {active.perk && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.25, delay: 0.08 }}
-                          className="bg-black/60 border-2 border-gold/60 text-cream p-3 sm:p-4 rounded-xl mb-5 flex items-center gap-3"
-                        >
+                        <div className="bg-black/60 border-2 border-gold/60 text-cream p-3 sm:p-4 rounded-xl mb-5 flex items-center gap-3">
                           <span className="text-xl sm:text-2xl shrink-0">💼</span>
                           <div>
                             <div className="font-fredoka text-gold text-xs uppercase tracking-wider">
@@ -456,7 +417,7 @@ export default function TracksSection() {
                               {active.perk}
                             </div>
                           </div>
-                        </motion.div>
+                        </div>
                       )}
 
                       {/* About Section */}
@@ -464,21 +425,13 @@ export default function TracksSection() {
                         <h4 className="font-fredoka text-gold text-base sm:text-lg mb-1.5 flex items-center gap-2">
                           <span>💡</span> About Track
                         </h4>
-                        <motion.p
-                          layoutId={`desc-${active.id}`}
-                          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                          className="font-nunito font-semibold text-cream/90 text-xs sm:text-sm leading-relaxed"
-                        >
+                        <p className="font-nunito font-semibold text-cream/90 text-xs sm:text-sm leading-relaxed">
                           {active.desc}
-                        </motion.p>
+                        </p>
                       </div>
 
                       {/* Focus Areas List */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 12 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.25, delay: 0.12 }}
-                      >
+                      <div>
                         <h4 className="font-fredoka text-gold text-base sm:text-lg mb-3 flex items-center gap-2">
                           <span>🎯</span> Track Focus Areas ({active.focusAreas.length})
                         </h4>
@@ -495,8 +448,8 @@ export default function TracksSection() {
                             </div>
                           ))}
                         </div>
-                      </motion.div>
-                    </div>
+                      </div>
+                    </motion.div>
 
                     {/* Modal Footer Action */}
                     <div className="mt-4 pt-3 border-t border-gold/20 flex justify-end shrink-0">

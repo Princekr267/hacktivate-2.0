@@ -94,7 +94,7 @@ export default function SponsorsSection() {
           <AnimatedHeading text="Our Sponsors" shadowColor="#080511" />
         </div>
 
-        {/* Sponsors — uniform grid, all cards identical */}
+        {/* Sponsors — 3x3 grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-20 w-full px-4 sm:px-0">
 
           <SponsorCard
@@ -145,29 +145,33 @@ export default function SponsorsSection() {
             delay={0.25}
           />
 
-          {/* 7th & 8th cards — centred in their own row */}
-          <div className="col-span-1 sm:col-span-2 lg:col-span-3 flex flex-col sm:flex-row justify-center gap-6 sm:gap-8">
-            <div className="w-full sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)]">
-              <SponsorCard
-                title="Sponsor"
-                image="/Sponser/bindu_logo_icon.png"
-                alt="Bindu"
-                accent="purple"
-                delay={0.3}
-              />
-            </div>
-            <div className="w-full sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)]">
-              <SponsorCard
-                title="Community Partner"
-                image="/Sponser/ASI_ONE_Ghaziabad.png"
-                alt="ASI ONE Ghaziabad"
-                accent="cyan"
-                delay={0.35}
-                imageClassName="invert"
-                imageStyle={{ transform: "scale(1.35)" }}
-              />
-            </div>
-          </div>
+          <SponsorCard
+            title="Sponsor"
+            image="/Sponser/bindu_logo_icon.png"
+            alt="Bindu"
+            accent="purple"
+            delay={0.3}
+          />
+
+          <SponsorCard
+            title="Community Partner"
+            image="/Sponser/ASI_ONE_Ghaziabad.png"
+            alt="ASI ONE Ghaziabad"
+            accent="cyan"
+            delay={0.35}
+            imageClassName="invert"
+            imageStyle={{ transform: "scale(1.35)" }}
+          />
+
+          <SponsorCard
+            title="Media Partner"
+            image="/Sponser/Influx_Studio.png"
+            alt="Influx Studio"
+            accent="purple"
+            delay={0.4}
+            imageClassName="invert"
+            imageStyle={{ transform: "scale(1.8)" }}
+          />
 
         </div>
 
