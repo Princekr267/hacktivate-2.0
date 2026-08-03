@@ -173,6 +173,15 @@ export default function SponsorsSection() {
             imageStyle={{ transform: "scale(1.8)" }}
           />
 
+          <SponsorCard
+            title="In-kind Sponsor"
+            image="/Sponser/shekunj edu.logo-Photoroom.png?v=2"
+            alt="SheKunj Edu"
+            accent="purple"
+            delay={0.45}
+            imageStyle={{ transform: "scale(2.1)" }}
+          />
+
         </div>
 
         {/* CTA Box */}
