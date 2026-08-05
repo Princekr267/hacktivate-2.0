@@ -154,12 +154,12 @@ export default function SponsorsSection() {
           />
 
           <SponsorCard
-            title="Community Partner"
-            image="/Sponser/ASI_ONE_Ghaziabad.png"
+            title="Track sponsor"
+            image="/Sponser/ASI_ONE.jpg"
             alt="ASI ONE Ghaziabad"
-            accent="cyan"
+            accent="pink"
             delay={0.35}
-            imageClassName="invert"
+            // imageClassName="invert"
             imageStyle={{ transform: "scale(1.35)" }}
           />
 
