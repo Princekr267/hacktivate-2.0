@@ -7,21 +7,21 @@ import AnimatedHeading from "@/components/ui/AnimatedHeading";
 
 const TIMELINE = [
   {
-    date: "Jun 1 – Aug 15, 2026",
+    date: "Jun 1 – Aug 26, 2026",
     title: "Registration 📝",
-    desc: "Hackathon registration period. Sign up, form your team, and claim your spot at Hacktivate 2.0. Open from Jun 1 at 12:00 AM to Aug 15 at 11:59 PM.",
+    desc: "Hackathon registration period. Sign up, form your team, and claim your spot at Hacktivate 2.0. Open from Jun 1 at 12:00 AM to Aug 26 at 11:59 PM.",
     tag: "Online",
   },
   {
-    date: "Jun 1 – Aug 15, 2026",
+    date: "Jun 1 – Aug 26, 2026",
     title: "Team Formation 🤝",
-    desc: "Form teams and collaborate with other participants. Find your dream team before registrations close on Aug 15 at 11:59 PM.",
+    desc: "Form teams and collaborate with other participants. Find your dream team before registrations close on Aug 26 at 11:59 PM.",
     tag: "Online",
   },
   {
-    date: "Jun 1 – Aug 15, 2026",
+    date: "Jun 1 – Aug 26, 2026",
     title: "Presentation Submission 📊",
-    desc: "Submit your project idea presentation for evaluation. Window open from Jun 1 at 12:00 AM to Aug 15 at 11:59 PM.",
+    desc: "Submit your project idea presentation for evaluation. Window open from Jun 1 at 12:00 AM to Aug 26 at 11:59 PM.",
     tag: "Online",
   },
   {

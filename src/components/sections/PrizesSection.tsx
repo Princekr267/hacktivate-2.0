@@ -18,29 +18,29 @@ const PRIZES: Prize[] = [
     id: "first-prize",
     title: "First Prize",
     iconType: "trophy",
-    amount: "₹ 20,000 cash",
+    amount: "₹ 15,000 cash",
     winners: "1 winner",
-    description: "₹20000 Cash",
+    description: "₹15000 Cash",
   },
   {
     id: "second-prize",
     title: "Second Prize",
     iconType: "trophy",
-    amount: "₹ 12,000 cash",
+    amount: "₹ 10,000 cash",
     winners: "1 winner",
-    description: "₹12000 Cash",
+    description: "₹10000 Cash",
   },
   {
     id: "third-prize",
     title: "Third Prize",
     iconType: "trophy",
-    amount: "₹ 8,000 cash",
+    amount: "₹ 5,000 cash",
     winners: "1 winner",
-    description: "₹8000 Cash",
+    description: "₹5000 Cash",
   },
   {
     id: "asi-one-track",
-    title: "ASI ONE Track Prize",
+    title: "ASI:ONE Track Prize",
     iconType: "briefcase",
     winners: "1 winner",
     description: "Internship opportunity for the winning team of ASI One Track",
@@ -51,7 +51,7 @@ const PRIZES: Prize[] = [
     iconType: "gift",
     amount: "₹ 1,000",
     winners: "1 winner",
-    description: "₹1000 worth of goodies, gifts, swag, etc",
+    description: "₹ 1000 worth of goodies, gifts, swag, etc",
   },
   {
     id: "best-female",
@@ -59,7 +59,7 @@ const PRIZES: Prize[] = [
     iconType: "gift",
     amount: "₹ 1,000",
     winners: "1 winner",
-    description: "₹1000 worth of goodies, gifts, swag, etc",
+    description: "₹ 1000 worth of goodies, gifts, swag, etc",
   },
 ];
 
@@ -278,7 +278,7 @@ export default function PrizesSection() {
         <div className="flex flex-col items-center text-center mb-12 sm:mb-16">
           <AnimatedHeading text="Prizes" shadowColor="#080511" />
           <p className="font-nunito text-cream/90 text-center text-base sm:text-lg max-w-2xl mx-auto mt-4 tracking-wide leading-relaxed">
-            Compete for a <span className="text-gold font-bold">₹15L+</span> prize pool with <span className="text-gold font-bold">₹48K in cash</span> and <span className="text-gold font-bold">₹2K of other prizes</span>
+            Compete for a <span className="text-gold font-bold">₹15L+</span> prize pool with <span className="text-gold font-bold">₹30K in cash</span> and <span className="text-gold font-bold">₹2K of other prizes</span>
           </p>
         </div>
 
