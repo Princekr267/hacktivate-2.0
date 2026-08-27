@@ -94,14 +94,34 @@ export default function SponsorsSection() {
           <AnimatedHeading text="Our Sponsors" shadowColor="#080511" />
         </div>
 
-        {/* Sponsors — 3x3 grid */}
+        {/* Sponsors — grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-20 w-full px-4 sm:px-0">
+
+          <SponsorCard
+            title="Event Partner"
+            image="/Sponser/mlh-logo-color.png"
+            alt="MLH"
+            accent="cyan"
+            cardBgOverride={{
+              base:  "#ffffff",
+              hover: "#f0f8ff",
+            }}
+          />
+
+          <SponsorCard
+            title="Innovation Partner"
+            image="/Sponser/Nerds_Room_logo.jpeg"
+            alt="Nerds Room"
+            accent="gold"
+            delay={0.05}
+          />
 
           <SponsorCard
             title="Platform Partner"
             image="/Sponser/HackCulture.png"
             alt="HackCulture"
             accent="cyan"
+            delay={0.1}
           />
 
           <SponsorCard
@@ -109,7 +129,7 @@ export default function SponsorsSection() {
             image="/Sponser/Logitech_print_white_L.png"
             alt="Logitech"
             accent="gold"
-            delay={0.05}
+            delay={0.15}
           />
 
           <SponsorCard
@@ -117,7 +137,7 @@ export default function SponsorsSection() {
             image="/Sponser/n8n_pink+white_logo.png"
             alt="n8n"
             accent="pink"
-            delay={0.1}
+            delay={0.2}
           />
 
           <SponsorCard
@@ -125,7 +145,7 @@ export default function SponsorsSection() {
             image="/Sponser/lazer_crazer.jpeg"
             alt="Lazer Crazer"
             accent="purple"
-            delay={0.15}
+            delay={0.25}
           />
 
           <SponsorCard
@@ -133,7 +153,7 @@ export default function SponsorsSection() {
             image="/Sponser/TruScholar.png"
             alt="TruScholar"
             accent="purple"
-            delay={0.2}
+            delay={0.3}
             imageStyle={{ transform: "scale(2.5) translateY(6px)" }}
           />
 
@@ -142,7 +162,7 @@ export default function SponsorsSection() {
             image="/Sponser/EvePaper.jpeg"
             alt="EvePaper"
             accent="purple"
-            delay={0.25}
+            delay={0.35}
           />
 
           <SponsorCard
@@ -150,7 +170,7 @@ export default function SponsorsSection() {
             image="/Sponser/bindu_logo_icon.png"
             alt="Bindu"
             accent="purple"
-            delay={0.3}
+            delay={0.4}
           />
 
           <SponsorCard
@@ -158,7 +178,7 @@ export default function SponsorsSection() {
             image="/Sponser/ASI_ONE.jpg"
             alt="ASI ONE Ghaziabad"
             accent="pink"
-            delay={0.35}
+            delay={0.45}
             // imageClassName="invert"
             imageStyle={{ transform: "scale(1.35)" }}
           />
@@ -168,7 +188,7 @@ export default function SponsorsSection() {
             image="/Sponser/Influx_Studio.png"
             alt="Influx Studio"
             accent="purple"
-            delay={0.4}
+            delay={0.5}
             imageClassName="invert"
             imageStyle={{ transform: "scale(1.8)" }}
           />
@@ -178,24 +198,8 @@ export default function SponsorsSection() {
             image="/Sponser/shekunj edu.logo-Photoroom.png?v=2"
             alt="SheKunj Edu"
             accent="purple"
-            delay={0.45}
-            imageStyle={{ transform: "scale(2.1)" }}
-          />
-
-          <SponsorCard
-            title="Event Partner"
-            image="/Sponser/MLH_logo.jpeg"
-            alt="MLH"
-            accent="cyan"
-            delay={0.5}
-          />
-
-          <SponsorCard
-            title="Innovation Partner"
-            image="/Sponser/Nerds_Room_logo.jpeg"
-            alt="Nerds Room"
-            accent="gold"
             delay={0.55}
+            imageStyle={{ transform: "scale(2.1)" }}
           />
 
         </div>

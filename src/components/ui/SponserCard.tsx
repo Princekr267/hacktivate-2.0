@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRipple } from "@/hooks/useRipple";
@@ -12,6 +14,7 @@ interface SponsorCardProps {
   delay?: number;
   imageClassName?: string;
   imageStyle?: React.CSSProperties;
+  cardBgOverride?: { base: string; hover: string };
 }
 
 const accentStyles = {
@@ -22,6 +25,8 @@ const accentStyles = {
     bg: "bg-cyan-400/10",
     cardBorder: "border-cyan-400/40 hover:border-cyan-400/80",
     glow: "hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]",
+    cardBg: "radial-gradient(ellipse at center, rgba(34,211,238,0.12) 0%, rgba(14,8,30,0.95) 70%)",
+    cardBgHover: "radial-gradient(ellipse at center, rgba(34,211,238,0.2) 0%, rgba(20,10,40,0.98) 70%)",
   },
   gold: {
     line: "to-gold/60",
@@ -30,6 +35,8 @@ const accentStyles = {
     bg: "bg-gold/10",
     cardBorder: "border-gold/50 hover:border-gold/90",
     glow: "hover:shadow-[0_0_30px_rgba(239,216,68,0.25)]",
+    cardBg: "radial-gradient(ellipse at center, rgba(239,216,68,0.12) 0%, rgba(14,8,30,0.95) 70%)",
+    cardBgHover: "radial-gradient(ellipse at center, rgba(239,216,68,0.2) 0%, rgba(20,10,40,0.98) 70%)",
   },
   pink: {
     line: "to-pink-400/60",
@@ -38,6 +45,8 @@ const accentStyles = {
     bg: "bg-pink-400/10",
     cardBorder: "border-pink-400/40 hover:border-pink-400/80",
     glow: "hover:shadow-[0_0_30px_rgba(244,63,94,0.25)]",
+    cardBg: "radial-gradient(ellipse at center, rgba(244,63,94,0.12) 0%, rgba(14,8,30,0.95) 70%)",
+    cardBgHover: "radial-gradient(ellipse at center, rgba(244,63,94,0.2) 0%, rgba(20,10,40,0.98) 70%)",
   },
   purple: {
     line: "to-purple-400/60",
@@ -46,6 +55,8 @@ const accentStyles = {
     bg: "bg-purple-400/10",
     cardBorder: "border-purple-400/40 hover:border-purple-400/80",
     glow: "hover:shadow-[0_0_30px_rgba(168,85,247,0.2)]",
+    cardBg: "radial-gradient(ellipse at center, rgba(168,85,247,0.12) 0%, rgba(14,8,30,0.95) 70%)",
+    cardBgHover: "radial-gradient(ellipse at center, rgba(168,85,247,0.2) 0%, rgba(20,10,40,0.98) 70%)",
   },
 };
 
@@ -57,9 +68,14 @@ export default function SponsorCard({
   delay = 0,
   imageClassName,
   imageStyle,
+  cardBgOverride,
 }: SponsorCardProps) {
   const ripple = useRipple();
   const style = accentStyles[accent];
+  const [hovered, setHovered] = useState(false);
+
+  const bgBase  = cardBgOverride?.base  ?? style.cardBg;
+  const bgHover = cardBgOverride?.hover ?? style.cardBgHover;
 
   return (
     <motion.div
@@ -84,14 +100,17 @@ export default function SponsorCard({
       <div className="w-full">
         <div
           {...ripple}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
           className={`
             ripple-element w-full aspect-[16/7] sm:aspect-[16/8] lg:aspect-[16/9]
-            bg-[rgba(20,12,40,0.85)] rounded-2xl border-2
+            rounded-2xl border-2
             ${style.cardBorder} flex items-center justify-center
             px-6 sm:px-8 overflow-hidden
-            relative transition-all duration-300 hover:bg-[rgba(40,20,70,0.9)]
+            relative transition-all duration-500
             hover:-translate-y-1 shadow-lg ${style.glow}
           `}
+          style={{ background: hovered ? bgHover : bgBase }}
         >
           <div className="w-full h-full flex items-center justify-center">
             <Image
