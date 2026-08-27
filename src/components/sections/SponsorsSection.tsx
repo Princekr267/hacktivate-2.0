@@ -182,6 +182,22 @@ export default function SponsorsSection() {
             imageStyle={{ transform: "scale(2.1)" }}
           />
 
+          <SponsorCard
+            title="Event Partner"
+            image="/Sponser/MLH_logo.jpeg"
+            alt="MLH"
+            accent="cyan"
+            delay={0.5}
+          />
+
+          <SponsorCard
+            title="Innovation Partner"
+            image="/Sponser/Nerds_Room_logo.jpeg"
+            alt="Nerds Room"
+            accent="gold"
+            delay={0.55}
+          />
+
         </div>
 
         {/* CTA Box */}

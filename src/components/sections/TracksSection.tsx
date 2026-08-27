@@ -169,6 +169,15 @@ const TRACKS: TrackItem[] = [
       { name: "Self-Defined Impact Projects", icon: "💡" },
     ],
   },
+  {
+    id: "nerds-hack-days",
+    icon: "🧠",
+    title: "Track brought to you by Nerds Hack Days",
+    badge: "Nerds Room",
+    perk: "Dedicated track presented by Nerds Room Innovation Partner",
+    desc: "A dedicated track brought to you by Nerds Hack Days, presented by Nerds Room. Build bold, unconventional, and high-impact projects that push the boundaries of what hackers can create — powered by the Nerds Room community.",
+    focusAreas: [],
+  },
 ];
 
 /** Track card item in grid with expandable layout morphing */
@@ -430,25 +439,27 @@ export default function TracksSection() {
                         </p>
                       </div>
 
-                      {/* Focus Areas List */}
-                      <div>
-                        <h4 className="font-fredoka text-gold text-base sm:text-lg mb-3 flex items-center gap-2">
-                          <span>🎯</span> Track Focus Areas ({active.focusAreas.length})
-                        </h4>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                          {active.focusAreas.map((area, idx) => (
-                            <div
-                              key={idx}
-                              className="bg-black/60 border border-gold/40 hover:border-gold p-2.5 sm:p-3 rounded-xl flex items-center gap-3 transition-colors"
-                            >
-                              <span className="text-lg sm:text-xl shrink-0">{area.icon}</span>
-                              <span className="font-nunito font-bold text-cream text-xs sm:text-sm">
-                                {area.name}
-                              </span>
-                            </div>
-                          ))}
+                      {/* Focus Areas List — only shown when areas exist */}
+                      {active.focusAreas.length > 0 && (
+                        <div>
+                          <h4 className="font-fredoka text-gold text-base sm:text-lg mb-3 flex items-center gap-2">
+                            <span>🎯</span> Track Focus Areas ({active.focusAreas.length})
+                          </h4>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                            {active.focusAreas.map((area, idx) => (
+                              <div
+                                key={idx}
+                                className="bg-black/60 border border-gold/40 hover:border-gold p-2.5 sm:p-3 rounded-xl flex items-center gap-3 transition-colors"
+                              >
+                                <span className="text-lg sm:text-xl shrink-0">{area.icon}</span>
+                                <span className="font-nunito font-bold text-cream text-xs sm:text-sm">
+                                  {area.name}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </motion.div>
 
                     {/* Modal Footer Action */}
