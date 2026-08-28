@@ -102,6 +102,7 @@ export default function SponsorsSection() {
             image="/Sponser/mlh-logo-color.png"
             alt="MLH"
             accent="cyan"
+            noBorderShadow
             cardBgOverride={{
               base:  "#ffffff",
               hover: "#f0f8ff",
@@ -114,6 +115,11 @@ export default function SponsorsSection() {
             alt="Nerds Room"
             accent="gold"
             delay={0.05}
+            noBorderShadow
+            cardBgOverride={{
+              base:  "#ffffff",
+              hover: "#fffdf0",
+            }}
           />
 
           <SponsorCard
@@ -171,6 +177,11 @@ export default function SponsorsSection() {
             alt="Bindu"
             accent="purple"
             delay={0.4}
+            noBorderShadow
+            cardBgOverride={{
+              base:  "#ffffff",
+              hover: "#f8f5ff",
+            }}
           />
 
           <SponsorCard
@@ -179,8 +190,12 @@ export default function SponsorsSection() {
             alt="ASI ONE Ghaziabad"
             accent="pink"
             delay={0.45}
-            // imageClassName="invert"
+            noBorderShadow
             imageStyle={{ transform: "scale(1.35)" }}
+            cardBgOverride={{
+              base:  "#ffffff",
+              hover: "#fff5f8",
+            }}
           />
 
           <SponsorCard
@@ -189,8 +204,12 @@ export default function SponsorsSection() {
             alt="Influx Studio"
             accent="purple"
             delay={0.5}
-            imageClassName="invert"
+            noBorderShadow
             imageStyle={{ transform: "scale(1.8)" }}
+            cardBgOverride={{
+              base:  "#ffffff",
+              hover: "#f8f5ff",
+            }}
           />
 
           <SponsorCard

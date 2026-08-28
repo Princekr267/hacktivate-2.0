@@ -15,6 +15,7 @@ interface SponsorCardProps {
   imageClassName?: string;
   imageStyle?: React.CSSProperties;
   cardBgOverride?: { base: string; hover: string };
+  noBorderShadow?: boolean;
 }
 
 const accentStyles = {
@@ -69,6 +70,7 @@ export default function SponsorCard({
   imageClassName,
   imageStyle,
   cardBgOverride,
+  noBorderShadow = false,
 }: SponsorCardProps) {
   const ripple = useRipple();
   const style = accentStyles[accent];
@@ -105,10 +107,11 @@ export default function SponsorCard({
           className={`
             ripple-element w-full aspect-[16/7] sm:aspect-[16/8] lg:aspect-[16/9]
             rounded-2xl border-2
-            ${style.cardBorder} flex items-center justify-center
+            ${noBorderShadow ? "border-gray-200/40" : `${style.cardBorder} shadow-lg ${style.glow}`}
+            flex items-center justify-center
             px-6 sm:px-8 overflow-hidden
             relative transition-all duration-500
-            hover:-translate-y-1 shadow-lg ${style.glow}
+            hover:-translate-y-1
           `}
           style={{ background: hovered ? bgHover : bgBase }}
         >
@@ -122,7 +125,7 @@ export default function SponsorCard({
               className={`
                 max-w-[65%] max-h-[55%] w-auto h-auto
                 object-contain object-center select-none pointer-events-none
-                drop-shadow-md
+                ${noBorderShadow ? "" : "drop-shadow-md"}
                 ${imageClassName || ""}
               `}
               style={imageStyle}
