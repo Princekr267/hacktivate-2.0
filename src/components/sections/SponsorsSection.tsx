@@ -221,6 +221,20 @@ export default function SponsorsSection() {
             imageStyle={{ transform: "scale(2.1)" }}
           />
 
+          <SponsorCard
+            title="Sponsor"
+            image="/Sponser/Builder_Base.png"
+            alt="Builder Base"
+            accent="cyan"
+            delay={0.6}
+            noBorderShadow
+            imageStyle={{ transform: "scale(1.4)" }}
+            cardBgOverride={{
+              base:  "#ffffff",
+              hover: "#f0faff",
+            }}
+          />
+
         </div>
 
         {/* CTA Box */}
