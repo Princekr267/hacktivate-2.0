@@ -235,6 +235,61 @@ export default function SponsorsSection() {
             }}
           />
 
+          <SponsorCard
+            title="Stall Partner"
+            image="/Sponser/la pinoz.jpg"
+            alt="La Pinoz"
+            accent="gold"
+            delay={0.65}
+            noBorderShadow
+            cardBgOverride={{
+              base:  "#ffffff",
+              hover: "#fffdf0",
+            }}
+          />
+
+          <SponsorCard
+            title="Stall Partner"
+            image="/Sponser/fat tiger.PNG"
+            alt="Fat Tiger"
+            accent="pink"
+            delay={0.7}
+            noBorderShadow
+            cardBgOverride={{
+              base:  "#ffffff",
+              hover: "#fff5f8",
+            }}
+          />
+
+          <SponsorCard
+            title="Stall Partner"
+            image="/Sponser/prateek studio.png"
+            alt="Prateek Studio"
+            accent="purple"
+            delay={0.75}
+            noBorderShadow
+            cardBgOverride={{
+              base:  "#ffffff",
+              hover: "#f8f5ff",
+            }}
+          />
+
+          <SponsorCard
+            title="Gifting Partner"
+            image="/Sponser/Meraj's_Creatives.png"
+            alt="Meraj's Creatives"
+            accent="gold"
+            delay={0.8}
+          />
+
+          <SponsorCard
+            title="Advertising Partner"
+            image="/Sponser/Pointline_Logo_2.png"
+            alt="Pointline"
+            accent="cyan"
+            delay={0.85}
+          />
+
         </div>
 
         {/* CTA Box */}
