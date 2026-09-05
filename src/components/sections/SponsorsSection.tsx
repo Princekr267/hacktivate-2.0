@@ -290,6 +290,19 @@ export default function SponsorsSection() {
             delay={0.85}
           />
 
+          <SponsorCard
+            title="Sponsor"
+            image="/Sponser/Jumbl_logo.jpeg"
+            alt="Jumbl"
+            accent="gold"
+            delay={0.9}
+            imageStyle={{ transform: "scale(1.5)" }}
+            cardBgOverride={{
+              base: "#121212",
+              hover: "#1c1c1c",
+            }}
+          />
+
         </div>
 
         {/* CTA Box */}
