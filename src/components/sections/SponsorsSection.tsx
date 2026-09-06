@@ -291,7 +291,7 @@ export default function SponsorsSection() {
           />
 
           <SponsorCard
-            title="Sponsor"
+            title="Career Partner"
             image="/Sponser/Jumbl_logo.jpeg"
             alt="Jumbl"
             accent="gold"
@@ -305,12 +305,12 @@ export default function SponsorsSection() {
 
         </div>
 
-        {/* Community Sponsors Divider & Heading */}
+        {/* Community Partners Divider & Heading */}
         <div className="flex flex-col items-center mt-6 mb-14 text-center">
           <div className="flex items-center justify-center gap-4 w-full max-w-lg mb-2">
             <div className="h-[2px] flex-1 bg-gradient-to-r from-transparent via-gold/40 to-gold" />
             <h3 className="font-fredoka text-2xl sm:text-3xl text-gold tracking-wide uppercase">
-              Community Sponsors
+              Community Partners
             </h3>
             <div className="h-[2px] flex-1 bg-gradient-to-l from-transparent via-gold/40 to-gold" />
           </div>
@@ -319,10 +319,10 @@ export default function SponsorsSection() {
           </p>
         </div>
 
-        {/* Community Sponsors — grid */}
+        {/* Community Partners — grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-20 w-full px-4 sm:px-0">
           <SponsorCard
-            title="Community Sponsor"
+            title="Community Partner"
             image="/Sponser/2Techy.png"
             alt="2Techy"
             accent="gold"
@@ -336,7 +336,7 @@ export default function SponsorsSection() {
           />
 
           <SponsorCard
-            title="Community Sponsor"
+            title="Community Partner"
             image="/Sponser/IEEE GTBIT.png"
             alt="IEEE GTBIT"
             accent="cyan"
@@ -350,7 +350,7 @@ export default function SponsorsSection() {
           />
 
           <SponsorCard
-            title="Community Sponsor"
+            title="Community Partner"
             image="/Sponser/ace.png"
             alt="ACE"
             accent="purple"
@@ -363,7 +363,7 @@ export default function SponsorsSection() {
           />
 
           <SponsorCard
-            title="Community Sponsor"
+            title="Community Partner"
             image="/Sponser/codersden.png"
             alt="Coders Den"
             accent="cyan"
@@ -377,7 +377,7 @@ export default function SponsorsSection() {
           />
 
           <SponsorCard
-            title="Community Sponsor"
+            title="Community Partner"
             image="/Sponser/devXspanse.png"
             alt="DevXpanse"
             accent="cyan"
@@ -386,7 +386,7 @@ export default function SponsorsSection() {
           />
 
           <SponsorCard
-            title="Community Sponsor"
+            title="Community Partner"
             image="/Sponser/devsphereindia.png"
             alt="DevSphere India"
             accent="purple"
@@ -399,7 +399,7 @@ export default function SponsorsSection() {
           />
 
           <SponsorCard
-            title="Community Sponsor"
+            title="Community Partner"
             image="/Sponser/eventsinfo.png"
             alt="Events Info"
             accent="cyan"
@@ -412,7 +412,7 @@ export default function SponsorsSection() {
           />
 
           <SponsorCard
-            title="Community Sponsor"
+            title="Community Partner"
             image="/Sponser/exofinity.png"
             alt="Exofinity"
             accent="pink"
@@ -426,7 +426,7 @@ export default function SponsorsSection() {
           />
 
           <SponsorCard
-            title="Community Sponsor"
+            title="Community Partner"
             image="/Sponser/hackshastra.jpg.jpeg"
             alt="Hackshastra"
             accent="pink"
@@ -440,7 +440,7 @@ export default function SponsorsSection() {
           />
 
           <SponsorCard
-            title="Community Sponsor"
+            title="Community Partner"
             image="/Sponser/navras culturalp.png"
             alt="Navras Cultural"
             accent="gold"
@@ -453,7 +453,7 @@ export default function SponsorsSection() {
           />
 
           <SponsorCard
-            title="Community Sponsor"
+            title="Community Partner"
             image="/Sponser/nexido.png"
             alt="Nexido"
             accent="gold"
@@ -466,7 +466,7 @@ export default function SponsorsSection() {
           />
 
           <SponsorCard
-            title="Community Sponsor"
+            title="Community Partner"
             image="/Sponser/tcu.png"
             alt="TCU - Technical Community Universe"
             accent="gold"
@@ -480,7 +480,7 @@ export default function SponsorsSection() {
           />
 
           <SponsorCard
-            title="Community Sponsor"
+            title="Community Partner"
             image="/Sponser/techera.png"
             alt="TechEra"
             accent="cyan"
