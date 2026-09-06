@@ -404,9 +404,9 @@ export default function SponsorsSection() {
             alt="Events Info"
             accent="cyan"
             delay={0.35}
-            imageStyle={{ transform: "scale(1.3)" }}
+            imageStyle={{ transform: "scale(1.3)"}}
             cardBgOverride={{
-              base: "#101012",
+              base: "#000",
               hover: "#18181c",
             }}
           />
@@ -445,10 +445,10 @@ export default function SponsorsSection() {
             alt="Navras Cultural"
             accent="gold"
             delay={0.5}
-            imageStyle={{ transform: "scale(1.4)" }}
+            imageStyle={{ transform: "scale(1.4) translateY(-8px)" }}
             cardBgOverride={{
-              base: "#1a1a1e",
-              hover: "#26262c",
+              base: "#000",
+              hover: "#020202",
             }}
           />
 
@@ -458,7 +458,7 @@ export default function SponsorsSection() {
             alt="Nexido"
             accent="gold"
             delay={0.55}
-            imageStyle={{ transform: "scale(1.5)" }}
+            imageStyle={{ transform: "scale(1.5) translateY(-4px)" }}
             cardBgOverride={{
               base: "#000000",
               hover: "#0d0d0d",
