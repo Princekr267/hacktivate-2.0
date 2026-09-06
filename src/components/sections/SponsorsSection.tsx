@@ -305,6 +305,196 @@ export default function SponsorsSection() {
 
         </div>
 
+        {/* Community Sponsors Divider & Heading */}
+        <div className="flex flex-col items-center mt-6 mb-14 text-center">
+          <div className="flex items-center justify-center gap-4 w-full max-w-lg mb-2">
+            <div className="h-[2px] flex-1 bg-gradient-to-r from-transparent via-gold/40 to-gold" />
+            <h3 className="font-fredoka text-2xl sm:text-3xl text-gold tracking-wide uppercase">
+              Community Sponsors
+            </h3>
+            <div className="h-[2px] flex-1 bg-gradient-to-l from-transparent via-gold/40 to-gold" />
+          </div>
+          <p className="font-nunito text-cream/70 text-sm sm:text-base max-w-md">
+            Proudly supported by our vibrant developer &amp; student communities
+          </p>
+        </div>
+
+        {/* Community Sponsors — grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-20 w-full px-4 sm:px-0">
+          <SponsorCard
+            title="Community Sponsor"
+            image="/Sponser/2Techy.png"
+            alt="2Techy"
+            accent="gold"
+            delay={0.05}
+            noBorderShadow
+            imageStyle={{ transform: "scale(1.2)" }}
+            cardBgOverride={{
+              base: "#ffffff",
+              hover: "#fffdf0",
+            }}
+          />
+
+          <SponsorCard
+            title="Community Sponsor"
+            image="/Sponser/IEEE GTBIT.png"
+            alt="IEEE GTBIT"
+            accent="cyan"
+            delay={0.1}
+            noBorderShadow
+            imageStyle={{ transform: "scale(1.35)" }}
+            cardBgOverride={{
+              base: "#ffffff",
+              hover: "#f0f8ff",
+            }}
+          />
+
+          <SponsorCard
+            title="Community Sponsor"
+            image="/Sponser/ace.png"
+            alt="ACE"
+            accent="purple"
+            delay={0.15}
+            imageStyle={{ transform: "scale(1.25)" }}
+            cardBgOverride={{
+              base: "#161618",
+              hover: "#202024",
+            }}
+          />
+
+          <SponsorCard
+            title="Community Sponsor"
+            image="/Sponser/codersden.png"
+            alt="Coders Den"
+            accent="cyan"
+            delay={0.2}
+            noBorderShadow
+            imageStyle={{ transform: "scale(1.25)" }}
+            cardBgOverride={{
+              base: "#ffffff",
+              hover: "#f0faff",
+            }}
+          />
+
+          <SponsorCard
+            title="Community Sponsor"
+            image="/Sponser/devXspanse.png"
+            alt="DevXpanse"
+            accent="cyan"
+            delay={0.25}
+            imageStyle={{ transform: "scale(1.15)" }}
+          />
+
+          <SponsorCard
+            title="Community Sponsor"
+            image="/Sponser/devsphereindia.png"
+            alt="DevSphere India"
+            accent="purple"
+            delay={0.3}
+            imageStyle={{ transform: "scale(1.2)" }}
+            cardBgOverride={{
+              base: "#0d0413",
+              hover: "#180826",
+            }}
+          />
+
+          <SponsorCard
+            title="Community Sponsor"
+            image="/Sponser/eventsinfo.png"
+            alt="Events Info"
+            accent="cyan"
+            delay={0.35}
+            imageStyle={{ transform: "scale(1.3)" }}
+            cardBgOverride={{
+              base: "#101012",
+              hover: "#18181c",
+            }}
+          />
+
+          <SponsorCard
+            title="Community Sponsor"
+            image="/Sponser/exofinity.png"
+            alt="Exofinity"
+            accent="pink"
+            delay={0.4}
+            noBorderShadow
+            imageStyle={{ transform: "scale(1.25)" }}
+            cardBgOverride={{
+              base: "#ffffff",
+              hover: "#fff5fa",
+            }}
+          />
+
+          <SponsorCard
+            title="Community Sponsor"
+            image="/Sponser/hackshastra.jpg.jpeg"
+            alt="Hackshastra"
+            accent="pink"
+            delay={0.45}
+            noBorderShadow
+            imageStyle={{ transform: "scale(1.35)" }}
+            cardBgOverride={{
+              base: "#ffffff",
+              hover: "#fff5f5",
+            }}
+          />
+
+          <SponsorCard
+            title="Community Sponsor"
+            image="/Sponser/navras culturalp.png"
+            alt="Navras Cultural"
+            accent="gold"
+            delay={0.5}
+            imageStyle={{ transform: "scale(1.4)" }}
+            cardBgOverride={{
+              base: "#1a1a1e",
+              hover: "#26262c",
+            }}
+          />
+
+          <SponsorCard
+            title="Community Sponsor"
+            image="/Sponser/nexido.png"
+            alt="Nexido"
+            accent="gold"
+            delay={0.55}
+            imageStyle={{ transform: "scale(1.5)" }}
+            cardBgOverride={{
+              base: "#000000",
+              hover: "#0d0d0d",
+            }}
+          />
+
+          <SponsorCard
+            title="Community Sponsor"
+            image="/Sponser/tcu.png"
+            alt="TCU - Technical Community Universe"
+            accent="gold"
+            delay={0.6}
+            noBorderShadow
+            imageStyle={{ transform: "scale(1.2)" }}
+            cardBgOverride={{
+              base: "#faf8f2",
+              hover: "#f4f0e6",
+            }}
+          />
+
+          <SponsorCard
+            title="Community Sponsor"
+            image="/Sponser/techera.png"
+            alt="TechEra"
+            accent="cyan"
+            delay={0.65}
+            noBorderShadow
+            imageStyle={{ transform: "scale(1.35)" }}
+            cardBgOverride={{
+              base: "#ffffff",
+              hover: "#f0f8ff",
+            }}
+            className="sm:col-span-2 sm:max-w-md sm:mx-auto lg:col-span-1 lg:col-start-2 lg:max-w-none"
+          />
+        </div>
+
         {/* CTA Box */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -16,6 +16,7 @@ interface SponsorCardProps {
   imageStyle?: React.CSSProperties;
   cardBgOverride?: { base: string; hover: string };
   noBorderShadow?: boolean;
+  className?: string;
 }
 
 const accentStyles = {
@@ -71,6 +72,7 @@ export default function SponsorCard({
   imageStyle,
   cardBgOverride,
   noBorderShadow = false,
+  className,
 }: SponsorCardProps) {
   const ripple = useRipple();
   const style = accentStyles[accent];
@@ -85,7 +87,7 @@ export default function SponsorCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay, type: "spring", stiffness: 120, damping: 20 }}
-      className="w-full flex flex-col items-center gap-3"
+      className={`w-full flex flex-col items-center gap-3 ${className || ""}`}
     >
       {/* Tier label */}
       <div className="flex items-center justify-center gap-2 w-full">
