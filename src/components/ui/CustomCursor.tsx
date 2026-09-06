@@ -23,8 +23,8 @@ export default function CustomCursor() {
   const isHoveringRef = useRef(false);
   const rafRef = useRef<number>(0);
 
-  const springX = useSpring(mouseX, { damping: 25, stiffness: 250, mass: 0.1 });
-  const springY = useSpring(mouseY, { damping: 25, stiffness: 250, mass: 0.1 });
+  const springX = useSpring(mouseX, { damping: 28, stiffness: 450, mass: 0.04 });
+  const springY = useSpring(mouseY, { damping: 28, stiffness: 450, mass: 0.04 });
 
   useEffect(() => {
     const checkTouch = () => setIsTouchDevice(window.matchMedia("(hover: none) and (pointer: coarse)").matches);
@@ -32,6 +32,27 @@ export default function CustomCursor() {
     window.addEventListener("resize", checkTouch);
     return () => window.removeEventListener("resize", checkTouch);
   }, []);
+
+  // Event-driven hover detection — runs only on enter/leave, 0 CPU on mouse move
+  useEffect(() => {
+    if (isTouchDevice) return;
+
+    const handlePointerOver = (e: PointerEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target && target.closest("a, button, [role='button'], input, textarea")) {
+        if (!isHoveringRef.current) {
+          isHoveringRef.current = true;
+          setIsHovering(true);
+        }
+      } else if (isHoveringRef.current) {
+        isHoveringRef.current = false;
+        setIsHovering(false);
+      }
+    };
+
+    document.addEventListener("pointerover", handlePointerOver, { passive: true });
+    return () => document.removeEventListener("pointerover", handlePointerOver);
+  }, [isTouchDevice]);
 
   // Canvas sparkle renderer — only runs RAF when active sparkles exist
   useEffect(() => {
@@ -87,7 +108,7 @@ export default function CustomCursor() {
     };
   }, [isTouchDevice]);
 
-  // Mouse tracking — optimized target checking & sparkle spawning
+  // Mouse tracking — direct update with RAF throttle
   useEffect(() => {
     if (isTouchDevice) return;
     let ticking = false;
@@ -100,18 +121,8 @@ export default function CustomCursor() {
         mouseX.set(e.clientX - 7);
         mouseY.set(e.clientY - 7);
 
-        const target = e.target as HTMLElement | null;
-        if (target) {
-          const isInteractive = target.closest("a, button, [role='button'], input, textarea");
-          const hovering = !!isInteractive;
-          if (hovering !== isHoveringRef.current) {
-            isHoveringRef.current = hovering;
-            setIsHovering(hovering);
-          }
-        }
-
         const now = performance.now();
-        if (now - lastSparkleTime.current > 220) {
+        if (now - lastSparkleTime.current > 300) {
           lastSparkleTime.current = now;
           const CHARS = ["✦", "⚡", "★"];
           sparklesRef.current.push({

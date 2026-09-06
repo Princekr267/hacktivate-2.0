@@ -549,11 +549,12 @@ body {
 .aurora-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(20px);
   will-change: transform;
   pointer-events: none;
   z-index: 0;
-  contain: layout style;
+  contain: strict;
+  transform: translate3d(0, 0, 0);
 }
+
 
 

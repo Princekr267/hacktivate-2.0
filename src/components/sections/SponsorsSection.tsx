@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import FaqBackground from "@/components/backgrounds/FaqBackground";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import SponsorCard from "../ui/SponserCard";
 
@@ -70,21 +69,19 @@ export default function SponsorsSection() {
         <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
       </svg>
 
-      <FaqBackground />
-
       {/* Bottom Wavy SVG */}
       <svg className="w-full h-[calc(2rem+2px)] sm:h-[calc(3rem+2px)] absolute -bottom-8 sm:-bottom-12 left-0 text-gold fill-current rotate-180 z-20" viewBox="0 0 1440 48" preserveAspectRatio="none">
         <path d="M0,48 C240,48 240,0 480,0 C720,0 720,48 960,48 C1200,48 1200,0 1440,0 L1440,48 Z" />
       </svg>
 
-      {/* Ambient glows */}
+      {/* Ambient glows — decreased to subtle accents */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div
-          className="absolute -left-[20%] top-[20%] w-[800px] h-[800px] rounded-full ambient-blob"
-          style={{ background: "radial-gradient(circle, rgba(121,53,156,0.15) 0%, transparent 70%)" }} />
+          className="absolute -left-[5%] top-[15%] w-[280px] h-[280px] rounded-full ambient-blob opacity-25"
+          style={{ background: "radial-gradient(circle, rgba(121,53,156,0.08) 0%, transparent 70%)" }} />
         <div
-          className="absolute -right-[10%] bottom-[10%] w-[600px] h-[600px] rounded-full ambient-blob"
-          style={{ background: "radial-gradient(circle, rgba(239,216,68,0.08) 0%, transparent 70%)", animationDelay: "3s" }} />
+          className="absolute -right-[5%] bottom-[10%] w-[240px] h-[240px] rounded-full ambient-blob opacity-20"
+          style={{ background: "radial-gradient(circle, rgba(239,216,68,0.05) 0%, transparent 70%)", animationDelay: "3s" }} />
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">

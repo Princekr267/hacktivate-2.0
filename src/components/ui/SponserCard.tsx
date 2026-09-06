@@ -83,10 +83,10 @@ export default function SponsorCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay, type: "spring", stiffness: 120, damping: 20 }}
+      transition={{ duration: 0.35, ease: "easeOut", delay }}
       className={`w-full flex flex-col items-center gap-3 ${className || ""}`}
     >
       {/* Tier label */}
@@ -112,8 +112,8 @@ export default function SponsorCard({
             ${noBorderShadow ? "border-gray-200/40" : `${style.cardBorder} shadow-lg ${style.glow}`}
             flex items-center justify-center
             px-6 sm:px-8 overflow-hidden
-            relative transition-all duration-500
-            hover:-translate-y-1
+            relative transition-[transform,border-color,box-shadow] duration-300
+            hover:-translate-y-1 will-change-transform
           `}
           style={{ background: hovered ? bgHover : bgBase }}
         >
@@ -121,17 +121,16 @@ export default function SponsorCard({
             <Image
               src={image}
               alt={alt}
-              width={320}
-              height={128}
+              width={260}
+              height={110}
+              unoptimized
               draggable={false}
               className={`
                 max-w-[65%] max-h-[55%] w-auto h-auto
                 object-contain object-center select-none pointer-events-none
-                ${noBorderShadow ? "" : "drop-shadow-md"}
                 ${imageClassName || ""}
               `}
               style={imageStyle}
-              loading="lazy"
             />
           </div>
         </div>
