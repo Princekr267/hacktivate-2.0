@@ -300,6 +300,19 @@ export default function SponsorsSection() {
             }}
           />
 
+          <SponsorCard
+            title="Sponsor"
+            image="/Sponser/Tech_Soc.jpeg"
+            alt="Tech Soc"
+            accent="cyan"
+            delay={0.95}
+            noBorderShadow
+            imageStyle={{ transform: "scale(1.4)" }}
+            cardBgOverride={{
+              base:  "#ffffff",
+              hover: "#f0faff",
+            }}
+          />
         </div>
 
         {/* Community Partners Divider & Heading */}
