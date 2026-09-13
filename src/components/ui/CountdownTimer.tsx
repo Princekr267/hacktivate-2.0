@@ -23,10 +23,11 @@ export default function CountdownTimer() {
       if (now >= endDate) {
         setPhase("ended");
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        clearInterval(interval);
+        return false;
       } else if (diff <= 0) {
         setPhase("started");
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return true;
       } else {
         setPhase("countdown");
         setTimeLeft({
@@ -35,11 +36,20 @@ export default function CountdownTimer() {
           minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((diff % (1000 * 60)) / 1000),
         });
+        return true;
       }
     };
 
-    updateTimer();
-    const interval = setInterval(updateTimer, 1000);
+    const shouldContinue = updateTimer();
+    if (!shouldContinue) return;
+
+    const interval = setInterval(() => {
+      const shouldRun = updateTimer();
+      if (!shouldRun) {
+        clearInterval(interval);
+      }
+    }, 1000);
+
     return () => clearInterval(interval);
   }, []);
 
