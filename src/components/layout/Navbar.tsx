@@ -150,7 +150,7 @@ export default function Navbar() {
               transition={{ type: "spring", stiffness: 400, damping: 15 }}
               className="bg-gold hover:bg-purple-mid text-black hover:text-gold hover:border-gold font-fredoka uppercase px-6 py-2 rounded-xl border-[3px] border-black shadow-offset-black transition-all flex items-center gap-2 active:bg-purple-mid active:text-gold active:border-gold active:shadow-none"
             >
-              Register <Zap size={18} fill="currentColor" />
+              Registration Closed <Zap size={18} fill="currentColor" />
             </motion.button>
           </a>
 
@@ -196,7 +196,7 @@ export default function Navbar() {
                   className="block w-full"
                 >
                   <button className="w-full bg-gold hover:bg-purple-mid text-black hover:text-gold hover:border-gold font-fredoka uppercase px-6 py-3 rounded-xl border-[3px] border-black shadow-offset-black flex items-center justify-center gap-2 transition-colors">
-                    Register <Zap size={18} fill="currentColor" />
+                    Registration Closed <Zap size={18} fill="currentColor" />
                   </button>
                 </a>
               </div>

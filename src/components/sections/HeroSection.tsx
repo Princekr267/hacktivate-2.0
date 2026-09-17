@@ -2,8 +2,7 @@
 
 import { useCallback, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Zap } from "lucide-react";
-import confetti from "canvas-confetti";
+import { Archive } from "lucide-react";
 import Image from "next/image";
 import HeroBackground from "@/components/backgrounds/HeroBackground";
 import CountdownTimer from "@/components/ui/CountdownTimer";
@@ -31,22 +30,10 @@ export default function HeroSection() {
     };
   }, []);
 
-  const triggerConfetti = useCallback(() => {
-    const colors = ["#EFD844", "#a855c8"];
-    const end = Date.now() + 1500;
-    const burst = () => {
-      confetti({ particleCount: 4, angle: 60, spread: 55, origin: { x: 0 }, colors });
-      confetti({ particleCount: 4, angle: 120, spread: 55, origin: { x: 1 }, colors });
-      if (Date.now() < end) requestAnimationFrame(burst);
-    };
-    burst();
-  }, []);
-
-  const handleRegister = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleArchive = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
     ripple.onClick(e as React.MouseEvent<HTMLElement>);
-    triggerConfetti();
     window.open("https://hackculture.io/hackathons/hacktivate-2-0", "_blank", "noopener,noreferrer");
-  }, [ripple, triggerConfetti]);
+  }, [ripple]);
 
   return (
     <section id="home" className="relative min-h-screen w-full flex flex-col items-center justify-start overflow-hidden" style={{ paddingTop: "68px" }}>
@@ -141,14 +128,14 @@ export default function HeroSection() {
           {/* CTA Row */}
           <div className="hero-cta-row flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-16 mt-8 sm:mt-10 pb-16 sm:pb-20 relative z-30 w-full px-2 sm:px-0">
             <motion.button
-              onClick={handleRegister}
+              onClick={handleArchive}
               whileTap={{ scale: 0.95 }}
               animate={{ boxShadow: ["6px 6px 0px #000", "6px 6px 0px #000, 0 0 20px rgba(239,216,68,0.6)", "6px 6px 0px #000"] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               className="btn-shimmer ripple-element bg-gold hover:bg-purple-mid text-black hover:text-gold hover:border-gold font-fredoka uppercase text-lg sm:text-xl rounded-xl border-[3px] border-black hover:-translate-y-1 hover:-translate-x-1 transition-all flex items-center justify-center gap-3 relative overflow-hidden h-[60px] sm:h-[80px] w-full sm:w-[300px] max-w-[340px] sm:max-w-none mt-4 sm:mt-0"
               style={{ boxShadow: "6px 6px 0px #000" }}
             >
-              Register Now <Zap fill="currentColor" size={22} className="animate-bounce" />
+              Registration Closed <Archive fill="currentColor" size={22} />
             </motion.button>
             <CountdownTimer />
           </div>

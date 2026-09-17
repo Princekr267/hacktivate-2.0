@@ -8,32 +8,32 @@ import AnimatedHeading from "@/components/ui/AnimatedHeading";
 const TIMELINE = [
   {
     date: "Jun 1 – Aug 26, 2026",
-    title: "Registration 📝",
-    desc: "Hackathon registration period. Sign up, form your team, and claim your spot at Hacktivate 2.0. Open from Jun 1 at 12:00 AM to Aug 26 at 11:59 PM.",
+    title: "Registration Closed 📝",
+    desc: "Registration for Hacktivate 2.0 closed on Aug 26, 2026. Thank you to everyone who signed up.",
     tag: "Online",
   },
   {
     date: "Jun 1 – Aug 26, 2026",
     title: "Team Formation 🤝",
-    desc: "Form teams and collaborate with other participants. Find your dream team before registrations close on Aug 26 at 11:59 PM.",
+    desc: "Teams were formed during the registration period, with participants collaborating across colleges and communities.",
     tag: "Online",
   },
   {
     date: "Jun 1 – Aug 26, 2026",
     title: "Presentation Submission 📊",
-    desc: "Submit your project idea presentation for evaluation. Window open from Jun 1 at 12:00 AM to Aug 26 at 11:59 PM.",
+    desc: "Project idea presentations were submitted online for evaluation during the first round.",
     tag: "Online",
   },
   {
-    date: "To Be Announced",
+    date: "Completed",
     title: "Online Presentation Round 🖥️",
-    desc: "Selected teams will showcase their ideas online to our panel of judges. Date and details to be announced soon.",
+    desc: "Selected teams presented their ideas online to the judging panel as part of the first round.",
     tag: "Online",
   },
   {
-    date: "To Be Announced",
+    date: "Completed",
     title: "Shortlisted Teams Announced 🎉",
-    desc: "Teams selected for the offline hackathon at JIMSEMTC, Greater Noida are revealed. Date to be announced soon.",
+    desc: "Shortlisted teams advanced to the 36-hour offline hackathon at JIMSEMTC, Greater Noida.",
   },
 ];
 
@@ -177,7 +177,7 @@ export default function TimelineSection() {
 
         </div>
 
-        {/* Coming Soon Banner */}
+        {/* Event completion banner */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -207,10 +207,10 @@ export default function TimelineSection() {
               </div>
               <div>
                 <p className="font-fredoka text-gold text-xl sm:text-2xl leading-tight mb-1">
-                  Offline Hackathon — Full Schedule Coming Soon
+                  Hacktivate 2.0 — Event Completed
                 </p>
                 <p className="font-nunito font-semibold text-cream/60 text-xs sm:text-sm">
-                  The detailed timeline for the offline rounds at JIMSEMTC, Greater Noida · <span className="text-gold/80">11–12 Sep 2026</span> · will be published here shortly. Stay tuned!
+                  The 36-hour offline hackathon took place at JIMSEMTC, Greater Noida on <span className="text-gold/80">11–12 Sep 2026</span>. Thank you to every participant, mentor, judge, and sponsor.
                 </p>
               </div>
             </div>

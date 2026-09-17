@@ -16,7 +16,7 @@ const nunito = Nunito({
 
 export const metadata: Metadata = {
   title: "Hacktivate 2.0 | Build Bold. Break Limits.",
-  description: "A premium 36-hour hackathon at JIMSEMTC. Join 3000+ hackers for non-stop coding, amazing prizes, and the ultimate tech showdown.",
+  description: "Hacktivate 2.0 was a premium 36-hour hackathon at JIMSEMTC. Explore the event, tracks, prizes, and community that brought 3000+ hackers together.",
   icons: {
     icon: "/web_elements/logo-H-letter.png",
   },
